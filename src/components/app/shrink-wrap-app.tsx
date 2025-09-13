@@ -182,7 +182,7 @@ const FileItem = ({
                 <Select
                     value={appFile.targetFormat}
                     onValueChange={(value: FileFormat) => onSettingChange(appFile.id, { key: 'targetFormat', value })}
-                    disabled={isProcessing && status !== 'pending'}
+                    disabled={(isProcessing && status !== 'pending') || appFile.file.type === 'application/pdf'}
                 >
                     <SelectTrigger>
                         <SelectValue placeholder="Format" />
@@ -190,7 +190,6 @@ const FileItem = ({
                     <SelectContent>
                         <SelectItem value="PNG">PNG</SelectItem>
                         <SelectItem value="JPG">JPG</SelectItem>
-                        <SelectItem value="PDF">PDF</SelectItem>
                     </SelectContent>
                 </Select>
             </div>
@@ -335,7 +334,7 @@ export default function ShrinkWrapApp() {
     }
   }, []);
 
-  const getCompressionOptions = (level: CompressionLevel, fileType: 'PNG' | 'JPG' | 'PDF') => {
+  const getCompressionOptions = (level: CompressionLevel, fileType: 'PNG' | 'JPG') => {
     // These are example values. In a real app, these could be more nuanced.
     switch (level) {
         case 'Low':
@@ -354,6 +353,7 @@ export default function ShrinkWrapApp() {
     setFiles(prev => prev.map(f => f.id === fileToCompress.id ? { ...f, status: 'compressing', progress: 0 } : f));
     try {
         const isImage = fileToCompress.file.type.startsWith('image/');
+        const isPdf = fileToCompress.file.type === 'application/pdf';
         let finalFile: Blob;
         let finalSize: number;
 
@@ -380,25 +380,25 @@ export default function ShrinkWrapApp() {
                 finalFile = compressedFile;
                 finalSize = compressedFile.size;
             }
-
+        } else if (isPdf) {
+             // For PDFs or other non-image files, just pass through
+             await new Promise(resolve => setTimeout(resolve, 500)); // Simulate work
+             setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {...f, progress: 50} : f));
+             await new Promise(resolve => setTimeout(resolve, 500));
+             finalFile = fileToCompress.file;
+             finalSize = fileToCompress.originalSize;
+             toast({
+                title: "PDF Handling",
+                description: `PDF compression is not supported. The original file will be used.`,
+             });
         } else {
-            // Placeholder for non-image files or formats we don't handle
-            await new Promise(resolve => setTimeout(resolve, 500)); // Simulate work
-            setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {...f, progress: 50} : f));
-            await new Promise(resolve => setTimeout(resolve, 500)); // Simulate more work
-            
-            if (fileToCompress.file.type.startsWith('image/') && fileToCompress.targetFormat === 'PDF') {
-                toast({
-                    variant: "destructive",
-                    title: "Unsupported Conversion",
-                    description: `Cannot convert images to PDF yet.`,
-                });
-                throw new Error('Unsupported conversion');
-            } else {
-                // For PDFs or other non-image files, just pass through
-                finalFile = fileToCompress.file;
-                finalSize = fileToCompress.originalSize;
-            }
+            // Should not happen with current dropzone config, but as a fallback
+            toast({
+                variant: "destructive",
+                title: "Unsupported File Type",
+                description: `Cannot process this file type.`,
+            });
+            throw new Error('Unsupported file type');
         }
         
         setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {
@@ -417,7 +417,7 @@ export default function ShrinkWrapApp() {
             error: (error as Error).message || 'Compression failed',
             progress: 100
         } : f));
-        if ((error as Error).message !== 'Unsupported conversion') {
+        if ((error as Error).message !== 'Unsupported conversion' && (error as Error).message !== 'Unsupported file type') {
             toast({
                 variant: "destructive",
                 title: "Compression Failed",
