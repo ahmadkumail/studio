@@ -123,6 +123,7 @@ const FileItem = ({
   }, [originalSize, compressedSize]);
 
   const isProcessing = status === 'compressing' || status === 'pending';
+  const isDone = status === 'done' || status === 'error';
 
   return (
     <div className="bg-card p-4 rounded-lg shadow-sm relative overflow-hidden animate-in fade-in-0 slide-in-from-bottom-5 duration-300">
@@ -141,7 +142,7 @@ const FileItem = ({
           </div>
         </div>
 
-        {status !== 'done' && (
+        {!isDone && (
           <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
             <div>
               <Label className="text-xs font-medium text-muted-foreground mb-2 block">Compression</Label>
@@ -149,7 +150,7 @@ const FileItem = ({
                 value={appFile.compressionLevel}
                 onValueChange={(value: CompressionLevel) => onSettingChange(appFile.id, { key: 'compressionLevel', value })}
                 className="flex gap-2"
-                disabled={status !== 'pending'}
+                disabled={isProcessing && status !== 'pending'}
               >
                 {(['Low', 'Medium', 'High'] as CompressionLevel[]).map(level => (
                   <div key={level} className="flex-1">
@@ -175,7 +176,7 @@ const FileItem = ({
                 <Select
                     value={appFile.targetFormat}
                     onValueChange={(value: FileFormat) => onSettingChange(appFile.id, { key: 'targetFormat', value })}
-                    disabled={status !== 'pending'}
+                    disabled={isProcessing && status !== 'pending'}
                 >
                     <SelectTrigger>
                         <SelectValue placeholder="Format" />
@@ -190,14 +191,21 @@ const FileItem = ({
           </div>
         )}
         
-        {status === 'done' && (
+        {isDone && (
             <div className="flex-grow flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
                     <ChevronRight className="w-6 h-6 text-muted-foreground hidden sm:block" />
-                    <div>
-                        <p className="font-medium text-foreground">{formatBytes(compressedSize!)}</p>
-                        {savings && <p className="text-sm text-green-600 font-semibold">Saved {savings.percentage}%</p>}
-                    </div>
+                    {status === 'done' ? (
+                      <div>
+                          <p className="font-medium text-foreground">{formatBytes(compressedSize!)}</p>
+                          {savings && <p className="text-sm text-green-600 font-semibold">Saved {savings.percentage}%</p>}
+                      </div>
+                    ) : (
+                      <div>
+                          <p className="font-medium text-destructive">Failed</p>
+                          <p className="text-sm text-muted-foreground">Could not compress</p>
+                      </div>
+                    )}
                 </div>
                 <Button size="sm" onClick={() => {
                   if (!compressedFile) return;
@@ -210,14 +218,14 @@ const FileItem = ({
                   document.body.removeChild(a);
                   URL.revokeObjectURL(url);
                 }}
-                disabled={!compressedFile || compressedSize === 0}>
+                disabled={!compressedFile || status === 'error'}>
                     <Download className="mr-2 h-4 w-4" />
                     Download
                 </Button>
             </div>
         )}
       </div>
-      {isProcessing && (
+      {!isDone && (
         <Button
           variant="ghost"
           size="icon"
@@ -316,73 +324,84 @@ export default function ShrinkWrapApp() {
   };
 
 
-  const handleCompressFiles = async () => {
+  const handleCompressFile = async (fileToCompress: AppFile) => {
+    setFiles(prev => prev.map(f => f.id === fileToCompress.id ? { ...f, status: 'compressing', progress: 0 } : f));
+    try {
+        const isImage = fileToCompress.file.type.startsWith('image/');
+        let compressedFile: Blob;
+        let compressedSize: number;
+
+        if (isImage && (fileToCompress.targetFormat === 'JPG' || fileToCompress.targetFormat === 'PNG')) {
+            const options = getCompressionOptions(fileToCompress.compressionLevel, fileToCompress.targetFormat);
+
+            compressedFile = await imageCompression(fileToCompress.file, {
+                ...options,
+                onProgress: (p: number) => {
+                    setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {...f, progress: p} : f));
+                },
+                fileType: fileToCompress.targetFormat.toLowerCase(),
+            });
+            compressedSize = compressedFile.size;
+
+        } else {
+            // Placeholder for non-image files or formats we don't handle
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate work
+            setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {...f, progress: 50} : f));
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate more work
+            compressedFile = new Blob([`Content for ${fileToCompress.file.name}`], { type: fileToCompress.file.type });
+            compressedSize = compressedFile.size;
+            
+            if (fileToCompress.file.type.startsWith('image/')) {
+                toast({
+                    variant: "destructive",
+                    title: "Unsupported Conversion",
+                    description: `Cannot convert ${fileToCompress.file.name} to PDF yet.`,
+                });
+                throw new Error('Unsupported conversion');
+            }
+        }
+        
+        setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {
+            ...f, 
+            status: 'done', 
+            progress: 100,
+            compressedSize: compressedSize,
+            compressedFile: compressedFile,
+        } : f));
+
+    } catch (error) {
+        console.error('Compression error:', error);
+        setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {
+            ...f, 
+            status: 'error', 
+            error: (error as Error).message || 'Compression failed',
+            progress: 100
+        } : f));
+        toast({
+            variant: "destructive",
+            title: "Compression Failed",
+            description: `Could not compress ${fileToCompress.file.name}.`,
+        });
+    }
+  }
+
+  const handleCompressAll = async () => {
     if(isCompressing) return;
 
-    setFiles(prev => prev.map(f => f.status === 'pending' ? {...f, status: 'compressing', progress: 0 } : f));
-    
+    const pendingFiles = files.filter(f => f.status === 'pending');
+    if (pendingFiles.length === 0) return;
+
     toast({
         title: "Compression Started",
-        description: "Your files are being optimized.",
+        description: `Optimizing ${pendingFiles.length} file(s).`,
     });
+    
+    await Promise.all(pendingFiles.map(handleCompressFile));
 
-    for (const fileToCompress of files.filter(f => f.status === 'compressing')) {
-        try {
-            const isImage = fileToCompress.file.type.startsWith('image/');
-            let compressedFile: Blob;
-            let compressedSize: number;
-
-            if (isImage && (fileToCompress.targetFormat === 'JPG' || fileToCompress.targetFormat === 'PNG')) {
-                const options = getCompressionOptions(fileToCompress.compressionLevel, fileToCompress.targetFormat);
-                
-                const compressionPromise = imageCompression(fileToCompress.file, {
-                    ...options,
-                    onProgress: (p: number) => {
-                        setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {...f, progress: p} : f));
-                    },
-                    fileType: fileToCompress.targetFormat.toLowerCase(),
-                });
-
-                compressedFile = await compressionPromise;
-                compressedSize = compressedFile.size;
-
-            } else {
-                // Placeholder for non-image files or formats we don't handle
-                await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate work
-                compressedFile = new Blob([''], { type: fileToCompress.file.type });
-                compressedSize = 0; // Indicate no real compression
-                if (fileToCompress.file.type.startsWith('image/')) {
-                    toast({
-                        variant: "destructive",
-                        title: "Unsupported Conversion",
-                        description: `Cannot convert ${fileToCompress.file.name} to PDF yet.`,
-                    });
-                }
-            }
-            
-            setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {
-                ...f, 
-                status: 'done', 
-                progress: 100,
-                compressedSize: compressedSize,
-                compressedFile: compressedFile,
-            } : f));
-
-        } catch (error) {
-            console.error('Compression error:', error);
-            setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {
-                ...f, 
-                status: 'error', 
-                error: (error as Error).message || 'Compression failed',
-                progress: 100
-            } : f));
-            toast({
-                variant: "destructive",
-                title: "Compression Failed",
-                description: `Could not compress ${fileToCompress.file.name}.`,
-            });
-        }
-    }
+    toast({
+        title: "Compression Complete",
+        description: "All files have been processed.",
+    });
   };
 
   const handleClearAll = () => {
@@ -422,7 +441,7 @@ export default function ShrinkWrapApp() {
                 {allDone ? 'Clear All' : 'Reset'}
             </Button>
             <Button 
-                onClick={handleCompressFiles} 
+                onClick={handleCompressAll} 
                 disabled={isCompressing || !hasPending} 
                 className="bg-[#ADFF2F] hover:bg-[#98e228] text-green-950 font-semibold"
             >
