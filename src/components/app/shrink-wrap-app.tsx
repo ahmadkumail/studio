@@ -130,6 +130,7 @@ const FileItem = ({
 
   const isProcessing = status === 'compressing' || status === 'pending';
   const isDone = status === 'done' || status === 'error';
+  const isPdf = appFile.file.type === 'application/pdf';
 
   return (
     <div className="bg-card p-4 rounded-lg shadow-sm relative overflow-hidden animate-in fade-in-0 slide-in-from-bottom-5 duration-300">
@@ -156,7 +157,7 @@ const FileItem = ({
                 value={appFile.compressionLevel}
                 onValueChange={(value: CompressionLevel) => onSettingChange(appFile.id, { key: 'compressionLevel', value })}
                 className="flex gap-2"
-                disabled={isProcessing && status !== 'pending'}
+                disabled={(isProcessing && status !== 'pending') || isPdf}
               >
                 {(['Low', 'Medium', 'High'] as CompressionLevel[]).map(level => (
                   <div key={level} className="flex-1">
@@ -182,7 +183,7 @@ const FileItem = ({
                 <Select
                     value={appFile.targetFormat}
                     onValueChange={(value: FileFormat) => onSettingChange(appFile.id, { key: 'targetFormat', value })}
-                    disabled={(isProcessing && status !== 'pending') || appFile.file.type === 'application/pdf'}
+                    disabled={(isProcessing && status !== 'pending') || isPdf}
                 >
                     <SelectTrigger>
                         <SelectValue placeholder="Format" />
@@ -190,6 +191,7 @@ const FileItem = ({
                     <SelectContent>
                         <SelectItem value="PNG">PNG</SelectItem>
                         <SelectItem value="JPG">JPG</SelectItem>
+                        {isPdf && <SelectItem value="PDF">PDF</SelectItem>}
                     </SelectContent>
                 </Select>
             </div>
@@ -274,11 +276,17 @@ export default function ShrinkWrapApp() {
     setIsDragActive(false);
     const newFiles: AppFile[] = acceptedFiles.map((file) => {
         const fileExtension = file.name.split('.').pop()?.toUpperCase() as FileFormat | undefined;
-        let fileType: FileFormat = 'JPG'; // Default
-        if (fileExtension && ['PNG', 'JPG', 'JPEG'].includes(fileExtension)) {
-            fileType = fileExtension === 'JPEG' ? 'JPG' : fileExtension;
-        } else if (fileExtension === 'PDF') {
+        let fileType: FileFormat;
+
+        if (fileExtension === 'PDF') {
             fileType = 'PDF';
+        } else if (fileExtension === 'PNG') {
+            fileType = 'PNG';
+        } else if (fileExtension === 'JPEG' || fileExtension === 'JPG') {
+            fileType = 'JPG';
+        } else {
+            // As a fallback for other image types that might sneak in
+            fileType = 'JPG';
         }
         
         return {
