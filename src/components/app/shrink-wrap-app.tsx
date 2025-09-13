@@ -153,7 +153,7 @@ const FileItem = ({
             {status === 'compressing' ? (
                 <div className="flex items-center justify-center w-full gap-3">
                     <Loader2 className="w-5 h-5 text-primary animate-spin" />
-                    <span className="text-sm font-medium text-muted-foreground">Compressing... {progress.toFixed(0)}%</span>
+                    <span className="text-sm font-medium text-muted-foreground">Processing... {progress.toFixed(0)}%</span>
                 </div>
             ) : !isDone ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
