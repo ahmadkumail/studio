@@ -17,6 +17,8 @@ import {
   FileArchive,
   Loader2,
   ChevronRight,
+  Trash2,
+  RotateCcw,
 } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
@@ -35,11 +37,14 @@ const MAX_FILES = 10;
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
 const AppHeader = () => (
-  <header className="flex items-center gap-3 mb-6">
-    <FileArchive className="w-8 h-8 text-primary" />
-    <h1 className="text-3xl font-bold text-foreground">ShrinkWrap</h1>
-  </header>
-);
+    <header className="flex items-center gap-3 mb-8 text-center">
+      <FileArchive className="w-10 h-10 text-primary" />
+      <div>
+        <h1 className="text-3xl font-bold text-foreground">ShrinkWrap</h1>
+        <p className="text-muted-foreground">Compress your files with ease</p>
+      </div>
+    </header>
+  );
 
 const FileUploader = ({
   onDrop,
@@ -62,24 +67,24 @@ const FileUploader = ({
   return (
     <Card
       className={cn(
-        'w-full border-2 border-dashed transition-colors',
-        isDragActive ? 'border-primary bg-accent' : 'border-border bg-card'
+        'w-full border-2 border-dashed transition-all duration-300',
+        isDragActive ? 'border-primary bg-primary/10' : 'border-border bg-transparent'
       )}
     >
-      <CardContent className="p-6">
+      <CardContent className="p-8 sm:p-12">
         <div
           {...getRootProps()}
-          className="outline-none text-center cursor-pointer"
+          className="outline-none text-center cursor-pointer group"
         >
           <input {...getInputProps()} />
           <div className="flex flex-col items-center justify-center gap-4 text-muted-foreground">
-            <UploadCloud className="w-16 h-16" />
+            <UploadCloud className="w-16 h-16 transition-transform duration-300 group-hover:scale-110 group-hover:text-primary" />
             <p className="text-lg font-medium">
               {isDragActive
-                ? 'Drop files here...'
-                : 'Drag & drop files, or click to select'}
+                ? 'Drop files to start compressing!'
+                : "Drag & drop, or click to select"}
             </p>
-            <p className="text-sm">Supports PNG, JPG, and PDF files</p>
+            <p className="text-sm">Supports PNG, JPG, and PDF files up to 100MB</p>
           </div>
         </div>
       </CardContent>
@@ -102,7 +107,7 @@ const FileItem = ({
     }
   ) => void;
 }) => {
-  const { file, status, progress, originalSize, compressedSize, compressedFile } = appFile;
+  const { file, status, progress, originalSize, compressedSize } = appFile;
 
   const FileIcon = useMemo(() => {
     if (file.type.startsWith('image/')) return FileImage;
@@ -115,7 +120,8 @@ const FileItem = ({
       if (compressedSize >= originalSize) {
         return {
           bytes: '0 Bytes',
-          percentage: '0.0'
+          percentage: '0.0',
+          isIncrease: compressedSize > originalSize,
         }
       }
       const reduction = originalSize - compressedSize;
@@ -123,6 +129,7 @@ const FileItem = ({
       return {
         bytes: formatBytes(reduction),
         percentage: percentage.toFixed(1),
+        isIncrease: false,
       };
     }
     return null;
@@ -133,133 +140,133 @@ const FileItem = ({
   const isPdf = appFile.file.type === 'application/pdf';
 
   return (
-    <div className="bg-card p-4 rounded-lg shadow-sm relative overflow-hidden animate-in fade-in-0 slide-in-from-bottom-5 duration-300">
+    <Card className="bg-card/50 p-4 relative overflow-hidden animate-in fade-in-0 slide-in-from-bottom-5 duration-300">
       {status === 'compressing' && (
         <Progress
           value={progress}
           className="absolute top-0 left-0 w-full h-1 rounded-none"
         />
       )}
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="flex-shrink-0 flex items-center gap-4">
-          <FileIcon className="w-10 h-10 text-primary" />
-          <div className="flex-grow md:max-w-xs">
+      <div className="flex flex-col md:flex-row gap-4 items-center">
+        <div className="flex-shrink-0 flex items-center gap-4 w-full md:w-1/3">
+          <FileIcon className="w-10 h-10 text-primary shrink-0" />
+          <div className="flex-grow min-w-0">
             <p className="font-medium text-foreground truncate" title={file.name}>{file.name}</p>
             <p className="text-sm text-muted-foreground">{formatBytes(originalSize)}</p>
           </div>
         </div>
 
-        {!isDone && (
-          <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
-            <div>
-              <Label className="text-xs font-medium text-muted-foreground mb-2 block">Compression</Label>
-              <RadioGroup
-                value={appFile.compressionLevel}
-                onValueChange={(value: CompressionLevel) => onSettingChange(appFile.id, { key: 'compressionLevel', value })}
-                className="flex gap-2"
-                disabled={(isProcessing && status !== 'pending') || isPdf}
-              >
-                {(['Low', 'Medium', 'High'] as CompressionLevel[]).map(level => (
-                  <div key={level} className="flex-1">
-                    <RadioGroupItem value={level} id={`${appFile.id}-${level}`} className="sr-only peer" />
-                    <Label
-                      htmlFor={`${appFile.id}-${level}`}
-                      className="flex items-center justify-center p-2 text-sm font-medium rounded-md border-2 border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer transition-colors"
-                    >
-                      {level}
-                    </Label>
-                  </div>
-                ))}
-              </RadioGroup>
-              {appFile.aiSuggestion && (
-                  <div className="mt-2 text-xs text-muted-foreground flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-primary" />
-                      <p><strong>AI Suggestion:</strong> Quality {appFile.aiSuggestion.quality}, {appFile.aiSuggestion.optimizationStrategy}</p>
-                  </div>
-              )}
-            </div>
-            <div>
-                <Label className="text-xs font-medium text-muted-foreground mb-2 block">Convert To</Label>
-                <Select
-                    value={appFile.targetFormat}
-                    onValueChange={(value: FileFormat) => onSettingChange(appFile.id, { key: 'targetFormat', value })}
-                    disabled={(isProcessing && status !== 'pending') || isPdf}
-                >
-                    <SelectTrigger>
-                        <SelectValue placeholder="Format" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="PNG">PNG</SelectItem>
-                        <SelectItem value="JPG">JPG</SelectItem>
-                        {isPdf && <SelectItem value="PDF">PDF</SelectItem>}
-                    </SelectContent>
-                </Select>
-            </div>
-          </div>
-        )}
-        
-        {isDone && (
-            <div className="flex-grow flex items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                    <ChevronRight className="w-6 h-6 text-muted-foreground hidden sm:block" />
-                    {status === 'done' ? (
-                      <div>
-                          <p className="font-medium text-foreground">{formatBytes(compressedSize!)}</p>
-                          {savings && savings.percentage !== '0.0' ? (
-                            <p className="text-sm text-green-600 font-semibold">Saved {savings.percentage}%</p>
-                          ) : (
-                            <p className="text-sm text-muted-foreground">No savings</p>
-                          )}
-                      </div>
-                    ) : (
-                      <div>
-                          <p className="font-medium text-destructive">Failed</p>
-                          <p className="text-sm text-muted-foreground">Could not compress</p>
-                      </div>
-                    )}
+        <div className="flex-grow w-full md:w-2/3">
+            {!isDone ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
+                    <div>
+                        <Label className="text-xs font-medium text-muted-foreground mb-2 block">Compression</Label>
+                        <RadioGroup
+                            value={appFile.compressionLevel}
+                            onValueChange={(value: CompressionLevel) => onSettingChange(appFile.id, { key: 'compressionLevel', value })}
+                            className="flex gap-2"
+                            disabled={(isProcessing && status !== 'pending') || isPdf}
+                        >
+                            {(['Low', 'Medium', 'High'] as CompressionLevel[]).map(level => (
+                            <div key={level} className="flex-1">
+                                <RadioGroupItem value={level} id={`${appFile.id}-${level}`} className="sr-only peer" />
+                                <Label
+                                htmlFor={`${appFile.id}-${level}`}
+                                className="flex items-center justify-center py-1.5 px-2 text-sm font-medium rounded-md border-2 border-muted bg-transparent hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary/10 [&:has([data-state=checked])]:border-primary cursor-pointer transition-colors h-full"
+                                >
+                                {level}
+                                </Label>
+                            </div>
+                            ))}
+                        </RadioGroup>
+                        {appFile.aiSuggestion && (
+                            <div className="mt-2 text-xs text-muted-foreground flex items-center gap-1.5">
+                                <Sparkles className="w-3.5 h-3.5 text-primary" />
+                                <p><strong>AI:</strong> Quality {appFile.aiSuggestion.quality}, {appFile.aiSuggestion.optimizationStrategy}</p>
+                            </div>
+                        )}
+                    </div>
+                    <div>
+                        <Label className="text-xs font-medium text-muted-foreground mb-2 block">Convert To</Label>
+                        <Select
+                            value={appFile.targetFormat}
+                            onValueChange={(value: FileFormat) => onSettingChange(appFile.id, { key: 'targetFormat', value })}
+                            disabled={(isProcessing && status !== 'pending') || isPdf}
+                        >
+                            <SelectTrigger className="h-auto py-1.5">
+                                <SelectValue placeholder="Format" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="PNG">PNG</SelectItem>
+                                <SelectItem value="JPG">JPG</SelectItem>
+                                {isPdf && <SelectItem value="PDF">PDF</SelectItem>}
+                            </SelectContent>
+                        </Select>
+                    </div>
                 </div>
-                <Button size="sm" onClick={() => {
-                  if (!compressedFile) return;
-                  const url = URL.createObjectURL(compressedFile);
-                  const a = document.createElement('a');
-                  a.href = url;
-                  // Handle potential extension changes
-                  const originalName = appFile.file.name;
-                  const originalExtension = originalName.split('.').pop()?.toLowerCase();
-                  const targetExtension = appFile.targetFormat.toLowerCase();
-                  let downloadName = `shrunk-${originalName}`;
+            ) : (
+                <div className="flex items-center justify-between gap-4 w-full">
+                    <div className="flex items-center gap-4">
+                        <ChevronRight className="w-6 h-6 text-muted-foreground hidden sm:block" />
+                        {status === 'done' ? (
+                        <div className="text-sm">
+                            <p className="font-medium text-foreground">{formatBytes(compressedSize!)}</p>
+                            {savings && savings.percentage !== '0.0' ? (
+                                <p className="text-green-400 font-semibold">Saved {savings.percentage}%</p>
+                            ) : (
+                                <p className="text-muted-foreground">{savings?.isIncrease ? 'Size increased' : 'No savings'}</p>
+                            )}
+                        </div>
+                        ) : (
+                        <div>
+                            <p className="font-medium text-destructive">Failed</p>
+                            <p className="text-sm text-muted-foreground">Could not compress</p>
+                        </div>
+                        )}
+                    </div>
+                    <Button size="sm" onClick={() => {
+                        const { compressedFile, file, targetFormat } = appFile;
+                        if (!compressedFile) return;
+                        const url = URL.createObjectURL(compressedFile);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        
+                        const originalName = file.name;
+                        const originalExtension = originalName.split('.').pop()?.toLowerCase();
+                        const targetExtension = targetFormat.toLowerCase();
+                        let downloadName = `shrunk-${originalName}`;
 
-                  if (originalExtension !== targetExtension) {
-                    const baseName = originalName.substring(0, originalName.lastIndexOf('.'));
-                    downloadName = `shrunk-${baseName}.${targetExtension}`;
-                  }
-                  
-                  a.download = downloadName;
-                  document.body.appendChild(a);
-                  a.click();
-                  document.body.removeChild(a);
-                  URL.revokeObjectURL(url);
-                }}
-                disabled={!compressedFile || status === 'error'}>
-                    <Download className="mr-2 h-4 w-4" />
-                    Download
-                </Button>
-            </div>
-        )}
-      </div>
-      {!isDone && (
+                        if (originalExtension !== targetExtension) {
+                            const baseName = originalName.substring(0, originalName.lastIndexOf('.'));
+                            downloadName = `shrunk-${baseName}.${targetExtension}`;
+                        }
+                        
+                        a.download = downloadName;
+                        document.body.appendChild(a);
+a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                        }}
+                        disabled={!appFile.compressedFile || status === 'error'}>
+                        <Download className="mr-2 h-4 w-4" />
+                        Download
+                    </Button>
+                </div>
+            )}
+        </div>
+        
         <Button
-          variant="ghost"
-          size="icon"
-          className="absolute top-2 right-2 w-7 h-7"
-          onClick={() => onRemove(appFile.id)}
-          disabled={status !== 'pending'}
-        >
-          <X className="w-4 h-4" />
-          <span className="sr-only">Remove</span>
+            variant="ghost"
+            size="icon"
+            className="absolute top-2 right-2 w-7 h-7 text-muted-foreground hover:text-foreground"
+            onClick={() => onRemove(appFile.id)}
+            disabled={status === 'compressing'}
+            >
+            <X className="w-4 h-4" />
+            <span className="sr-only">Remove</span>
         </Button>
-      )}
-    </div>
+      </div>
+    </Card>
   );
 };
 
@@ -342,8 +349,7 @@ export default function ShrinkWrapApp() {
     }
   }, []);
 
-  const getCompressionOptions = (level: CompressionLevel, fileType: 'PNG' | 'JPG') => {
-    // These are example values. In a real app, these could be more nuanced.
+  const getCompressionOptions = (level: CompressionLevel) => {
     switch (level) {
         case 'Low':
             return { maxSizeMB: 2, initialQuality: 0.9, alwaysKeepResolution: true };
@@ -366,7 +372,7 @@ export default function ShrinkWrapApp() {
         let finalSize: number;
 
         if (isImage && (fileToCompress.targetFormat === 'JPG' || fileToCompress.targetFormat === 'PNG')) {
-            const options = getCompressionOptions(fileToCompress.compressionLevel, fileToCompress.targetFormat);
+            const options = getCompressionOptions(fileToCompress.compressionLevel);
 
             const compressedFile = await imageCompression(fileToCompress.file, {
                 ...options,
@@ -377,30 +383,27 @@ export default function ShrinkWrapApp() {
             });
 
             if (compressedFile.size > fileToCompress.originalSize) {
-                // If compressed is larger, use original
                 finalFile = fileToCompress.file;
                 finalSize = fileToCompress.originalSize;
                 toast({
-                  title: "No Savings",
-                  description: `${fileToCompress.file.name} is already optimized. Using original file.`,
+                  title: "Already Optimized",
+                  description: `${fileToCompress.file.name} could not be compressed further.`,
                 })
             } else {
                 finalFile = compressedFile;
                 finalSize = compressedFile.size;
             }
         } else if (isPdf) {
-             // For PDFs or other non-image files, just pass through
-             await new Promise(resolve => setTimeout(resolve, 500)); // Simulate work
+             await new Promise(resolve => setTimeout(resolve, 500));
              setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {...f, progress: 50} : f));
              await new Promise(resolve => setTimeout(resolve, 500));
              finalFile = fileToCompress.file;
              finalSize = fileToCompress.originalSize;
              toast({
                 title: "PDF Handling",
-                description: `PDF compression is not supported. The original file will be used.`,
+                description: `PDF compression is not yet supported.`,
              });
         } else {
-            // Should not happen with current dropzone config, but as a fallback
             toast({
                 variant: "destructive",
                 title: "Unsupported File Type",
@@ -468,9 +471,9 @@ export default function ShrinkWrapApp() {
   const allDone = files.length > 0 && files.every(f => f.status === 'done' || f.status === 'error');
 
   return (
-    <div className="w-full max-w-4xl mx-auto flex flex-col h-full">
+    <div className="w-full max-w-4xl mx-auto flex flex-col h-full items-center">
       <AppHeader />
-      <main className="flex-grow">
+      <main className="flex-grow w-full">
         {files.length === 0 ? (
           <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
         ) : (
@@ -487,16 +490,15 @@ export default function ShrinkWrapApp() {
         )}
       </main>
       {files.length > 0 && (
-        <footer className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-card/80 backdrop-blur-sm rounded-lg shadow-sm sticky bottom-4">
-          <p className="text-sm text-muted-foreground">{files.length} file(s) added.</p>
+        <footer className="mt-6 w-full max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-card/80 backdrop-blur-sm rounded-lg shadow-sm sticky bottom-4 border">
+          <p className="text-sm text-muted-foreground">{files.length} file(s) selected.</p>
           <div className="flex items-center gap-2">
             <Button variant="outline" onClick={allDone ? handleClearAll : handleReset}>
-                {allDone ? 'Clear All' : 'Reset'}
+                {allDone ? <><Trash2 className="mr-2 h-4 w-4" /> Clear All</> : <><RotateCcw className="mr-2 h-4 w-4" /> Reset</>}
             </Button>
             <Button 
                 onClick={handleCompressAll} 
-                disabled={isCompressing || !hasPending} 
-                className="bg-[#ADFF2F] hover:bg-[#98e228] text-green-950 font-semibold"
+                disabled={isCompressing || !hasPending || allDone} 
             >
                 {isCompressing ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Compressing...</> : allDone ? 'All Done!' : 'Compress Files'}
             </Button>
