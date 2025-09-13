@@ -37,7 +37,7 @@ const MAX_FILES = 10;
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
 const AppHeader = () => (
-    <header className="flex items-center gap-3 mb-8 text-center">
+    <header className="flex items-center gap-3 mb-8">
       <PandaIcon className="w-12 h-12 text-primary" />
       <div>
         <h1 className="text-3xl font-bold text-foreground">ShrinkWrap</h1>
