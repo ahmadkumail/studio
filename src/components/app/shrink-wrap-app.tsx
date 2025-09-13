@@ -14,7 +14,6 @@ import {
   X,
   Sparkles,
   Download,
-  FileArchive,
   Loader2,
   ChevronRight,
   Trash2,
@@ -32,13 +31,14 @@ import {
 import { Progress } from '@/components/ui/progress';
 import { getAiSuggestion } from '@/components/app/actions';
 import { useToast } from '@/hooks/use-toast';
+import { PandaIcon } from '@/components/icons/panda-icon';
 
 const MAX_FILES = 10;
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
 const AppHeader = () => (
     <header className="flex items-center gap-3 mb-8 text-center">
-      <FileArchive className="w-10 h-10 text-primary" />
+      <PandaIcon className="w-12 h-12 text-primary" />
       <div>
         <h1 className="text-3xl font-bold text-foreground">ShrinkWrap</h1>
         <p className="text-muted-foreground">Compress your files with ease</p>
@@ -68,7 +68,7 @@ const FileUploader = ({
     <Card
       className={cn(
         'w-full border-2 border-dashed transition-all duration-300',
-        isDragActive ? 'border-primary bg-primary/10' : 'border-border bg-transparent'
+        isDragActive ? 'border-primary bg-primary/10' : 'border-border bg-card'
       )}
     >
       <CardContent className="p-8 sm:p-12">
@@ -140,7 +140,7 @@ const FileItem = ({
   const isPdf = appFile.file.type === 'application/pdf';
 
   return (
-    <Card className="bg-card/50 p-4 relative overflow-hidden animate-in fade-in-0 slide-in-from-bottom-5 duration-300">
+    <Card className="bg-card p-4 relative overflow-hidden animate-in fade-in-0 slide-in-from-bottom-5 duration-300 shadow-sm">
       {status === 'compressing' && (
         <Progress
           value={progress}
@@ -172,7 +172,7 @@ const FileItem = ({
                                 <RadioGroupItem value={level} id={`${appFile.id}-${level}`} className="sr-only peer" />
                                 <Label
                                 htmlFor={`${appFile.id}-${level}`}
-                                className="flex items-center justify-center py-1.5 px-2 text-sm font-medium rounded-md border-2 border-muted bg-transparent hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary/10 [&:has([data-state=checked])]:border-primary cursor-pointer transition-colors h-full"
+                                className="flex items-center justify-center py-1.5 px-2 text-sm font-medium rounded-md border-2 border-muted bg-transparent hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer transition-colors h-full"
                                 >
                                 {level}
                                 </Label>
@@ -212,7 +212,7 @@ const FileItem = ({
                         <div className="text-sm">
                             <p className="font-medium text-foreground">{formatBytes(compressedSize!)}</p>
                             {savings && savings.percentage !== '0.0' ? (
-                                <p className="text-green-400 font-semibold">Saved {savings.percentage}%</p>
+                                <p className="text-green-500 font-semibold">Saved {savings.percentage}%</p>
                             ) : (
                                 <p className="text-muted-foreground">{savings?.isIncrease ? 'Size increased' : 'No savings'}</p>
                             )}
@@ -490,7 +490,7 @@ export default function ShrinkWrapApp() {
         )}
       </main>
       {files.length > 0 && (
-        <footer className="mt-6 w-full max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-card/80 backdrop-blur-sm rounded-lg shadow-sm sticky bottom-4 border">
+        <footer className="mt-6 w-full max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-card/80 backdrop-blur-sm rounded-lg shadow-lg sticky bottom-4 border">
           <p className="text-sm text-muted-foreground">{files.length} file(s) selected.</p>
           <div className="flex items-center gap-2">
             <Button variant="outline" onClick={allDone ? handleClearAll : handleReset}>
