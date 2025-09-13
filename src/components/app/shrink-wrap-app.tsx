@@ -11,7 +11,6 @@ import {
   UploadCloud,
   FileImage,
   FileText,
-  X,
   Sparkles,
   Download,
   Loader2,
@@ -141,12 +140,6 @@ const FileItem = ({
 
   return (
     <Card className="bg-card p-4 relative overflow-hidden animate-in fade-in-0 slide-in-from-bottom-5 duration-300 shadow-sm">
-      {status === 'compressing' && (
-        <Progress
-          value={progress}
-          className="absolute top-0 left-0 w-full h-1 rounded-none"
-        />
-      )}
       <div className="flex flex-col md:flex-row gap-4 items-center">
         <div className="flex-shrink-0 flex items-center gap-4 w-full md:w-1/3">
           <FileIcon className="w-10 h-10 text-primary shrink-0" />
@@ -157,7 +150,12 @@ const FileItem = ({
         </div>
 
         <div className="flex-grow w-full md:w-2/3">
-            {!isDone ? (
+            {status === 'compressing' ? (
+                <div className="flex items-center justify-center w-full gap-3">
+                    <Loader2 className="w-5 h-5 text-primary animate-spin" />
+                    <span className="text-sm font-medium text-muted-foreground">Compressing... {progress.toFixed(0)}%</span>
+                </div>
+            ) : !isDone ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
                     <div>
                         <Label className="text-xs font-medium text-muted-foreground mb-2 block">Compression</Label>
@@ -243,7 +241,7 @@ const FileItem = ({
                         
                         a.download = downloadName;
                         document.body.appendChild(a);
-a.click();
+                        a.click();
                         document.body.removeChild(a);
                         URL.revokeObjectURL(url);
                         }}
@@ -254,17 +252,6 @@ a.click();
                 </div>
             )}
         </div>
-        
-        <Button
-            variant="ghost"
-            size="icon"
-            className="absolute top-2 right-2 w-7 h-7 text-muted-foreground hover:text-foreground"
-            onClick={() => onRemove(appFile.id)}
-            disabled={status === 'compressing'}
-            >
-            <X className="w-4 h-4" />
-            <span className="sr-only">Remove</span>
-        </Button>
       </div>
     </Card>
   );
@@ -508,5 +495,3 @@ export default function ShrinkWrapApp() {
     </div>
   );
 }
-
-    
