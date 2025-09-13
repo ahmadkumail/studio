@@ -122,7 +122,7 @@ const FileUploader = ({
     <Card
       className={cn(
         'w-full border-2 border-dashed transition-all duration-300 shadow-lg',
-        isDragActive ? 'border-primary bg-primary/10 scale-105' : 'border-border bg-card'
+        isDragActive ? 'border-primary bg-primary/20 scale-105' : 'border-primary/50 bg-primary/10'
       )}
     >
       <CardContent className="p-8 sm:p-12">
@@ -131,14 +131,14 @@ const FileUploader = ({
           className="outline-none text-center cursor-pointer group"
         >
           <input {...getInputProps()} />
-          <div className="flex flex-col items-center justify-center gap-4 text-muted-foreground">
-            <UploadCloud className="w-16 h-16 transition-transform duration-300 group-hover:scale-110 group-hover:text-primary" />
-            <p className="text-lg font-medium">
+          <div className="flex flex-col items-center justify-center gap-4 text-primary-foreground">
+            <UploadCloud className="w-16 h-16 transition-transform duration-300 group-hover:scale-110 text-primary" />
+            <p className="text-lg font-medium text-foreground">
               {isDragActive
                 ? 'Drop files to start compressing!'
                 : "Drag & drop, or click to select"}
             </p>
-            <p className="text-sm">Supports PNG and JPG files up to 100MB</p>
+            <p className="text-sm text-muted-foreground">Supports PNG and JPG files up to 100MB</p>
           </div>
         </div>
       </CardContent>
@@ -148,11 +148,9 @@ const FileUploader = ({
 
 const FileItem = ({
   appFile,
-  onRemove,
   onSettingChange,
 }: {
   appFile: AppFile;
-  onRemove: (id: string) => void;
   onSettingChange: (
     id: string,
     update: {
@@ -345,10 +343,6 @@ export default function ShrinkWrapApp() {
     setFiles((prev) => [...prev, ...newFiles]);
   }, []);
 
-  const handleRemoveFile = (id: string) => {
-    setFiles((prev) => prev.filter((f) => f.id !== id));
-  };
-
   const handleSettingChange = useCallback(async (
     id: string,
     update: {
@@ -491,6 +485,10 @@ export default function ShrinkWrapApp() {
   const handleReset = () => {
     setFiles(files.map(f => ({...f, status: 'pending', progress: 0, compressedSize: undefined, compressedFile: undefined, aiSuggestion: undefined})));
   }
+  
+  const handleRemoveFile = (id: string) => {
+    setFiles((prev) => prev.filter((f) => f.id !== id));
+  };
 
   const allDone = files.length > 0 && files.every(f => f.status === 'done' || f.status === 'error');
 
@@ -509,7 +507,6 @@ export default function ShrinkWrapApp() {
               <FileItem
                 key={appFile.id}
                 appFile={appFile}
-                onRemove={handleRemoveFile}
                 onSettingChange={handleSettingChange}
               />
             ))}
