@@ -112,6 +112,12 @@ const FileItem = ({
 
   const savings = useMemo(() => {
     if (typeof originalSize === 'number' && typeof compressedSize === 'number' && compressedSize > 0) {
+      if (compressedSize >= originalSize) {
+        return {
+          bytes: '0 Bytes',
+          percentage: '0.0'
+        }
+      }
       const reduction = originalSize - compressedSize;
       const percentage = (reduction / originalSize) * 100;
       return {
@@ -198,7 +204,11 @@ const FileItem = ({
                     {status === 'done' ? (
                       <div>
                           <p className="font-medium text-foreground">{formatBytes(compressedSize!)}</p>
-                          {savings && <p className="text-sm text-green-600 font-semibold">Saved {savings.percentage}%</p>}
+                          {savings && savings.percentage !== '0.0' ? (
+                            <p className="text-sm text-green-600 font-semibold">Saved {savings.percentage}%</p>
+                          ) : (
+                            <p className="text-sm text-muted-foreground">No savings</p>
+                          )}
                       </div>
                     ) : (
                       <div>
@@ -212,7 +222,18 @@ const FileItem = ({
                   const url = URL.createObjectURL(compressedFile);
                   const a = document.createElement('a');
                   a.href = url;
-                  a.download = `shrunk-${appFile.file.name}`;
+                  // Handle potential extension changes
+                  const originalName = appFile.file.name;
+                  const originalExtension = originalName.split('.').pop()?.toLowerCase();
+                  const targetExtension = appFile.targetFormat.toLowerCase();
+                  let downloadName = `shrunk-${originalName}`;
+
+                  if (originalExtension !== targetExtension) {
+                    const baseName = originalName.substring(0, originalName.lastIndexOf('.'));
+                    downloadName = `shrunk-${baseName}.${targetExtension}`;
+                  }
+                  
+                  a.download = downloadName;
                   document.body.appendChild(a);
                   a.click();
                   document.body.removeChild(a);
@@ -254,13 +275,18 @@ export default function ShrinkWrapApp() {
     setIsDragActive(false);
     const newFiles: AppFile[] = acceptedFiles.map((file) => {
         const fileExtension = file.name.split('.').pop()?.toUpperCase() as FileFormat | undefined;
-        const targetFormat: FileFormat = ['PNG', 'JPG', 'PDF'].includes(fileExtension || '') ? fileExtension! : 'JPG';
+        let fileType: FileFormat = 'JPG'; // Default
+        if (fileExtension && ['PNG', 'JPG', 'JPEG'].includes(fileExtension)) {
+            fileType = fileExtension === 'JPEG' ? 'JPG' : fileExtension;
+        } else if (fileExtension === 'PDF') {
+            fileType = 'PDF';
+        }
         
         return {
             id: `${file.name}-${file.lastModified}-${Math.random()}`,
             file,
             compressionLevel: 'Medium',
-            targetFormat: targetFormat,
+            targetFormat: fileType,
             status: 'pending',
             progress: 0,
             originalSize: file.size,
@@ -313,7 +339,7 @@ export default function ShrinkWrapApp() {
     // These are example values. In a real app, these could be more nuanced.
     switch (level) {
         case 'Low':
-            return { maxSizeMB: 2, initialQuality: 0.9 };
+            return { maxSizeMB: 2, initialQuality: 0.9, alwaysKeepResolution: true };
         case 'Medium':
             return { maxSizeMB: 1, initialQuality: 0.7 };
         case 'High':
@@ -328,36 +354,50 @@ export default function ShrinkWrapApp() {
     setFiles(prev => prev.map(f => f.id === fileToCompress.id ? { ...f, status: 'compressing', progress: 0 } : f));
     try {
         const isImage = fileToCompress.file.type.startsWith('image/');
-        let compressedFile: Blob;
-        let compressedSize: number;
+        let finalFile: Blob;
+        let finalSize: number;
 
         if (isImage && (fileToCompress.targetFormat === 'JPG' || fileToCompress.targetFormat === 'PNG')) {
             const options = getCompressionOptions(fileToCompress.compressionLevel, fileToCompress.targetFormat);
 
-            compressedFile = await imageCompression(fileToCompress.file, {
+            const compressedFile = await imageCompression(fileToCompress.file, {
                 ...options,
                 onProgress: (p: number) => {
                     setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {...f, progress: p} : f));
                 },
                 fileType: fileToCompress.targetFormat.toLowerCase(),
             });
-            compressedSize = compressedFile.size;
+
+            if (compressedFile.size > fileToCompress.originalSize) {
+                // If compressed is larger, use original
+                finalFile = fileToCompress.file;
+                finalSize = fileToCompress.originalSize;
+                toast({
+                  title: "No Savings",
+                  description: `${fileToCompress.file.name} is already optimized. Using original file.`,
+                })
+            } else {
+                finalFile = compressedFile;
+                finalSize = compressedFile.size;
+            }
 
         } else {
             // Placeholder for non-image files or formats we don't handle
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate work
+            await new Promise(resolve => setTimeout(resolve, 500)); // Simulate work
             setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {...f, progress: 50} : f));
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate more work
-            compressedFile = new Blob([`Content for ${fileToCompress.file.name}`], { type: fileToCompress.file.type });
-            compressedSize = compressedFile.size;
+            await new Promise(resolve => setTimeout(resolve, 500)); // Simulate more work
             
-            if (fileToCompress.file.type.startsWith('image/')) {
+            if (fileToCompress.file.type.startsWith('image/') && fileToCompress.targetFormat === 'PDF') {
                 toast({
                     variant: "destructive",
                     title: "Unsupported Conversion",
-                    description: `Cannot convert ${fileToCompress.file.name} to PDF yet.`,
+                    description: `Cannot convert images to PDF yet.`,
                 });
                 throw new Error('Unsupported conversion');
+            } else {
+                // For PDFs or other non-image files, just pass through
+                finalFile = fileToCompress.file;
+                finalSize = fileToCompress.originalSize;
             }
         }
         
@@ -365,8 +405,8 @@ export default function ShrinkWrapApp() {
             ...f, 
             status: 'done', 
             progress: 100,
-            compressedSize: compressedSize,
-            compressedFile: compressedFile,
+            compressedSize: finalSize,
+            compressedFile: finalFile,
         } : f));
 
     } catch (error) {
@@ -377,11 +417,13 @@ export default function ShrinkWrapApp() {
             error: (error as Error).message || 'Compression failed',
             progress: 100
         } : f));
-        toast({
-            variant: "destructive",
-            title: "Compression Failed",
-            description: `Could not compress ${fileToCompress.file.name}.`,
-        });
+        if ((error as Error).message !== 'Unsupported conversion') {
+            toast({
+                variant: "destructive",
+                title: "Compression Failed",
+                description: `Could not compress ${fileToCompress.file.name}.`,
+            });
+        }
     }
   }
 
@@ -396,7 +438,10 @@ export default function ShrinkWrapApp() {
         description: `Optimizing ${pendingFiles.length} file(s).`,
     });
     
-    await Promise.all(pendingFiles.map(handleCompressFile));
+    // Process files one by one to avoid overwhelming the browser
+    for (const file of pendingFiles) {
+        await handleCompressFile(file);
+    }
 
     toast({
         title: "Compression Complete",
