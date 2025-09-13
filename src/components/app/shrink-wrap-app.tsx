@@ -17,6 +17,8 @@ import {
   ChevronRight,
   Trash2,
   RotateCcw,
+  MousePointerClick,
+  FileDown,
 } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
@@ -43,6 +45,35 @@ const AppHeader = () => (
       </div>
     </header>
   );
+
+const HowItWorks = () => (
+  <div className="w-full max-w-2xl mx-auto text-center mb-12">
+    <h2 className="text-2xl font-semibold text-foreground mb-4">How It Works</h2>
+    <div className="grid md:grid-cols-3 gap-8">
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-3">
+          <UploadCloud className="w-8 h-8 text-primary" />
+        </div>
+        <h3 className="font-semibold">1. Upload Files</h3>
+        <p className="text-sm text-muted-foreground">Drag and drop or click to select PNG, JPG, or PDF files.</p>
+      </div>
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-3">
+          <MousePointerClick className="w-8 h-8 text-primary" />
+        </div>
+        <h3 className="font-semibold">2. Choose Settings</h3>
+        <p className="text-sm text-muted-foreground">Select compression level and get AI-powered suggestions.</p>
+      </div>
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-3">
+          <FileDown className="w-8 h-8 text-primary" />
+        </div>
+        <h3 className="font-semibold">3. Compress & Download</h3>
+        <p className="text-sm text-muted-foreground">Optimize your files and download the compressed versions.</p>
+      </div>
+    </div>
+  </div>
+);
 
 const FileUploader = ({
   onDrop,
@@ -461,7 +492,10 @@ export default function ShrinkWrapApp() {
       <AppHeader />
       <main className="flex-grow w-full">
         {files.length === 0 ? (
-          <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
+          <>
+            <HowItWorks />
+            <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
+          </>
         ) : (
           <div className="space-y-3">
             {files.map((appFile) => (
