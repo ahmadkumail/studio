@@ -27,10 +27,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Progress } from '@/components/ui/progress';
-import { getAiSuggestion } from '@/components/app/actions';
 import { useToast } from '@/hooks/use-toast';
 import { PandaIcon } from '@/components/icons/panda-icon';
+import { getAiSuggestion } from './actions';
 
 const MAX_FILES = 10;
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
@@ -180,7 +179,7 @@ const FileItem = ({
                         {appFile.aiSuggestion && (
                             <div className="mt-2 text-xs text-muted-foreground flex items-center gap-1.5">
                                 <Sparkles className="w-3.5 h-3.5 text-primary" />
-                                <p><strong>AI:</strong> Quality {appFile.aiSuggestion.quality}, {appFile.aiSuggestion.optimizationStrategy}</p>
+                                <p><strong>AI Suggestion:</strong> Quality {appFile.aiSuggestion.quality}, {appFile.aiSuggestion.optimizationStrategy}</p>
                             </div>
                         )}
                     </div>
@@ -241,7 +240,7 @@ const FileItem = ({
                         
                         a.download = downloadName;
                         document.body.appendChild(a);
-                        a.click();
+a.click();
                         document.body.removeChild(a);
                         URL.revokeObjectURL(url);
                         }}
