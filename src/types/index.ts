@@ -12,6 +12,7 @@ export interface AppFile {
   progress: number;
   originalSize: number;
   compressedSize?: number;
+  compressedFile?: Blob;
   aiSuggestion?: SuggestCompressionSettingsOutput;
   error?: string;
 }

@@ -101,7 +101,7 @@ const FileItem = ({
     }
   ) => void;
 }) => {
-  const { file, status, progress, originalSize, compressedSize } = appFile;
+  const { file, status, progress, originalSize, compressedSize, compressedFile } = appFile;
 
   const FileIcon = useMemo(() => {
     if (file.type.startsWith('image/')) return FileImage;
@@ -199,9 +199,8 @@ const FileItem = ({
                     </div>
                 </div>
                 <Button size="sm" onClick={() => {
-                  // This would be a real download link in a real app
-                  const blob = new Blob([appFile.file], { type: appFile.file.type });
-                  const url = URL.createObjectURL(blob);
+                  if (!compressedFile) return;
+                  const url = URL.createObjectURL(compressedFile);
                   const a = document.createElement('a');
                   a.href = url;
                   a.download = `shrunk-${appFile.file.name}`;
@@ -307,11 +306,16 @@ export default function ShrinkWrapApp() {
                     if(newProgress >= 100) {
                         clearInterval(interval);
                         const reduction = 0.3 + Math.random() * 0.5;
+                        const compressedSize = f.originalSize * (1 - reduction);
+                        const compressedFile = new Blob([''], { type: f.file.type });
+                        Object.defineProperty(compressedFile, 'size', { value: compressedSize, writable: false });
+
                         return {
                             ...f, 
                             status: 'done', 
                             progress: 100,
-                            compressedSize: f.originalSize * (1 - reduction)
+                            compressedSize: compressedSize,
+                            compressedFile: compressedFile,
                         };
                     }
                     return {...f, progress: newProgress};
@@ -331,7 +335,7 @@ export default function ShrinkWrapApp() {
   }
 
   const handleReset = () => {
-    setFiles(files.filter(f => f.status === 'done').map(f => ({...f, status: 'pending', progress: 0, compressedSize: undefined, aiSuggestion: undefined})));
+    setFiles(files.filter(f => f.status === 'done').map(f => ({...f, status: 'pending', progress: 0, compressedSize: undefined, compressedFile: undefined, aiSuggestion: undefined})));
   }
 
   const allDone = files.length > 0 && files.every(f => f.status === 'done');
