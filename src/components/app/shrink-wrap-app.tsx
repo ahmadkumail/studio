@@ -1,0 +1,377 @@
+"use client";
+
+import React, { useState, useCallback, useMemo } from 'react';
+import { useDropzone } from 'react-dropzone';
+import { AppFile, CompressionLevel, FileFormat } from '@/types';
+import { cn, formatBytes } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import {
+  UploadCloud,
+  FileImage,
+  FileText,
+  X,
+  Sparkles,
+  Download,
+  FileArchive,
+  Loader2,
+  ChevronRight,
+} from 'lucide-react';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Progress } from '@/components/ui/progress';
+import { getAiSuggestion } from '@/components/app/actions';
+import { useToast } from '@/hooks/use-toast';
+
+const MAX_FILES = 10;
+const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
+
+const AppHeader = () => (
+  <header className="flex items-center gap-3 mb-6">
+    <FileArchive className="w-8 h-8 text-primary" />
+    <h1 className="text-3xl font-bold text-foreground">ShrinkWrap</h1>
+  </header>
+);
+
+const FileUploader = ({
+  onDrop,
+  isDragActive,
+}: {
+  onDrop: (acceptedFiles: File[]) => void;
+  isDragActive: boolean;
+}) => {
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: {
+      'image/png': ['.png'],
+      'image/jpeg': ['.jpg', '.jpeg'],
+      'application/pdf': ['.pdf'],
+    },
+    maxFiles: MAX_FILES,
+    maxSize: MAX_FILE_SIZE,
+  });
+
+  return (
+    <Card
+      className={cn(
+        'w-full border-2 border-dashed transition-colors',
+        isDragActive ? 'border-primary bg-accent' : 'border-border bg-card'
+      )}
+    >
+      <CardContent className="p-6">
+        <div
+          {...getRootProps()}
+          className="outline-none text-center cursor-pointer"
+        >
+          <input {...getInputProps()} />
+          <div className="flex flex-col items-center justify-center gap-4 text-muted-foreground">
+            <UploadCloud className="w-16 h-16" />
+            <p className="text-lg font-medium">
+              {isDragActive
+                ? 'Drop files here...'
+                : 'Drag & drop files, or click to select'}
+            </p>
+            <p className="text-sm">Supports PNG, JPG, and PDF files</p>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+const FileItem = ({
+  appFile,
+  onRemove,
+  onSettingChange,
+}: {
+  appFile: AppFile;
+  onRemove: (id: string) => void;
+  onSettingChange: (
+    id: string,
+    update: {
+      key: 'compressionLevel' | 'targetFormat';
+      value: CompressionLevel | FileFormat;
+    }
+  ) => void;
+}) => {
+  const { file, status, progress, originalSize, compressedSize } = appFile;
+
+  const FileIcon = useMemo(() => {
+    if (file.type.startsWith('image/')) return FileImage;
+    if (file.type === 'application/pdf') return FileText;
+    return FileImage;
+  }, [file.type]);
+
+  const savings = useMemo(() => {
+    if (typeof originalSize === 'number' && typeof compressedSize === 'number') {
+      const reduction = originalSize - compressedSize;
+      const percentage = (reduction / originalSize) * 100;
+      return {
+        bytes: formatBytes(reduction),
+        percentage: percentage.toFixed(1),
+      };
+    }
+    return null;
+  }, [originalSize, compressedSize]);
+
+  const isProcessing = status === 'compressing' || status === 'pending';
+
+  return (
+    <div className="bg-card p-4 rounded-lg shadow-sm relative overflow-hidden animate-in fade-in-0 slide-in-from-bottom-5 duration-300">
+      {status === 'compressing' && (
+        <Progress
+          value={progress}
+          className="absolute top-0 left-0 w-full h-1 rounded-none"
+        />
+      )}
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex-shrink-0 flex items-center gap-4">
+          <FileIcon className="w-10 h-10 text-primary" />
+          <div className="flex-grow md:max-w-xs">
+            <p className="font-medium text-foreground truncate" title={file.name}>{file.name}</p>
+            <p className="text-sm text-muted-foreground">{formatBytes(originalSize)}</p>
+          </div>
+        </div>
+
+        {status !== 'done' && (
+          <div className="flex-grow grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+            <div>
+              <Label className="text-xs font-medium text-muted-foreground mb-2 block">Compression</Label>
+              <RadioGroup
+                value={appFile.compressionLevel}
+                onValueChange={(value: CompressionLevel) => onSettingChange(appFile.id, { key: 'compressionLevel', value })}
+                className="flex gap-2"
+                disabled={status !== 'pending'}
+              >
+                {(['Low', 'Medium', 'High'] as CompressionLevel[]).map(level => (
+                  <div key={level} className="flex-1">
+                    <RadioGroupItem value={level} id={`${appFile.id}-${level}`} className="sr-only peer" />
+                    <Label
+                      htmlFor={`${appFile.id}-${level}`}
+                      className="flex items-center justify-center p-2 text-sm font-medium rounded-md border-2 border-muted bg-popover hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary cursor-pointer transition-colors"
+                    >
+                      {level}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+              {appFile.aiSuggestion && (
+                  <div className="mt-2 text-xs text-muted-foreground flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-primary" />
+                      <p><strong>AI Suggestion:</strong> Quality {appFile.aiSuggestion.quality}, {appFile.aiSuggestion.optimizationStrategy}</p>
+                  </div>
+              )}
+            </div>
+            <div>
+                <Label className="text-xs font-medium text-muted-foreground mb-2 block">Convert To</Label>
+                <Select
+                    value={appFile.targetFormat}
+                    onValueChange={(value: FileFormat) => onSettingChange(appFile.id, { key: 'targetFormat', value })}
+                    disabled={status !== 'pending'}
+                >
+                    <SelectTrigger>
+                        <SelectValue placeholder="Format" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="PNG">PNG</SelectItem>
+                        <SelectItem value="JPG">JPG</SelectItem>
+                        <SelectItem value="PDF">PDF</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
+          </div>
+        )}
+        
+        {status === 'done' && (
+            <div className="flex-grow flex items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                    <ChevronRight className="w-6 h-6 text-muted-foreground hidden sm:block" />
+                    <div>
+                        <p className="font-medium text-foreground">{formatBytes(compressedSize!)}</p>
+                        {savings && <p className="text-sm text-green-600 font-semibold">Saved {savings.percentage}%</p>}
+                    </div>
+                </div>
+                <Button size="sm" onClick={() => {
+                  // This would be a real download link in a real app
+                  const blob = new Blob([appFile.file], { type: appFile.file.type });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = `shrunk-${appFile.file.name}`;
+                  a.click();
+                  URL.revokeObjectURL(url);
+                }}>
+                    <Download className="mr-2 h-4 w-4" />
+                    Download
+                </Button>
+            </div>
+        )}
+      </div>
+      {isProcessing && (
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute top-2 right-2 w-7 h-7"
+          onClick={() => onRemove(appFile.id)}
+          disabled={status !== 'pending'}
+        >
+          <X className="w-4 h-4" />
+          <span className="sr-only">Remove</span>
+        </Button>
+      )}
+    </div>
+  );
+};
+
+
+export default function ShrinkWrapApp() {
+  const [files, setFiles] = useState<AppFile[]>([]);
+  const [isDragActive, setIsDragActive] = useState(false);
+  const { toast } = useToast();
+
+  const isCompressing = useMemo(() => files.some(f => f.status === 'compressing'), [files]);
+  const hasPending = useMemo(() => files.some(f => f.status === 'pending'), [files]);
+
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    setIsDragActive(false);
+    const newFiles: AppFile[] = acceptedFiles.map((file) => {
+        const fileExtension = file.name.split('.').pop()?.toUpperCase() as FileFormat | undefined;
+        const targetFormat: FileFormat = ['PNG', 'JPG', 'PDF'].includes(fileExtension || '') ? fileExtension! : 'JPG';
+        
+        return {
+            id: `${file.name}-${file.lastModified}-${Math.random()}`,
+            file,
+            compressionLevel: 'Medium',
+            targetFormat: targetFormat,
+            status: 'pending',
+            progress: 0,
+            originalSize: file.size,
+        }
+    });
+    setFiles((prev) => [...prev, ...newFiles]);
+  }, []);
+
+  const handleRemoveFile = (id: string) => {
+    setFiles((prev) => prev.filter((f) => f.id !== id));
+  };
+
+  const handleSettingChange = useCallback(async (
+    id: string,
+    update: {
+      key: 'compressionLevel' | 'targetFormat';
+      value: CompressionLevel | FileFormat;
+    }
+  ) => {
+    let updatedFile: AppFile | undefined;
+    setFiles((prevFiles) =>
+      prevFiles.map((f) => {
+        if (f.id === id) {
+          updatedFile = { ...f, [update.key]: update.value };
+          return updatedFile;
+        }
+        return f;
+      })
+    );
+    
+    if (update.key === 'compressionLevel' && updatedFile) {
+        const fileType = updatedFile.file.type.split('/')[1].toUpperCase();
+        if(['PNG', 'JPG', 'PDF'].includes(fileType)){
+            const suggestion = await getAiSuggestion({
+                compressionLevel: update.value as CompressionLevel,
+                fileType: fileType as 'PNG' | 'JPG' | 'PDF'
+            });
+            if(suggestion) {
+                setFiles(prev => prev.map(f => f.id === id ? {...f, aiSuggestion: suggestion} : f));
+            }
+        }
+    }
+  }, []);
+
+  const handleCompressFiles = () => {
+    if(isCompressing) return;
+
+    setFiles(prev => prev.map(f => f.status === 'pending' ? {...f, status: 'compressing'} : f));
+    
+    files.filter(f => f.status === 'pending').forEach(fileToCompress => {
+        const interval = setInterval(() => {
+            setFiles(prev => prev.map(f => {
+                if(f.id === fileToCompress.id && f.status === 'compressing') {
+                    const newProgress = Math.min(f.progress + Math.random() * 20, 100);
+                    if(newProgress >= 100) {
+                        clearInterval(interval);
+                        const reduction = 0.3 + Math.random() * 0.5;
+                        return {
+                            ...f, 
+                            status: 'done', 
+                            progress: 100,
+                            compressedSize: f.originalSize * (1 - reduction)
+                        };
+                    }
+                    return {...f, progress: newProgress};
+                }
+                return f;
+            }));
+        }, 300);
+    });
+    toast({
+        title: "Compression Started",
+        description: "Your files are being optimized.",
+    });
+  };
+
+  const handleClearAll = () => {
+    setFiles([]);
+  }
+
+  const handleReset = () => {
+    setFiles(files.filter(f => f.status === 'done').map(f => ({...f, status: 'pending', progress: 0, compressedSize: undefined, aiSuggestion: undefined})));
+  }
+
+  const allDone = files.length > 0 && files.every(f => f.status === 'done');
+
+  return (
+    <div className="w-full max-w-4xl mx-auto flex flex-col h-full">
+      <AppHeader />
+      <main className="flex-grow">
+        {files.length === 0 ? (
+          <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
+        ) : (
+          <div className="space-y-3">
+            {files.map((appFile) => (
+              <FileItem
+                key={appFile.id}
+                appFile={appFile}
+                onRemove={handleRemoveFile}
+                onSettingChange={handleSettingChange}
+              />
+            ))}
+          </div>
+        )}
+      </main>
+      {files.length > 0 && (
+        <footer className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-card/80 backdrop-blur-sm rounded-lg shadow-sm sticky bottom-4">
+          <p className="text-sm text-muted-foreground">{files.length} file(s) added.</p>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" onClick={allDone ? handleClearAll : handleReset}>
+                {allDone ? 'Clear All' : 'Reset'}
+            </Button>
+            <Button 
+                onClick={handleCompressFiles} 
+                disabled={isCompressing || !hasPending} 
+                className="bg-[#ADFF2F] hover:bg-[#98e228] text-green-950 font-semibold"
+            >
+                {isCompressing ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Compressing...</> : allDone ? 'All Done!' : 'Compress Files'}
+            </Button>
+          </div>
+        </footer>
+      )}
+    </div>
+  );
+}
