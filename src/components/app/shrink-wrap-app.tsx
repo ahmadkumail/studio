@@ -32,14 +32,13 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { PandaIcon } from '@/components/icons/panda-icon';
 import { getAiSuggestion } from './actions';
 
 const MAX_FILES = 10;
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
 const HowItWorks = () => (
-  <div className="w-full max-w-2xl mx-auto text-center mb-12">
+  <div className="w-full max-w-2xl mx-auto text-center my-12">
     <h2 className="text-2xl font-semibold text-foreground mb-4">How It Works</h2>
     <div className="grid md:grid-cols-3 gap-8">
       <div className="flex flex-col items-center gap-2">
@@ -122,8 +121,8 @@ const FileUploader = ({
   return (
     <Card
       className={cn(
-        'w-full border-2 border-dashed transition-all duration-300',
-        isDragActive ? 'border-primary bg-primary/10' : 'border-border bg-card'
+        'w-full border-2 border-dashed transition-all duration-300 shadow-lg',
+        isDragActive ? 'border-primary bg-primary/10 scale-105' : 'border-border bg-card'
       )}
     >
       <CardContent className="p-8 sm:p-12">
@@ -500,8 +499,8 @@ export default function ShrinkWrapApp() {
       <main className="flex-grow w-full mt-8">
         {files.length === 0 ? (
           <>
-            <HowItWorks />
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
+            <HowItWorks />
             <WhyShrinkWrap />
           </>
         ) : (
