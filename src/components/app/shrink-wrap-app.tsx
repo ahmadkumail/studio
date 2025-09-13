@@ -2,6 +2,7 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import { useDropzone } from 'react-dropzone';
+import imageCompression from 'browser-image-compression';
 import { AppFile, CompressionLevel, FileFormat } from '@/types';
 import { cn, formatBytes } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -110,7 +111,7 @@ const FileItem = ({
   }, [file.type]);
 
   const savings = useMemo(() => {
-    if (typeof originalSize === 'number' && typeof compressedSize === 'number') {
+    if (typeof originalSize === 'number' && typeof compressedSize === 'number' && compressedSize > 0) {
       const reduction = originalSize - compressedSize;
       const percentage = (reduction / originalSize) * 100;
       return {
@@ -204,9 +205,12 @@ const FileItem = ({
                   const a = document.createElement('a');
                   a.href = url;
                   a.download = `shrunk-${appFile.file.name}`;
+                  document.body.appendChild(a);
                   a.click();
+                  document.body.removeChild(a);
                   URL.revokeObjectURL(url);
-                }}>
+                }}
+                disabled={!compressedFile || compressedSize === 0}>
                     <Download className="mr-2 h-4 w-4" />
                     Download
                 </Button>
@@ -282,52 +286,103 @@ export default function ShrinkWrapApp() {
     if (update.key === 'compressionLevel' && updatedFile) {
         const fileType = updatedFile.file.type.split('/')[1].toUpperCase();
         if(['PNG', 'JPG', 'PDF'].includes(fileType)){
-            const suggestion = await getAiSuggestion({
-                compressionLevel: update.value as CompressionLevel,
-                fileType: fileType as 'PNG' | 'JPG' | 'PDF'
-            });
-            if(suggestion) {
-                setFiles(prev => prev.map(f => f.id === id ? {...f, aiSuggestion: suggestion} : f));
+            try {
+              const suggestion = await getAiSuggestion({
+                  compressionLevel: update.value as CompressionLevel,
+                  fileType: fileType as 'PNG' | 'JPG' | 'PDF'
+              });
+              if(suggestion) {
+                  setFiles(prev => prev.map(f => f.id === id ? {...f, aiSuggestion: suggestion} : f));
+              }
+            } catch (e) {
+                console.error("Failed to get AI suggestion", e);
             }
         }
     }
   }, []);
 
-  const handleCompressFiles = () => {
+  const getCompressionOptions = (level: CompressionLevel, fileType: 'PNG' | 'JPG' | 'PDF') => {
+    // These are example values. In a real app, these could be more nuanced.
+    switch (level) {
+        case 'Low':
+            return { maxSizeMB: 2, initialQuality: 0.9 };
+        case 'Medium':
+            return { maxSizeMB: 1, initialQuality: 0.7 };
+        case 'High':
+            return { maxSizeMB: 0.5, initialQuality: 0.5 };
+        default:
+            return { maxSizeMB: 1, initialQuality: 0.7 };
+    }
+  };
+
+
+  const handleCompressFiles = async () => {
     if(isCompressing) return;
 
-    setFiles(prev => prev.map(f => f.status === 'pending' ? {...f, status: 'compressing'} : f));
+    setFiles(prev => prev.map(f => f.status === 'pending' ? {...f, status: 'compressing', progress: 0 } : f));
     
-    files.filter(f => f.status === 'pending').forEach(fileToCompress => {
-        const interval = setInterval(() => {
-            setFiles(prev => prev.map(f => {
-                if(f.id === fileToCompress.id && f.status === 'compressing') {
-                    const newProgress = Math.min(f.progress + Math.random() * 20, 100);
-                    if(newProgress >= 100) {
-                        clearInterval(interval);
-                        const reduction = 0.3 + Math.random() * 0.5;
-                        const compressedSize = f.originalSize * (1 - reduction);
-                        const compressedFile = new Blob([''], { type: f.file.type });
-                        Object.defineProperty(compressedFile, 'size', { value: compressedSize, writable: false });
-
-                        return {
-                            ...f, 
-                            status: 'done', 
-                            progress: 100,
-                            compressedSize: compressedSize,
-                            compressedFile: compressedFile,
-                        };
-                    }
-                    return {...f, progress: newProgress};
-                }
-                return f;
-            }));
-        }, 300);
-    });
     toast({
         title: "Compression Started",
         description: "Your files are being optimized.",
     });
+
+    for (const fileToCompress of files.filter(f => f.status === 'compressing')) {
+        try {
+            const isImage = fileToCompress.file.type.startsWith('image/');
+            let compressedFile: Blob;
+            let compressedSize: number;
+
+            if (isImage && (fileToCompress.targetFormat === 'JPG' || fileToCompress.targetFormat === 'PNG')) {
+                const options = getCompressionOptions(fileToCompress.compressionLevel, fileToCompress.targetFormat);
+                
+                const compressionPromise = imageCompression(fileToCompress.file, {
+                    ...options,
+                    onProgress: (p: number) => {
+                        setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {...f, progress: p} : f));
+                    },
+                    fileType: fileToCompress.targetFormat.toLowerCase(),
+                });
+
+                compressedFile = await compressionPromise;
+                compressedSize = compressedFile.size;
+
+            } else {
+                // Placeholder for non-image files or formats we don't handle
+                await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate work
+                compressedFile = new Blob([''], { type: fileToCompress.file.type });
+                compressedSize = 0; // Indicate no real compression
+                if (fileToCompress.file.type.startsWith('image/')) {
+                    toast({
+                        variant: "destructive",
+                        title: "Unsupported Conversion",
+                        description: `Cannot convert ${fileToCompress.file.name} to PDF yet.`,
+                    });
+                }
+            }
+            
+            setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {
+                ...f, 
+                status: 'done', 
+                progress: 100,
+                compressedSize: compressedSize,
+                compressedFile: compressedFile,
+            } : f));
+
+        } catch (error) {
+            console.error('Compression error:', error);
+            setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {
+                ...f, 
+                status: 'error', 
+                error: (error as Error).message || 'Compression failed',
+                progress: 100
+            } : f));
+            toast({
+                variant: "destructive",
+                title: "Compression Failed",
+                description: `Could not compress ${fileToCompress.file.name}.`,
+            });
+        }
+    }
   };
 
   const handleClearAll = () => {
@@ -335,10 +390,10 @@ export default function ShrinkWrapApp() {
   }
 
   const handleReset = () => {
-    setFiles(files.filter(f => f.status === 'done').map(f => ({...f, status: 'pending', progress: 0, compressedSize: undefined, compressedFile: undefined, aiSuggestion: undefined})));
+    setFiles(files.map(f => ({...f, status: 'pending', progress: 0, compressedSize: undefined, compressedFile: undefined, aiSuggestion: undefined})));
   }
 
-  const allDone = files.length > 0 && files.every(f => f.status === 'done');
+  const allDone = files.length > 0 && files.every(f => f.status === 'done' || f.status === 'error');
 
   return (
     <div className="w-full max-w-4xl mx-auto flex flex-col h-full">
