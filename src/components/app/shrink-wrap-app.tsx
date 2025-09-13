@@ -10,7 +10,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import {
   UploadCloud,
   FileImage,
-  FileText,
   Sparkles,
   Download,
   Loader2,
@@ -19,6 +18,9 @@ import {
   RotateCcw,
   MousePointerClick,
   FileDown,
+  Zap,
+  BrainCircuit,
+  ShieldCheck,
 } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
@@ -37,9 +39,9 @@ const MAX_FILES = 10;
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
 const AppHeader = () => (
-    <header className="flex items-center gap-3 mb-8">
-      <PandaIcon className="w-16 h-16 text-primary" />
-      <div>
+    <header className="flex items-center gap-4 mb-8">
+      <PandaIcon className="w-20 h-20 text-primary" />
+      <div className="text-left">
         <h1 className="text-3xl font-bold text-foreground">ShrinkWrap</h1>
         <p className="text-muted-foreground">Compress your files with ease</p>
       </div>
@@ -55,7 +57,7 @@ const HowItWorks = () => (
           <UploadCloud className="w-8 h-8 text-primary" />
         </div>
         <h3 className="font-semibold">1. Upload Files</h3>
-        <p className="text-sm text-muted-foreground">Drag and drop or click to select PNG, JPG, or PDF files.</p>
+        <p className="text-sm text-muted-foreground">Drag and drop or click to select PNG or JPG files.</p>
       </div>
       <div className="flex flex-col items-center gap-2">
         <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-3">
@@ -75,6 +77,41 @@ const HowItWorks = () => (
   </div>
 );
 
+const WhyShrinkWrap = () => (
+    <div className="w-full max-w-4xl mx-auto text-center mt-12">
+      <h2 className="text-2xl font-semibold text-foreground mb-4">Why ShrinkWrap?</h2>
+      <div className="grid md:grid-cols-3 gap-8 text-left">
+        <Card className="p-6 bg-card/50">
+          <div className="flex items-center gap-4 mb-3">
+            <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg">
+              <Zap className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="text-lg font-semibold">Lightning Fast</h3>
+          </div>
+          <p className="text-sm text-muted-foreground">Our tool is built for speed, compressing your images in seconds, right in your browser.</p>
+        </Card>
+        <Card className="p-6 bg-card/50">
+          <div className="flex items-center gap-4 mb-3">
+            <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg">
+              <BrainCircuit className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="text-lg font-semibold">AI-Powered</h3>
+          </div>
+          <p className="text-sm text-muted-foreground">Get smart suggestions for optimal compression settings, balancing quality and file size perfectly.</p>
+        </Card>
+        <Card className="p-6 bg-card/50">
+          <div className="flex items-center gap-4 mb-3">
+            <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg">
+              <ShieldCheck className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="text-lg font-semibold">Private & Secure</h3>
+          </div>
+          <p className="text-sm text-muted-foreground">Your files are processed on your device and are never uploaded to a server, ensuring your data remains private.</p>
+        </Card>
+      </div>
+    </div>
+  );
+
 const FileUploader = ({
   onDrop,
   isDragActive,
@@ -87,7 +124,6 @@ const FileUploader = ({
     accept: {
       'image/png': ['.png'],
       'image/jpeg': ['.jpg', '.jpeg'],
-      'application/pdf': ['.pdf'],
     },
     maxFiles: MAX_FILES,
     maxSize: MAX_FILE_SIZE,
@@ -113,7 +149,7 @@ const FileUploader = ({
                 ? 'Drop files to start compressing!'
                 : "Drag & drop, or click to select"}
             </p>
-            <p className="text-sm">Supports PNG, JPG, and PDF files up to 100MB</p>
+            <p className="text-sm">Supports PNG and JPG files up to 100MB</p>
           </div>
         </div>
       </CardContent>
@@ -139,10 +175,8 @@ const FileItem = ({
   const { file, status, progress, originalSize, compressedSize } = appFile;
 
   const FileIcon = useMemo(() => {
-    if (file.type.startsWith('image/')) return FileImage;
-    if (file.type === 'application/pdf') return FileText;
     return FileImage;
-  }, [file.type]);
+  }, []);
 
   const savings = useMemo(() => {
     if (typeof originalSize === 'number' && typeof compressedSize === 'number' && compressedSize > 0) {
@@ -166,7 +200,6 @@ const FileItem = ({
 
   const isProcessing = status === 'compressing' || status === 'pending';
   const isDone = status === 'done' || status === 'error';
-  const isPdf = appFile.file.type === 'application/pdf';
 
   return (
     <Card className="bg-card p-4 relative overflow-hidden animate-in fade-in-0 slide-in-from-bottom-5 duration-300 shadow-sm">
@@ -193,7 +226,7 @@ const FileItem = ({
                             value={appFile.compressionLevel}
                             onValueChange={(value: CompressionLevel) => onSettingChange(appFile.id, { key: 'compressionLevel', value })}
                             className="flex gap-2"
-                            disabled={(isProcessing && status !== 'pending') || isPdf}
+                            disabled={(isProcessing && status !== 'pending')}
                         >
                             {(['Low', 'Medium', 'High'] as CompressionLevel[]).map(level => (
                             <div key={level} className="flex-1">
@@ -219,7 +252,7 @@ const FileItem = ({
                         <Select
                             value={appFile.targetFormat}
                             onValueChange={(value: FileFormat) => onSettingChange(appFile.id, { key: 'targetFormat', value })}
-                            disabled={(isProcessing && status !== 'pending') || isPdf}
+                            disabled={(isProcessing && status !== 'pending')}
                         >
                             <SelectTrigger className="h-auto py-1.5">
                                 <SelectValue placeholder="Format" />
@@ -227,7 +260,6 @@ const FileItem = ({
                             <SelectContent>
                                 <SelectItem value="PNG">PNG</SelectItem>
                                 <SelectItem value="JPG">JPG</SelectItem>
-                                {isPdf && <SelectItem value="PDF">PDF</SelectItem>}
                             </SelectContent>
                         </Select>
                     </div>
@@ -302,9 +334,7 @@ export default function ShrinkWrapApp() {
         const fileExtension = file.name.split('.').pop()?.toUpperCase() as FileFormat | undefined;
         let fileType: FileFormat;
 
-        if (fileExtension === 'PDF') {
-            fileType = 'PDF';
-        } else if (fileExtension === 'PNG') {
+        if (fileExtension === 'PNG') {
             fileType = 'PNG';
         } else if (fileExtension === 'JPEG' || fileExtension === 'JPG') {
             fileType = 'JPG';
@@ -350,11 +380,11 @@ export default function ShrinkWrapApp() {
     
     if (update.key === 'compressionLevel' && updatedFile) {
         const fileType = updatedFile.file.type.split('/')[1].toUpperCase();
-        if(['PNG', 'JPG', 'PDF'].includes(fileType)){
+        if(['PNG', 'JPG'].includes(fileType)){
             try {
               const suggestion = await getAiSuggestion({
                   compressionLevel: update.value as CompressionLevel,
-                  fileType: fileType as 'PNG' | 'JPG' | 'PDF'
+                  fileType: fileType as 'PNG' | 'JPG'
               });
               if(suggestion) {
                   setFiles(prev => prev.map(f => f.id === id ? {...f, aiSuggestion: suggestion} : f));
@@ -383,12 +413,10 @@ export default function ShrinkWrapApp() {
   const handleCompressFile = async (fileToCompress: AppFile) => {
     setFiles(prev => prev.map(f => f.id === fileToCompress.id ? { ...f, status: 'compressing', progress: 0 } : f));
     try {
-        const isImage = fileToCompress.file.type.startsWith('image/');
-        const isPdf = fileToCompress.file.type === 'application/pdf';
         let finalFile: Blob;
         let finalSize: number;
 
-        if (isImage && (fileToCompress.targetFormat === 'JPG' || fileToCompress.targetFormat === 'PNG')) {
+        if (fileToCompress.targetFormat === 'JPG' || fileToCompress.targetFormat === 'PNG') {
             const options = getCompressionOptions(fileToCompress.compressionLevel);
 
             const compressedFile = await imageCompression(fileToCompress.file, {
@@ -410,16 +438,6 @@ export default function ShrinkWrapApp() {
                 finalFile = compressedFile;
                 finalSize = compressedFile.size;
             }
-        } else if (isPdf) {
-             await new Promise(resolve => setTimeout(resolve, 500));
-             setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {...f, progress: 50} : f));
-             await new Promise(resolve => setTimeout(resolve, 500));
-             finalFile = fileToCompress.file;
-             finalSize = fileToCompress.originalSize;
-             toast({
-                title: "PDF Handling",
-                description: `PDF compression is not yet supported.`,
-             });
         } else {
             toast({
                 variant: "destructive",
@@ -495,6 +513,7 @@ export default function ShrinkWrapApp() {
           <>
             <HowItWorks />
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
+            <WhyShrinkWrap />
           </>
         ) : (
           <div className="space-y-3">

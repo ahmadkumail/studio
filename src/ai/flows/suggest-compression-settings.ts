@@ -16,8 +16,8 @@ const SuggestCompressionSettingsInputSchema = z.object({
     .enum(['Low', 'Medium', 'High'])
     .describe('The desired compression level: Low, Medium, or High.'),
   fileType: z
-    .enum(['PNG', 'JPG', 'PDF'])
-    .describe('The type of the file to be compressed: PNG, JPG, or PDF.'),
+    .enum(['PNG', 'JPG'])
+    .describe('The type of the file to be compressed: PNG or JPG.'),
 });
 export type SuggestCompressionSettingsInput = z.infer<
   typeof SuggestCompressionSettingsInputSchema
@@ -76,3 +76,5 @@ const suggestCompressionSettingsFlow = ai.defineFlow(
     return output!;
   }
 );
+
+    

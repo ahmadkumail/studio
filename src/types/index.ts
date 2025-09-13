@@ -1,7 +1,7 @@
 import type { SuggestCompressionSettingsOutput } from '@/ai/flows/suggest-compression-settings';
 
 export type CompressionLevel = 'Low' | 'Medium' | 'High';
-export type FileFormat = 'PNG' | 'JPG' | 'PDF';
+export type FileFormat = 'PNG' | 'JPG';
 
 export interface AppFile {
   id: string;
@@ -16,3 +16,5 @@ export interface AppFile {
   aiSuggestion?: SuggestCompressionSettingsOutput;
   error?: string;
 }
+
+    
