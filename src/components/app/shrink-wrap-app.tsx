@@ -38,16 +38,6 @@ import { getAiSuggestion } from './actions';
 const MAX_FILES = 10;
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
-const AppHeader = () => (
-    <header className="flex items-center gap-4 mb-8">
-      <PandaIcon className="w-20 h-20 text-primary" />
-      <div className="text-left">
-        <h1 className="text-3xl font-bold text-foreground">ShrinkWrap</h1>
-        <p className="text-muted-foreground">Compress your files with ease</p>
-      </div>
-    </header>
-  );
-
 const HowItWorks = () => (
   <div className="w-full max-w-2xl mx-auto text-center mb-12">
     <h2 className="text-2xl font-semibold text-foreground mb-4">How It Works</h2>
@@ -506,9 +496,8 @@ export default function ShrinkWrapApp() {
   const allDone = files.length > 0 && files.every(f => f.status === 'done' || f.status === 'error');
 
   return (
-    <div className="w-full max-w-4xl mx-auto flex flex-col h-full items-center">
-      <AppHeader />
-      <main className="flex-grow w-full">
+    <div className="w-full max-w-4xl mx-auto flex flex-col h-full">
+      <main className="flex-grow w-full mt-8">
         {files.length === 0 ? (
           <>
             <HowItWorks />
