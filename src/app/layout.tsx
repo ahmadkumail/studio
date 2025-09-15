@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import Navbar from '@/components/layout/navbar';
+import Footer from '@/components/layout/footer';
 
 export const metadata: Metadata = {
   title: 'ShrinkWrap',
@@ -26,6 +27,7 @@ export default function RootLayout({
           <main className="flex-grow">
             {children}
           </main>
+          <Footer />
         </div>
         <Toaster />
       </body>
