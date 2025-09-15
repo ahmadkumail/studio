@@ -104,36 +104,42 @@ const WhyShrinkWrap = () => (
 
   const FAQs = () => (
     <div id="faq" className="w-full max-w-4xl mx-auto text-center my-16">
-      <h2 className="text-2xl font-semibold text-foreground mb-6">Frequently Asked Questions</h2>
+      <h2 className="text-2xl font-semibold text-foreground mb-6">Frequently Asked Questions - PNG & JPG Compressor</h2>
       <Accordion type="single" collapsible className="w-full text-left">
         <AccordionItem value="item-1">
-          <AccordionTrigger>Is ShrinkWrap free to use?</AccordionTrigger>
+          <AccordionTrigger>1. How can I compress JPG images online for free?</AccordionTrigger>
           <AccordionContent>
-            Yes, ShrinkWrap is completely free to use. You can compress as many images as you want without any cost.
+          You can use ShrinkWrap to compress JPG images online without losing quality. Simply upload your JPG file, and our tool will reduce the size instantly.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
-          <AccordionTrigger>Are my files secure?</AccordionTrigger>
+          <AccordionTrigger>2. Can I reduce PNG file size without losing quality?</AccordionTrigger>
           <AccordionContent>
-            Absolutely. Your privacy is our top priority. All file compression happens directly in your browser. This means your files are never uploaded to our or any third-party servers.
+          Yes! ShrinkWrap uses smart compression technology that reduces PNG file size while maintaining maximum image quality.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
-          <AccordionTrigger>What file types are supported?</AccordionTrigger>
+          <AccordionTrigger>3. Is ShrinkWrap free to use?</AccordionTrigger>
           <AccordionContent>
-            ShrinkWrap currently supports PNG and JPG (JPEG) image formats. You can also convert images between these two formats.
+          Absolutely! ShrinkWrap is a free PNG and JPG image compressor. No hidden charges, no sign-up required.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-4">
-          <AccordionTrigger>What is the maximum file size I can upload?</AccordionTrigger>
+          <AccordionTrigger>4. Does ShrinkWrap work on mobile?</AccordionTrigger>
           <AccordionContent>
-            You can upload images up to 100MB each. You can process up to 10 files at a time.
+          Yes, ShrinkWrap is a mobile-friendly image compressor. You can compress JPG and PNG images directly from your phone browser.
           </AccordionContent>
         </AccordionItem>
          <AccordionItem value="item-5">
-          <AccordionTrigger>How does the AI suggestion work?</AccordionTrigger>
+          <AccordionTrigger>5. How small can I shrink my images?</AccordionTrigger>
           <AccordionContent>
-            Our AI analyzes your selected compression level (Low, Medium, High) and the file type to recommend a quality setting that provides a great balance between file size reduction and visual quality, taking the guesswork out of optimization.
+          Our compressor can reduce JPG and PNG images up to 80% of their original size, depending on the image quality and format.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-6">
+          <AccordionTrigger>6. Can I convert JPG to WebP using ShrinkWrap?</AccordionTrigger>
+          <AccordionContent>
+          Yes, ShrinkWrap also provides image conversion features like JPG to WebP for faster website loading and better optimization.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
