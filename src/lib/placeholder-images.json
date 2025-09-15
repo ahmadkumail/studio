@@ -1,3 +1,22 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "blog-1",
+      "description": "A collage of different file compression tool logos.",
+      "imageUrl": "https://picsum.photos/seed/blog1/1200/630",
+      "imageHint": "tech collage"
+    },
+    {
+      "id": "blog-2",
+      "description": "A secure digital lock over a file folder.",
+      "imageUrl": "https://picsum.photos/seed/blog2/1200/630",
+      "imageHint": "digital security"
+    },
+    {
+      "id": "blog-3",
+      "description": "Abstract network of cloud servers and connected devices.",
+      "imageUrl": "https://picsum.photos/seed/blog3/1200/630",
+      "imageHint": "cloud network"
+    }
+  ]
 }

@@ -53,9 +53,13 @@ const Footer = () => {
           </div>
           <div>
             <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">Blogs</h3>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Stay up to date with the latest news and features.
-            </p>
+            <ul className="mt-4 space-y-2">
+              <li>
+                <Link href="/blog" className="text-sm text-muted-foreground hover:text-foreground">
+                  All Posts
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="mt-8 border-t border-primary/10 pt-8 text-center text-sm text-muted-foreground">
