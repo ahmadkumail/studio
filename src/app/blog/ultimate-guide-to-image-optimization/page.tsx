@@ -17,7 +17,7 @@ export default function BlogPostPage() {
     <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <article className="prose prose-lg mx-auto text-foreground">
         <div className="text-center mb-8">
-            <p className="text-sm text-muted-foreground">September 25, 2025</p>
+            <p className="text-sm text-muted-foreground">August 25, 2025</p>
             <h1 className="text-4xl font-extrabold mt-2">
                 The Ultimate Guide to Image Optimization for the Web
             </h1>

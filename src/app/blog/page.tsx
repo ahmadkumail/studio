@@ -14,7 +14,7 @@ const blogPosts = [
     slug: 'how-ai-is-changing-file-storage-and-sharing',
     description: 'Explore how artificial intelligence is revolutionizing the way we store, manage, and share our digital files, from smart organization to predictive transfers.',
     image_id: 'blog-10',
-    date: 'October 20, 2025',
+    date: 'September 10, 2025',
     keywords: ['AI', 'Cloud Storage', 'File Sharing'],
   },
   {
@@ -22,7 +22,7 @@ const blogPosts = [
     slug: 'ultimate-guide-to-file-formats',
     description: 'A comprehensive look at the most common file formats, what they are, and when to use them for maximum efficiency and quality.',
     image_id: 'blog-9',
-    date: 'October 15, 2025',
+    date: 'September 8, 2025',
     keywords: ['File Formats', 'Tech Basics', 'Data Management'],
   },
   {
@@ -30,7 +30,7 @@ const blogPosts = [
     slug: '5-common-mistakes-when-sharing-files',
     description: 'Avoid these common pitfalls to ensure your file sharing is secure, efficient, and professional. Learn what not to do when sending your important data.',
     image_id: 'blog-8',
-    date: 'October 10, 2025',
+    date: 'September 5, 2025',
     keywords: ['Cybersecurity', 'File Sharing', 'Productivity'],
   },
   {
@@ -38,7 +38,7 @@ const blogPosts = [
     slug: 'future-of-file-sharing-trends-2025',
     description: 'From decentralized networks to AI-driven transfers, discover the exciting trends that will shape the future of how we share files.',
     image_id: 'blog-7',
-    date: 'October 5, 2025',
+    date: 'September 1, 2025',
     keywords: ['Tech Trends', 'File Sharing', 'Future Tech'],
   },
   {
@@ -46,7 +46,7 @@ const blogPosts = [
     slug: 'cloud-vs-local-storage',
     description: 'An in-depth comparison of cloud and local storage solutions. Understand the pros and cons to decide the best way to keep your files safe and accessible.',
     image_id: 'blog-6',
-    date: 'October 1, 2025',
+    date: 'August 28, 2025',
     keywords: ['Cloud Storage', 'Data Management', 'Local Storage'],
   },
     {
@@ -54,7 +54,7 @@ const blogPosts = [
     slug: 'ultimate-guide-to-image-optimization',
     description: 'Learn how to optimize your images for faster load times and better user experience. From choosing the right format to advanced compression techniques.',
     image_id: 'blog-4',
-    date: 'September 25, 2025',
+    date: 'August 25, 2025',
     keywords: ['Web Performance', 'Image Optimization', 'SEO'],
   },
   {
@@ -62,7 +62,7 @@ const blogPosts = [
     slug: 'jpg-vs-png-which-format-to-use',
     description: 'A deep dive into the differences between JPG and PNG. Understand the pros and cons of each to make the right choice for your images.',
     image_id: 'blog-5',
-    date: 'September 20, 2025',
+    date: 'August 22, 2025',
     keywords: ['File Formats', 'Image Compression', 'Web Design'],
   },
   {
@@ -70,7 +70,7 @@ const blogPosts = [
     slug: 'top-5-free-tools-for-file-compression-in-2025',
     description: 'Discover the best free tools available for compressing your files without compromising on quality. We review the top contenders of 2025.',
     image_id: 'blog-1',
-    date: 'September 15, 2025',
+    date: 'August 19, 2025',
     keywords: ['File Compression', 'Free Tools', 'Productivity'],
   },
   {
@@ -78,7 +78,7 @@ const blogPosts = [
     slug: 'how-to-safely-share-large-files-online',
     description: 'Sharing large files can be risky. Learn the best practices and tools to share your files securely and protect your privacy.',
     image_id: 'blog-2',
-    date: 'September 10, 2025',
+    date: 'August 15, 2025',
     keywords: ['Cybersecurity', 'File Sharing', 'Data Privacy'],
   },
   {
@@ -86,7 +86,7 @@ const blogPosts = [
     slug: 'why-cloud-hosting-is-the-future-of-file-sharing',
     description: 'From accessibility to collaboration, cloud hosting offers numerous advantages over traditional file sharing methods. Here’s why it’s the future.',
     image_id: 'blog-3',
-    date: 'September 5, 2025',
+    date: 'August 10, 2025',
     keywords: ['Cloud Computing', 'File Sharing', 'Tech Trends'],
   },
 ];
