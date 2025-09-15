@@ -16,11 +16,6 @@ import {
   ChevronRight,
   Trash2,
   RotateCcw,
-  MousePointerClick,
-  FileDown,
-  Zap,
-  BrainCircuit,
-  ShieldCheck,
 } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
@@ -38,73 +33,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '..
 const MAX_FILES = 10;
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
-const HowItWorks = () => (
-  <div className="w-full max-w-2xl mx-auto text-center my-12 md:my-16">
-    <h2 className="text-2xl font-semibold text-foreground mb-6">How It Works</h2>
-    <div className="grid md:grid-cols-3 gap-8">
-      <div className="flex flex-col items-center gap-2">
-        <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-3">
-          <UploadCloud className="w-8 h-8 text-primary" aria-label="Upload icon" />
-        </div>
-        <h3 className="font-semibold">1. Upload Files</h3>
-        <p className="text-sm text-muted-foreground">Drag and drop or click to select PNG or JPG files.</p>
-      </div>
-      <div className="flex flex-col items-center gap-2">
-        <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-3">
-          <MousePointerClick className="w-8 h-8 text-primary" aria-label="Click icon" />
-        </div>
-        <h3 className="font-semibold">2. Choose Settings</h3>
-        <p className="text-sm text-muted-foreground">Select compression level and get AI-powered suggestions.</p>
-      </div>
-      <div className="flex flex-col items-center gap-2">
-        <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-3">
-          <FileDown className="w-8 h-8 text-primary" aria-label="Download icon" />
-        </div>
-        <h3 className="font-semibold">3. Compress & Download</h3>
-        <p className="text-sm text-muted-foreground">Optimize your files and download the compressed versions.</p>
-      </div>
-    </div>
-  </div>
-);
-
-const WhyShrinkWrap = () => (
-    <div className="w-full max-w-4xl mx-auto text-center my-12 md:my-16">
-      <h2 className="text-2xl font-semibold text-foreground mb-6">Why ShrinkWrap?</h2>
-      <div className="grid md:grid-cols-3 gap-8 text-left">
-        <Card className="p-6 bg-card/50">
-          <div className="flex items-center gap-4 mb-3">
-            <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg">
-              <Zap className="w-6 h-6 text-primary" aria-label="Lightning bolt icon for speed" />
-            </div>
-            <h3 className="text-lg font-semibold">Lightning Fast</h3>
-          </div>
-          <p className="text-sm text-muted-foreground">Our tool is built for speed, compressing your images in seconds, right in your browser.</p>
-        </Card>
-        <Card className="p-6 bg-card/50">
-          <div className="flex items-center gap-4 mb-3">
-            <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg">
-              <BrainCircuit className="w-6 h-6 text-primary" aria-label="AI brain icon" />
-            </div>
-            <h3 className="text-lg font-semibold">AI-Powered</h3>
-          </div>
-          <p className="text-sm text-muted-foreground">Get smart suggestions for optimal compression settings, balancing quality and file size perfectly.</p>
-        </Card>
-        <Card className="p-6 bg-card/50">
-          <div className="flex items-center gap-4 mb-3">
-            <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg">
-              <ShieldCheck className="w-6 h-6 text-primary" aria-label="Security shield icon" />
-            </div>
-            <h3 className="text-lg font-semibold">Private & Secure</h3>
-          </div>
-          <p className="text-sm text-muted-foreground">Your files are processed on your device and are never uploaded to a server, ensuring your data remains private.</p>
-        </Card>
-      </div>
-    </div>
-  );
-
   const FAQs = () => (
-    <div id="faq" className="w-full max-w-4xl mx-auto text-center my-16">
-      <h2 className="text-2xl font-semibold text-foreground mb-6">Frequently Asked Questions - PNG & JPG Compressor</h2>
+    <div id="faq" className="w-full max-w-4xl mx-auto my-12 md:my-16">
+      <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
       <Accordion type="single" collapsible className="w-full text-left">
         <AccordionItem value="item-1">
           <AccordionTrigger>1. How can I compress JPG images online for free?</AccordionTrigger>
@@ -166,7 +97,7 @@ const FileUploader = ({
   return (
     <Card
       className={cn(
-        'w-full border-2 border-dashed transition-all duration-300 shadow-lg',
+        'w-full border-2 border-dashed transition-all duration-300 shadow-lg my-8 md:my-12',
         isDragActive ? 'border-primary bg-primary/20 scale-105' : 'border-primary/50 bg-primary/10'
       )}
     >
@@ -542,18 +473,37 @@ export default function ShrinkWrapApp() {
     <div className="w-full max-w-4xl mx-auto flex flex-col h-full">
       <main className="flex-grow w-full mt-4 md:mt-8">
         {files.length === 0 ? (
-          <>
-            <div className="text-center mb-8">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground">Free Online PNG & JPG Image Compressor - ShrinkWrap</h1>
-                <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-                    Compress PNG & JPEG files with the best quality and compression. Reduce the file size of your images in a single click.
-                </p>
+          <div className="text-center">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground">ShrinkWrap - Free Online PNG & JPG Image Compressor</h1>
+            <div className="prose prose-lg mx-auto mt-8 text-foreground">
+                <h2>Compress PNG and JPG Images Online Without Losing Quality</h2>
+                <p>ShrinkWrap is a fast and secure image compressor that helps you reduce PNG and JPG file sizes instantly while keeping the best quality.</p>
             </div>
+            
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
-            <HowItWorks />
-            <WhyShrinkWrap />
+            
+            <div className="prose prose-lg mx-auto my-12 text-left">
+                <h2>Why Use ShrinkWrap Image Compressor?</h2>
+                <ul className="list-disc list-inside space-y-2">
+                  <li>Free PNG & JPG compression tool</li>
+                  <li>Reduce image size up to 80%</li>
+                  <li>No sign-up required, unlimited usage</li>
+                  <li>Works on desktop and mobile</li>
+                </ul>
+
+                <h2>How to Compress Images with ShrinkWrap?</h2>
+                <ol className="list-decimal list-inside space-y-2">
+                  <li>Upload your PNG or JPG file</li>
+                  <li>Click on “Compress”</li>
+                  <li>Download your optimized image instantly</li>
+                </ol>
+
+                <h2>Benefits of Using Our Online Image Compressor</h2>
+                <p>Optimizing your images makes websites load faster, improves SEO rankings, and saves storage space on your devices.</p>
+            </div>
+
             <FAQs />
-          </>
+          </div>
         ) : (
           <div className="space-y-3">
             {files.map((appFile) => (
