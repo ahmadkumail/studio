@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useCallback, useMemo } from 'react';
@@ -6,7 +7,7 @@ import imageCompression from 'browser-image-compression';
 import { AppFile, CompressionLevel, FileFormat } from '@/types';
 import { cn, formatBytes } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   UploadCloud,
   FileImage,
@@ -16,6 +17,12 @@ import {
   ChevronRight,
   Trash2,
   RotateCcw,
+  Zap,
+  BadgePercent,
+  ShieldCheck,
+  Smartphone,
+  Server,
+  Package,
 } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
@@ -33,7 +40,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '..
 const MAX_FILES = 10;
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
-  const FAQs = () => (
+const FAQs = () => (
     <div id="faq" className="w-full max-w-4xl mx-auto my-12 md:my-16">
       <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
       <Accordion type="single" collapsible className="w-full text-left">
@@ -482,28 +489,62 @@ export default function ShrinkWrapApp() {
             
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
             
-            <div className="max-w-4xl mx-auto my-12 text-lg space-y-12">
-                <div className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">How It Works</h2>
-                    <ol className="list-decimal list-inside space-y-2 text-left max-w-md mx-auto text-muted-foreground">
-                      <li>Upload your PNG or JPG file</li>
-                      <li>Click on “Compress”</li>
-                      <li>Download your optimized image instantly</li>
-                    </ol>
+            <div className="max-w-4xl mx-auto my-12 space-y-16">
+                <div className="space-y-8">
+                    <h2 className="text-2xl font-semibold text-foreground text-center">How It Works</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div className="flex flex-col items-center text-center p-4">
+                            <div className="p-4 bg-primary/10 rounded-full mb-4">
+                                <UploadCloud className="w-10 h-10 text-primary" />
+                            </div>
+                            <h3 className="font-semibold mb-2">1. Upload Your Image</h3>
+                            <p className="text-muted-foreground text-sm">Drag and drop or click to select your PNG or JPG files.</p>
+                        </div>
+                        <div className="flex flex-col items-center text-center p-4">
+                            <div className="p-4 bg-primary/10 rounded-full mb-4">
+                                <Zap className="w-10 h-10 text-primary" />
+                            </div>
+                            <h3 className="font-semibold mb-2">2. Compress Instantly</h3>
+                            <p className="text-muted-foreground text-sm">Our AI optimizes your image for the best size and quality.</p>
+                        </div>
+                        <div className="flex flex-col items-center text-center p-4">
+                            <div className="p-4 bg-primary/10 rounded-full mb-4">
+                                <Download className="w-10 h-10 text-primary" />
+                            </div>
+                            <h3 className="font-semibold mb-2">3. Download a shrunk file</h3>
+                            <p className="text-muted-foreground text-sm">Download your newly compressed, lightweight image.</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Why ShrinkWrap?</h2>
-                    <ul className="list-disc list-inside space-y-2 text-left max-w-md mx-auto text-muted-foreground">
-                      <li>Free PNG & JPG compression tool</li>
-                      <li>Reduce image size up to 80%</li>
-                      <li>No sign-up required, unlimited usage</li>
-                      <li>Works on desktop and mobile</li>
-                    </ul>
+                <div className="space-y-8">
+                    <h2 className="text-2xl font-semibold text-foreground text-center">Why ShrinkWrap?</h2>
+                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <Card className="text-center p-6">
+                            <BadgePercent className="w-10 h-10 text-primary mx-auto mb-4" />
+                            <h3 className="font-semibold mb-2">High Compression</h3>
+                            <p className="text-muted-foreground text-sm">Reduce file size up to 80% with minimal quality loss.</p>
+                        </Card>
+                        <Card className="text-center p-6">
+                            <ShieldCheck className="w-10 h-10 text-primary mx-auto mb-4" />
+                            <h3 className="font-semibold mb-2">Privacy First</h3>
+                            <p className="text-muted-foreground text-sm">All processing is done in your browser. Files never leave your device.</p>
+                        </Card>
+                         <Card className="text-center p-6">
+                            <Smartphone className="w-10 h-10 text-primary mx-auto mb-4" />
+                            <h3 className="font-semibold mb-2">Mobile Friendly</h3>
+                            <p className="text-muted-foreground text-sm">Works seamlessly on your desktop, tablet, and smartphone.</p>
+                        </Card>
+                        <Card className="text-center p-6">
+                            <Package className="w-10 h-10 text-primary mx-auto mb-4" />
+                            <h3 className="font-semibold mb-2">Batch Processing</h3>
+                            <p className="text-muted-foreground text-sm">Compress multiple PNG or JPG images at once.</p>
+                        </Card>
+                    </div>
                 </div>
 
                 <div>
                     <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Benefits</h2>
-                    <p className="max-w-prose mx-auto text-muted-foreground">Optimizing your images with ShrinkWrap offers significant advantages. It dramatically speeds up your website's loading times, which directly improves user experience and keeps visitors engaged. Faster sites also rank higher on search engines like Google, boosting your SEO and driving more organic traffic. Furthermore, smaller image files save valuable storage space on your devices and servers.</p>
+                    <p className="max-w-prose mx-auto text-muted-foreground text-center">Optimizing your images with ShrinkWrap offers significant advantages. It dramatically speeds up your website's loading times, which directly improves user experience and keeps visitors engaged. Faster sites also rank higher on search engines like Google, boosting your SEO and driving more organic traffic. Furthermore, smaller image files save valuable storage space and bandwidth.</p>
                 </div>
             </div>
 
