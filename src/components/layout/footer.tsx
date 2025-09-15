@@ -17,7 +17,7 @@ const Footer = () => {
             </p>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">Navigate</h3>
+            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">About Us</h3>
             <ul className="mt-4 space-y-2">
               <li>
                 <Link href="/" className="text-sm text-muted-foreground hover:text-foreground">
@@ -37,7 +37,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">Legal</h3>
+            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">Privacy Policy</h3>
             <ul className="mt-4 space-y-2">
               <li>
                 <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground">
@@ -52,7 +52,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">Connect</h3>
+            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">Blogs</h3>
             <p className="mt-4 text-sm text-muted-foreground">
               Stay up to date with the latest news and features.
             </p>
