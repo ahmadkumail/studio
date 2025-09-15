@@ -7,10 +7,10 @@ import Footer from '@/components/layout/footer';
 export const metadata: Metadata = {
   metadataBase: new URL('https://shrinkwrap.app'),
   title: {
-    default: 'ShrinkWrap - Free Online PNG & JPG Compressor Tool',
+    default: 'ShrinkWrap | Free Online PNG & JPG Image Compressor',
     template: '%s | ShrinkWrap',
   },
-  description: 'ShrinkWrap is a free online PNG and JPG compressor tool. Reduce image file size without losing quality. Fast, secure, and easy-to-use image optimization for web and mobile.',
+  description: 'ShrinkWrap is a free online PNG & JPG image compressor. Reduce image size up to 80% without losing quality. Fast, secure, and no signup required.',
   keywords: ['ShrinkWrap', 'PNG compressor', 'JPG compressor', 'image compressor online', 'reduce image size', 'compress png free', 'compress jpg free', 'online image optimizer', 'photo size reducer', 'webp converter', 'shrink images', 'optimize images for web'],
 };
 
