@@ -1,6 +1,13 @@
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '@/components/ui/badge';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'The Future of File Sharing: Top Trends to Watch in 2025',
+  description: 'Explore the future of file sharing. Discover 2025 trends like AI-powered management, decentralized networks, and on-device processing for privacy.',
+};
 
 export default function BlogPostPage() {
   const image = PlaceHolderImages.find((img) => img.id === 'blog-7');
@@ -42,7 +49,7 @@ export default function BlogPostPage() {
         </p>
         <ul className="list-disc list-inside space-y-2">
             <li><strong>Predictive Sharing:</strong> AI will analyze your workflows and suggest who you should share files with, even before you think to do it yourself. It will learn which team members collaborate on certain projects and prompt you to include them.</li>
-            <li><strong>Intelligent Compression:</strong> Tools will use AI to analyze the content of a file and apply the perfect compression settings on the fly, maximizing space savings while preserving essential quality—a core principle of tools like ShrinkWrap.</li>
+            <li><strong>Intelligent Compression:</strong> Tools will use AI to analyze the content of a file and apply the perfect compression settings on the fly, maximizing space savings while preserving essential quality—a core principle of tools like <Link href="/" className="text-primary hover:underline">ShrinkWrap</Link>.</li>
             <li><strong>Smart Search:</strong> Forget just searching by filename. AI will enable "natural language" searches where you can ask, "Find that presentation I worked on last week with Sarah about the Q3 budget," and it will find it based on content, metadata, and user activity.</li>
         </ul>
 

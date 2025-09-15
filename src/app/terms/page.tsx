@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Terms & Conditions',
+  description: 'Read the ShrinkWrap Terms and Conditions. Understand the rules and guidelines for using our file compression service.',
+};
+
+
 export default function TermsAndConditionsPage() {
   return (
     <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">

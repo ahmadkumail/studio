@@ -1,6 +1,13 @@
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '@/components/ui/badge';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'The Ultimate Guide to File Formats (JPG, PNG, ZIP, PDF & More)',
+  description: 'A complete guide to common file formats. Learn the difference between JPG, PNG, WebP, PDF, DOCX, ZIP, and RAR to manage your digital files effectively.',
+};
 
 export default function BlogPostPage() {
   const image = PlaceHolderImages.find((img) => img.id === 'blog-9');
@@ -38,7 +45,7 @@ export default function BlogPostPage() {
 
         <h2 className="text-2xl font-bold mt-8">Image Formats: The Visuals</h2>
         <p>
-          These formats are all about storing visual information. The biggest differentiator is their compression method: lossy (loses data for smaller size) or lossless (preserves all data).
+          These formats are all about storing visual information. The biggest differentiator is their compression method: lossy (loses data for smaller size) or lossless (preserves all data). Check our <Link href="/blog/jpg-vs-png-which-format-to-use" className="text-primary hover:underline">JPG vs PNG guide</Link> for a deeper dive.
         </p>
         <ul className="list-disc list-inside space-y-2">
             <li><strong>JPG/JPEG (Joint Photographic Experts Group):</strong> The king of photos. Uses lossy compression, making it perfect for complex images with many colors. It offers a great balance between quality and file size. <strong>Use for:</strong> All photographs.</li>

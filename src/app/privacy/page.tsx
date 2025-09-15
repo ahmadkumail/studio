@@ -1,3 +1,10 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description: 'Read the ShrinkWrap Privacy Policy. Learn how we handle your data and our commitment to privacy with on-device file processing.',
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">

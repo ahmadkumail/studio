@@ -2,6 +2,12 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Top 5 Free Tools for File Compression in 2025',
+  description: 'Discover the best free file compression tools for 2025. We review top contenders like ShrinkWrap, 7-Zip, and Squoosh for quality, speed, and privacy.',
+};
 
 export default function BlogPostPage() {
   const image = PlaceHolderImages.find((img) => img.id === 'blog-1');

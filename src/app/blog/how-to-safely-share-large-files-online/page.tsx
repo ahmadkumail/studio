@@ -2,6 +2,12 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'How to Safely Share Large Files Online in 2025',
+  description: 'Learn how to securely share large files online using end-to-end encryption, on-device compression tools, and other best practices to protect your data privacy.',
+};
 
 export default function BlogPostPage() {
   const image = PlaceHolderImages.find((img) => img.id === 'blog-2');

@@ -5,8 +5,13 @@ import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
 
 export const metadata: Metadata = {
-  title: 'ShrinkWrap',
-  description: 'A straightforward file compression app for PNG, JPG, and PDF documents.',
+  metadataBase: new URL('https://shrinkwrap.app'),
+  title: {
+    default: 'ShrinkWrap | AI-Powered PNG & JPG Image Compression',
+    template: '%s | ShrinkWrap',
+  },
+  description: 'Compress PNG & JPG files with our AI-powered tool for the best quality and compression. Reduce image file sizes online for free, quickly, and securely.',
+  keywords: ['Image Compression', 'PNG Compressor', 'JPG Compressor', 'File Shrinker', 'Optimize Images', 'Reduce File Size', 'AI Compression'],
 };
 
 export default function RootLayout({

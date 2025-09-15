@@ -1,6 +1,14 @@
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '@/components/ui/badge';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'JPG vs. PNG: Which Image Format Should You Use?',
+  description: 'Understand the difference between JPG and PNG file formats. Learn when to use lossy JPGs for photos and lossless PNGs for graphics with transparency.',
+};
+
 
 export default function BlogPostPage() {
   const image = PlaceHolderImages.find((img) => img.id === 'blog-5');
@@ -60,7 +68,7 @@ export default function BlogPostPage() {
             <li><strong>Situations where file size is the top priority:</strong> When you need the smallest possible file and can tolerate a minor loss in quality, JPG is your best bet.</li>
         </ul>
         <p>
-            <strong>A word of caution:</strong> Because JPG is lossy, you should avoid re-saving a JPG multiple times. Each time you edit and re-save, more data is lost, and the image quality will degrade, leading to unsightly artifacts. Always work from the original, high-quality source image.
+            <strong>A word of caution:</strong> Because JPG is lossy, you should avoid re-saving a JPG multiple times. Each time you edit and re-save, more data is lost, and the image quality will degrade, leading to unsightly artifacts. Always work from the original, high-quality source image. For more on this, see our <Link href="/blog/ultimate-guide-to-image-optimization" className="text-primary hover:underline">guide to image optimization</Link>.
         </p>
 
         <h2 className="text-2xl font-bold mt-8">When to Use PNG</h2>
@@ -127,7 +135,7 @@ export default function BlogPostPage() {
             <li>Need a transparent background or have sharp lines and text? <strong>Use PNG.</strong></li>
         </ul>
         <p>
-          By understanding these fundamental differences, you can make the right choice every time, ensuring your website is both beautiful and performant. And when it comes time to compress those files, a smart tool can help you get the most out of either format.
+          By understanding these fundamental differences, you can make the right choice every time, ensuring your website is both beautiful and performant. And when it comes time to compress those files, a smart tool like <Link href="/" className="text-primary hover:underline">ShrinkWrap</Link> can help you get the most out of either format.
         </p>
       </article>
     </div>

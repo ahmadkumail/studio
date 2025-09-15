@@ -2,6 +2,12 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'How AI is Redefining File Storage and Sharing',
+  description: 'AI is transforming file storage. Learn how artificial intelligence is enabling smart search, predictive sharing, AI-powered compression, and automated security.',
+};
 
 export default function BlogPostPage() {
   const image = PlaceHolderImages.find((img) => img.id === 'blog-10');

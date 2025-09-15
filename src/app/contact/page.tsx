@@ -7,6 +7,15 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin } from 'lucide-react';
+import type { Metadata } from 'next';
+
+// Although this is a client component, we can export metadata from it.
+// Next.js will still be able to statically analyze it.
+export const metadata: Metadata = {
+  title: 'Contact Us',
+  description: 'Get in touch with the ShrinkWrap team. We\'d love to hear from you. Ask questions, provide feedback, or inquire about partnerships.',
+};
+
 
 export default function ContactPage() {
   const { toast } = useToast();

@@ -1,4 +1,10 @@
 import { Building, Users, Target } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About ShrinkWrap',
+  description: 'Learn about ShrinkWrap\'s mission to make file compression smarter, faster, and more accessible for everyone using the power of AI.',
+};
 
 export default function AboutPage() {
   return (

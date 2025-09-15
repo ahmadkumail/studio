@@ -2,6 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blog | File Compression Tips and Insights',
+  description: 'Explore the ShrinkWrap blog for tips, tricks, and insights on file compression, image optimization, data privacy, and digital efficiency.',
+};
 
 const blogPosts = [
     {

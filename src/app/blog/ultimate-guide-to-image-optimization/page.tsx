@@ -2,6 +2,13 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'The Ultimate Guide to Image Optimization for the Web',
+  description: 'A complete guide to image optimization for SEO and web performance. Learn to choose formats (JPG, PNG, WebP), compress images, and improve page speed.',
+};
+
 
 export default function BlogPostPage() {
   const image = PlaceHolderImages.find((img) => img.id === 'blog-4');
@@ -48,7 +55,7 @@ export default function BlogPostPage() {
 
         <h2 className="text-2xl font-bold mt-8">1. Choose the Right File Format</h2>
         <p>
-          The first step in optimization is selecting the correct format for the job. The three most common formats on the web are JPG, PNG, and WebP.
+          The first step in optimization is selecting the correct format for the job. The three most common formats on the web are JPG, PNG, and WebP. For a detailed comparison, check out our post on <Link href="/blog/jpg-vs-png-which-format-to-use" className="text-primary hover:underline">JPG vs. PNG</Link>.
         </p>
         <ul className="list-disc list-inside space-y-2">
             <li><strong>JPG (JPEG):</strong> Best for photographs and complex images with many colors and gradients. JPGs use lossy compression, which means they discard some data to reduce file size. You can adjust the quality level to find the perfect balance.</li>

@@ -1,6 +1,13 @@
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '@/components/ui/badge';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Cloud Storage vs. Local Storage: Which Is Right for You?',
+  description: 'A detailed comparison of cloud vs. local storage. Understand the pros and cons of accessibility, cost, speed, and privacy to make the best choice.',
+};
+
 
 export default function BlogPostPage() {
   const image = PlaceHolderImages.find((img) => img.id === 'blog-6');

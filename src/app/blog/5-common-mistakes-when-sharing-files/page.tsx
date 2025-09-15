@@ -1,6 +1,13 @@
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '@/components/ui/badge';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: '5 Common Mistakes When Sharing Files Online (and How to Fix Them)',
+  description: 'Avoid these 5 common file sharing mistakes, from using unprotected links to sending large, uncompressed files. Learn how to share files securely.',
+};
 
 export default function BlogPostPage() {
   const image = PlaceHolderImages.find((img) => img.id === 'blog-8');
@@ -59,7 +66,7 @@ export default function BlogPostPage() {
             We've all been there: trying to email a folder of high-resolution photos, only to be blocked by a 25MB attachment limit. The clumsy workaround is often to upload the massive folder to a cloud drive and share the link. This clogs up the recipient's download bandwidth and eats into your storage quota.
         </p>
         <p>
-            <strong>The Fix:</strong> Compress your files before sharing them. Using an on-device tool like ShrinkWrap allows you to dramatically reduce the size of images without uploading them to a third-party server first. For folders of documents or mixed file types, creating a ZIP archive is a simple and effective solution. A smaller file is faster to upload, faster to download, and more professional to send.
+            <strong>The Fix:</strong> Compress your files before sharing them. Using an on-device tool like <Link href="/" className="text-primary hover:underline">ShrinkWrap</Link> allows you to dramatically reduce the size of images without uploading them to a third-party server first. For folders of documents or mixed file types, creating a ZIP archive is a simple and effective solution. A smaller file is faster to upload, faster to download, and more professional to send.
         </p>
 
         <h2 className="text-2xl font-bold mt-8">3. Emailing Passwords and File Links Together</h2>

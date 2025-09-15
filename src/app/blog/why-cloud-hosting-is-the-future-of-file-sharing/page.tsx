@@ -1,6 +1,12 @@
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '@/components/ui/badge';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Why Cloud Hosting is the Future of File Sharing',
+  description: 'Discover why cloud hosting is the future of file sharing. Explore benefits like accessibility, collaboration, security, and scalability over traditional methods.',
+};
 
 export default function BlogPostPage() {
   const image = PlaceHolderImages.find((img) => img.id === 'blog-3');
