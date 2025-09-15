@@ -39,26 +39,26 @@ const MAX_FILES = 10;
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
 const HowItWorks = () => (
-  <div className="w-full max-w-2xl mx-auto text-center my-12">
-    <h2 className="text-2xl font-semibold text-foreground mb-4">How It Works</h2>
+  <div className="w-full max-w-2xl mx-auto text-center my-12 md:my-16">
+    <h2 className="text-2xl font-semibold text-foreground mb-6">How It Works</h2>
     <div className="grid md:grid-cols-3 gap-8">
       <div className="flex flex-col items-center gap-2">
         <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-3">
-          <UploadCloud className="w-8 h-8 text-primary" />
+          <UploadCloud className="w-8 h-8 text-primary" aria-label="Upload icon" />
         </div>
         <h3 className="font-semibold">1. Upload Files</h3>
         <p className="text-sm text-muted-foreground">Drag and drop or click to select PNG or JPG files.</p>
       </div>
       <div className="flex flex-col items-center gap-2">
         <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-3">
-          <MousePointerClick className="w-8 h-8 text-primary" />
+          <MousePointerClick className="w-8 h-8 text-primary" aria-label="Click icon" />
         </div>
         <h3 className="font-semibold">2. Choose Settings</h3>
         <p className="text-sm text-muted-foreground">Select compression level and get AI-powered suggestions.</p>
       </div>
       <div className="flex flex-col items-center gap-2">
         <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-3">
-          <FileDown className="w-8 h-8 text-primary" />
+          <FileDown className="w-8 h-8 text-primary" aria-label="Download icon" />
         </div>
         <h3 className="font-semibold">3. Compress & Download</h3>
         <p className="text-sm text-muted-foreground">Optimize your files and download the compressed versions.</p>
@@ -68,13 +68,13 @@ const HowItWorks = () => (
 );
 
 const WhyShrinkWrap = () => (
-    <div className="w-full max-w-4xl mx-auto text-center mt-12">
-      <h2 className="text-2xl font-semibold text-foreground mb-4">Why ShrinkWrap?</h2>
+    <div className="w-full max-w-4xl mx-auto text-center my-12 md:my-16">
+      <h2 className="text-2xl font-semibold text-foreground mb-6">Why ShrinkWrap?</h2>
       <div className="grid md:grid-cols-3 gap-8 text-left">
         <Card className="p-6 bg-card/50">
           <div className="flex items-center gap-4 mb-3">
             <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg">
-              <Zap className="w-6 h-6 text-primary" />
+              <Zap className="w-6 h-6 text-primary" aria-label="Lightning bolt icon for speed" />
             </div>
             <h3 className="text-lg font-semibold">Lightning Fast</h3>
           </div>
@@ -83,7 +83,7 @@ const WhyShrinkWrap = () => (
         <Card className="p-6 bg-card/50">
           <div className="flex items-center gap-4 mb-3">
             <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg">
-              <BrainCircuit className="w-6 h-6 text-primary" />
+              <BrainCircuit className="w-6 h-6 text-primary" aria-label="AI brain icon" />
             </div>
             <h3 className="text-lg font-semibold">AI-Powered</h3>
           </div>
@@ -92,7 +92,7 @@ const WhyShrinkWrap = () => (
         <Card className="p-6 bg-card/50">
           <div className="flex items-center gap-4 mb-3">
             <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg">
-              <ShieldCheck className="w-6 h-6 text-primary" />
+              <ShieldCheck className="w-6 h-6 text-primary" aria-label="Security shield icon" />
             </div>
             <h3 className="text-lg font-semibold">Private & Secure</h3>
           </div>
@@ -104,7 +104,7 @@ const WhyShrinkWrap = () => (
 
   const FAQs = () => (
     <div id="faq" className="w-full max-w-4xl mx-auto text-center my-16">
-      <h2 className="text-2xl font-semibold text-foreground mb-4">Frequently Asked Questions</h2>
+      <h2 className="text-2xl font-semibold text-foreground mb-6">Frequently Asked Questions</h2>
       <Accordion type="single" collapsible className="w-full text-left">
         <AccordionItem value="item-1">
           <AccordionTrigger>Is ShrinkWrap free to use?</AccordionTrigger>
@@ -171,7 +171,7 @@ const FileUploader = ({
         >
           <input {...getInputProps()} />
           <div className="flex flex-col items-center justify-center gap-4 text-primary-foreground">
-            <UploadCloud className="w-16 h-16 transition-transform duration-300 group-hover:scale-110 text-primary" />
+            <UploadCloud className="w-16 h-16 transition-transform duration-300 group-hover:scale-110 text-primary" aria-label="File upload" />
             <p className="text-lg font-medium text-foreground">
               {isDragActive
                 ? 'Drop files to start compressing!'
@@ -231,7 +231,7 @@ const FileItem = ({
     <Card className="bg-card p-4 relative overflow-hidden animate-in fade-in-0 slide-in-from-bottom-5 duration-300 shadow-sm">
       <div className="flex flex-col md:flex-row gap-4 items-center">
         <div className="flex-shrink-0 flex items-center gap-4 w-full md:w-1/3">
-          <FileIcon className="w-10 h-10 text-primary shrink-0" />
+          <FileIcon className="w-10 h-10 text-primary shrink-0" aria-label="Image file icon" />
           <div className="flex-grow min-w-0">
             <p className="font-medium text-foreground truncate" title={file.name}>{file.name}</p>
             <p className="text-sm text-muted-foreground">{formatBytes(originalSize)}</p>
@@ -241,14 +241,15 @@ const FileItem = ({
         <div className="flex-grow w-full md:w-2/3">
             {status === 'compressing' ? (
                 <div className="flex items-center justify-center w-full gap-3">
-                    <Loader2 className="w-5 h-5 text-primary animate-spin" />
+                    <Loader2 className="w-5 h-5 text-primary animate-spin" aria-label="Loading" />
                     <span className="text-sm font-medium text-muted-foreground">Processing... {progress.toFixed(0)}%</span>
                 </div>
             ) : !isDone ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start w-full">
                     <div>
-                        <Label className="text-xs font-medium text-muted-foreground mb-2 block">Compression</Label>
+                        <Label htmlFor={`${appFile.id}-compression-level`} className="text-xs font-medium text-muted-foreground mb-2 block">Compression</Label>
                         <RadioGroup
+                            id={`${appFile.id}-compression-level`}
                             value={appFile.compressionLevel}
                             onValueChange={(value: CompressionLevel) => onSettingChange(appFile.id, { key: 'compressionLevel', value })}
                             className="flex gap-2"
@@ -268,19 +269,19 @@ const FileItem = ({
                         </RadioGroup>
                         {appFile.aiSuggestion && (
                             <div className="mt-2 text-xs text-muted-foreground flex items-center gap-1.5">
-                                <Sparkles className="w-3.5 h-3.5 text-primary" />
+                                <Sparkles className="w-3.5 h-3.5 text-primary" aria-label="AI suggestion icon" />
                                 <p><strong>AI Suggestion:</strong> Quality {appFile.aiSuggestion.quality}, {appFile.aiSuggestion.optimizationStrategy}</p>
                             </div>
                         )}
                     </div>
                     <div>
-                        <Label className="text-xs font-medium text-muted-foreground mb-2 block">Convert To</Label>
+                        <Label htmlFor={`${appFile.id}-convert-to`} className="text-xs font-medium text-muted-foreground mb-2 block">Convert To</Label>
                         <Select
                             value={appFile.targetFormat}
                             onValueChange={(value: FileFormat) => onSettingChange(appFile.id, { key: 'targetFormat', value })}
                             disabled={(isProcessing && status !== 'pending')}
                         >
-                            <SelectTrigger className="h-auto py-1.5">
+                            <SelectTrigger id={`${appFile.id}-convert-to`} className="h-auto py-1.5">
                                 <SelectValue placeholder="Format" />
                             </SelectTrigger>
                             <SelectContent>
@@ -291,11 +292,11 @@ const FileItem = ({
                     </div>
                 </div>
             ) : (
-                <div className="flex items-center justify-between gap-4 w-full">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 w-full">
                     <div className="flex items-center gap-4">
-                        <ChevronRight className="w-6 h-6 text-muted-foreground hidden sm:block" />
+                        <ChevronRight className="w-6 h-6 text-muted-foreground hidden sm:block" aria-hidden="true" />
                         {status === 'done' ? (
-                        <div className="text-sm">
+                        <div className="text-sm text-center sm:text-left">
                             <p className="font-medium text-foreground">{formatBytes(compressedSize!)}</p>
                             {savings && savings.percentage !== '0.0' ? (
                                 <p className="text-green-500 font-semibold">Saved {savings.percentage}%</p>
@@ -304,7 +305,7 @@ const FileItem = ({
                             )}
                         </div>
                         ) : (
-                        <div>
+                        <div className="text-center sm:text-left">
                             <p className="font-medium text-destructive">Failed</p>
                             <p className="text-sm text-muted-foreground">Could not compress</p>
                         </div>
@@ -533,11 +534,11 @@ export default function ShrinkWrapApp() {
 
   return (
     <div className="w-full max-w-4xl mx-auto flex flex-col h-full">
-      <main className="flex-grow w-full mt-8">
+      <main className="flex-grow w-full mt-4 md:mt-8">
         {files.length === 0 ? (
           <>
             <div className="text-center mb-8">
-                <h1 className="text-4xl font-extrabold text-foreground sm:text-5xl lg:text-6xl">Compress PNG/JPG</h1>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground">Compress PNG/JPG</h1>
                 <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
                     Compress PNG & JPEG files with the best quality and compression. Reduce the file size of your images in a single click.
                 </p>
