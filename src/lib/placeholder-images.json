@@ -17,6 +17,18 @@
       "description": "Abstract network of cloud servers and connected devices.",
       "imageUrl": "https://picsum.photos/seed/blog3/1200/630",
       "imageHint": "cloud network"
+    },
+    {
+      "id": "blog-4",
+      "description": "A website loading quickly on a laptop screen.",
+      "imageUrl": "https://picsum.photos/seed/blog4/1200/630",
+      "imageHint": "website performance"
+    },
+    {
+      "id": "blog-5",
+      "description": "A side-by-side comparison of a high-quality PNG and a compressed JPG.",
+      "imageUrl": "https://picsum.photos/seed/blog5/1200/630",
+      "imageHint": "image comparison"
     }
   ]
 }
