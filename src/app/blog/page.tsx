@@ -5,6 +5,41 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 const blogPosts = [
     {
+    title: 'How AI Is Changing File Storage and Sharing',
+    slug: 'how-ai-is-changing-file-storage-and-sharing',
+    description: 'Explore how artificial intelligence is revolutionizing the way we store, manage, and share our digital files, from smart organization to predictive transfers.',
+    image_id: 'blog-10',
+    date: 'October 20, 2025',
+  },
+  {
+    title: 'The Ultimate Guide to File Formats (ZIP, RAR, JPG, and More)',
+    slug: 'ultimate-guide-to-file-formats',
+    description: 'A comprehensive look at the most common file formats, what they are, and when to use them for maximum efficiency and quality.',
+    image_id: 'blog-9',
+    date: 'October 15, 2025',
+  },
+  {
+    title: '5 Common Mistakes People Make When Sharing Files Online',
+    slug: '5-common-mistakes-when-sharing-files',
+    description: 'Avoid these common pitfalls to ensure your file sharing is secure, efficient, and professional. Learn what not to do when sending your important data.',
+    image_id: 'blog-8',
+    date: 'October 10, 2025',
+  },
+  {
+    title: 'The Future of File Sharing: Trends to Watch in 2025',
+    slug: 'future-of-file-sharing-trends-2025',
+    description: 'From decentralized networks to AI-driven transfers, discover the exciting trends that will shape the future of how we share files.',
+    image_id: 'blog-7',
+    date: 'October 5, 2025',
+  },
+  {
+    title: 'Cloud Storage vs. Local Storage: Which Is Better for You?',
+    slug: 'cloud-vs-local-storage',
+    description: 'An in-depth comparison of cloud and local storage solutions. Understand the pros and cons to decide the best way to keep your files safe and accessible.',
+    image_id: 'blog-6',
+    date: 'October 1, 2025',
+  },
+    {
     title: 'The Ultimate Guide to Image Optimization for the Web',
     slug: 'ultimate-guide-to-image-optimization',
     description: 'Learn how to optimize your images for faster load times and better user experience. From choosing the right format to advanced compression techniques.',

@@ -29,6 +29,36 @@
       "description": "A side-by-side comparison of a high-quality PNG and a compressed JPG.",
       "imageUrl": "https://picsum.photos/seed/blog5/1200/630",
       "imageHint": "image comparison"
+    },
+    {
+      "id": "blog-6",
+      "description": "A person choosing between a physical hard drive and a cloud icon.",
+      "imageUrl": "https://picsum.photos/seed/blog6/1200/630",
+      "imageHint": "cloud vs local"
+    },
+    {
+      "id": "blog-7",
+      "description": "A futuristic interface showing file sharing trends.",
+      "imageUrl": "https://picsum.photos/seed/blog7/1200/630",
+      "imageHint": "futuristic interface"
+    },
+    {
+      "id": "blog-8",
+      "description": "A warning sign over a broken file link.",
+      "imageUrl": "https://picsum.photos/seed/blog8/1200/630",
+      "imageHint": "warning sign"
+    },
+    {
+      "id": "blog-9",
+      "description": "Various file format icons like ZIP, RAR, JPG, and PDF.",
+      "imageUrl": "https://picsum.photos/seed/blog9/1200/630",
+      "imageHint": "file formats"
+    },
+    {
+      "id": "blog-10",
+      "description": "An abstract representation of an AI brain processing data.",
+      "imageUrl": "https://picsum.photos/seed/blog10/1200/630",
+      "imageHint": "AI data"
     }
   ]
 }
