@@ -35,7 +35,7 @@ const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
   const FAQs = () => (
     <div id="faq" className="w-full max-w-4xl mx-auto my-12 md:my-16">
-      <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
+      <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Frequently Asked Questions - PNG & JPG Compressor</h2>
       <Accordion type="single" collapsible className="w-full text-left">
         <AccordionItem value="item-1">
           <AccordionTrigger>1. How can I compress JPG images online for free?</AccordionTrigger>
@@ -474,32 +474,32 @@ export default function ShrinkWrapApp() {
       <main className="flex-grow w-full mt-4 md:mt-8">
         {files.length === 0 ? (
           <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground">ShrinkWrap - Free Online PNG & JPG Image Compressor</h1>
-            <div className="prose prose-lg mx-auto mt-8 text-foreground">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground">Free Online PNG & JPG Image Compressor - ShrinkWrap</h1>
+            <div className="prose-lg mx-auto mt-8 text-foreground">
                 <h2>Compress PNG and JPG Images Online Without Losing Quality</h2>
                 <p>ShrinkWrap is a fast and secure image compressor that helps you reduce PNG and JPG file sizes instantly while keeping the best quality.</p>
             </div>
             
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
             
-            <div className="prose prose-lg mx-auto my-12 text-left">
-                <h2>Why Use ShrinkWrap Image Compressor?</h2>
-                <ul className="list-disc list-inside space-y-2">
+            <div className="max-w-4xl mx-auto my-12 text-lg">
+                <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Why Use ShrinkWrap Image Compressor?</h2>
+                <ul className="list-disc list-inside space-y-2 text-left max-w-md mx-auto">
                   <li>Free PNG & JPG compression tool</li>
                   <li>Reduce image size up to 80%</li>
                   <li>No sign-up required, unlimited usage</li>
                   <li>Works on desktop and mobile</li>
                 </ul>
 
-                <h2>How to Compress Images with ShrinkWrap?</h2>
-                <ol className="list-decimal list-inside space-y-2">
+                <h2 className="text-2xl font-semibold text-foreground mb-6 mt-12 text-center">How to Compress Images with ShrinkWrap?</h2>
+                <ol className="list-decimal list-inside space-y-2 text-left max-w-md mx-auto">
                   <li>Upload your PNG or JPG file</li>
                   <li>Click on “Compress”</li>
                   <li>Download your optimized image instantly</li>
                 </ol>
 
-                <h2>Benefits of Using Our Online Image Compressor</h2>
-                <p>Optimizing your images makes websites load faster, improves SEO rankings, and saves storage space on your devices.</p>
+                <h2 className="text-2xl font-semibold text-foreground mb-6 mt-12 text-center">Benefits of Using Our Online Image Compressor</h2>
+                <p className="max-w-prose mx-auto">Optimizing your images makes websites load faster, improves SEO rankings, and saves storage space on your devices.</p>
             </div>
 
             <FAQs />
