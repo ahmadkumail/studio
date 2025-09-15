@@ -21,8 +21,10 @@ import {
   BadgePercent,
   ShieldCheck,
   Smartphone,
-  Server,
   Package,
+  Rocket,
+  TrendingUp,
+  Database
 } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
@@ -290,7 +292,6 @@ a.click();
   );
 };
 
-
 export default function ShrinkWrapApp() {
   const [files, setFiles] = useState<AppFile[]>([]);
   const [isDragActive, setIsDragActive] = useState(false);
@@ -542,9 +543,25 @@ export default function ShrinkWrapApp() {
                     </div>
                 </div>
 
-                <div>
-                    <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Benefits</h2>
-                    <p className="max-w-prose mx-auto text-muted-foreground text-center">Optimizing your images with ShrinkWrap offers significant advantages. It dramatically speeds up your website's loading times, which directly improves user experience and keeps visitors engaged. Faster sites also rank higher on search engines like Google, boosting your SEO and driving more organic traffic. Furthermore, smaller image files save valuable storage space and bandwidth.</p>
+                <div className="space-y-8">
+                    <h2 className="text-2xl font-semibold text-foreground text-center">Benefits</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <Card className="text-center p-6">
+                            <Rocket className="w-10 h-10 text-primary mx-auto mb-4" />
+                            <h3 className="font-semibold mb-2">Faster Websites</h3>
+                            <p className="text-muted-foreground text-sm">Dramatically speed up your website's loading times, which directly improves user experience and keeps visitors engaged.</p>
+                        </Card>
+                        <Card className="text-center p-6">
+                            <TrendingUp className="w-10 h-10 text-primary mx-auto mb-4" />
+                            <h3 className="font-semibold mb-2">Improved SEO</h3>
+                            <p className="text-muted-foreground text-sm">Faster sites rank higher on search engines like Google, boosting your SEO and driving more organic traffic to your page.</p>
+                        </Card>
+                        <Card className="text-center p-6">
+                            <Database className="w-10 h-10 text-primary mx-auto mb-4" />
+                            <h3 className="font-semibold mb-2">Save Storage</h3>
+                            <p className="text-muted-foreground text-sm">Smaller image files save valuable storage space and reduce bandwidth consumption for you and your users.</p>
+                        </Card>
+                    </div>
                 </div>
             </div>
 
