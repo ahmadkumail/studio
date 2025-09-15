@@ -482,24 +482,30 @@ export default function ShrinkWrapApp() {
             
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
             
-            <div className="max-w-4xl mx-auto my-12 text-lg">
-                <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Why ShrinkWrap?</h2>
-                <ul className="list-disc list-inside space-y-2 text-left max-w-md mx-auto text-muted-foreground">
-                  <li>Free PNG & JPG compression tool</li>
-                  <li>Reduce image size up to 80%</li>
-                  <li>No sign-up required, unlimited usage</li>
-                  <li>Works on desktop and mobile</li>
-                </ul>
+            <div className="max-w-4xl mx-auto my-12 text-lg space-y-12">
+                <div>
+                    <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">How It Works</h2>
+                    <ol className="list-decimal list-inside space-y-2 text-left max-w-md mx-auto text-muted-foreground">
+                      <li>Upload your PNG or JPG file</li>
+                      <li>Click on “Compress”</li>
+                      <li>Download your optimized image instantly</li>
+                    </ol>
+                </div>
 
-                <h2 className="text-2xl font-semibold text-foreground mb-6 mt-12 text-center">How It Works</h2>
-                <ol className="list-decimal list-inside space-y-2 text-left max-w-md mx-auto text-muted-foreground">
-                  <li>Upload your PNG or JPG file</li>
-                  <li>Click on “Compress”</li>
-                  <li>Download your optimized image instantly</li>
-                </ol>
+                <div>
+                    <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Why ShrinkWrap?</h2>
+                    <ul className="list-disc list-inside space-y-2 text-left max-w-md mx-auto text-muted-foreground">
+                      <li>Free PNG & JPG compression tool</li>
+                      <li>Reduce image size up to 80%</li>
+                      <li>No sign-up required, unlimited usage</li>
+                      <li>Works on desktop and mobile</li>
+                    </ul>
+                </div>
 
-                <h2 className="text-2xl font-semibold text-foreground mb-6 mt-12 text-center">Benefits of Using Our Online Image Compressor</h2>
-                <p className="max-w-prose mx-auto text-muted-foreground">Optimizing your images makes websites load faster, improves SEO rankings, and saves storage space on your devices.</p>
+                <div>
+                    <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Benefits</h2>
+                    <p className="max-w-prose mx-auto text-muted-foreground">Optimize images for faster websites, better SEO, and less storage.</p>
+                </div>
             </div>
 
             <FAQs />
