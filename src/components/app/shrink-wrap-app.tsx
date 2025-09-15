@@ -497,6 +497,12 @@ export default function ShrinkWrapApp() {
       <main className="flex-grow w-full mt-8">
         {files.length === 0 ? (
           <>
+            <div className="text-center mb-8">
+                <h1 className="text-4xl font-extrabold text-foreground sm:text-5xl lg:text-6xl">Compress PNG/JPG</h1>
+                <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+                    Compress PNG/JPG files with the best quality and compression. Reduce the filesize of many PNG & JPEG images at once.
+                </p>
+            </div>
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
             <HowItWorks />
             <WhyShrinkWrap />
