@@ -475,7 +475,7 @@ export default function ShrinkWrapApp() {
         {files.length === 0 ? (
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground">Free Online PNG & JPG Image Compressor - ShrinkWrap</h1>
-            <div className="mt-8 text-foreground text-lg">
+            <div className="mt-8 text-foreground text-lg text-center">
                 <h2 className="text-2xl font-semibold">Compress PNG and JPG Images Online Without Losing Quality</h2>
                 <p className="max-w-prose mx-auto mt-2 text-muted-foreground">ShrinkWrap is a fast and secure image compressor that helps you reduce PNG and JPG file sizes instantly while keeping the best quality.</p>
             </div>
@@ -483,7 +483,7 @@ export default function ShrinkWrapApp() {
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
             
             <div className="max-w-4xl mx-auto my-12 text-lg space-y-12">
-                <div>
+                <div className="space-y-4">
                     <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">How It Works</h2>
                     <ol className="list-decimal list-inside space-y-2 text-left max-w-md mx-auto text-muted-foreground">
                       <li>Upload your PNG or JPG file</li>
@@ -491,8 +491,7 @@ export default function ShrinkWrapApp() {
                       <li>Download your optimized image instantly</li>
                     </ol>
                 </div>
-
-                <div>
+                <div className="space-y-4">
                     <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Why ShrinkWrap?</h2>
                     <ul className="list-disc list-inside space-y-2 text-left max-w-md mx-auto text-muted-foreground">
                       <li>Free PNG & JPG compression tool</li>
@@ -504,7 +503,7 @@ export default function ShrinkWrapApp() {
 
                 <div>
                     <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Benefits</h2>
-                    <p className="max-w-prose mx-auto text-muted-foreground">Optimize images for faster websites, better SEO, and less storage.</p>
+                    <p className="max-w-prose mx-auto text-muted-foreground">Optimizing your images with ShrinkWrap offers significant advantages. It dramatically speeds up your website's loading times, which directly improves user experience and keeps visitors engaged. Faster sites also rank higher on search engines like Google, boosting your SEO and driving more organic traffic. Furthermore, smaller image files save valuable storage space on your devices and servers.</p>
                 </div>
             </div>
 
