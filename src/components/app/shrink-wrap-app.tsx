@@ -538,7 +538,7 @@ export default function ShrinkWrapApp() {
         {files.length === 0 ? (
           <>
             <div className="text-center mb-8">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground">Compress PNG/JPG</h1>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground">Free Online PNG & JPG Image Compressor - ShrinkWrap</h1>
                 <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
                     Compress PNG & JPEG files with the best quality and compression. Reduce the file size of your images in a single click.
                 </p>
