@@ -500,7 +500,7 @@ export default function ShrinkWrapApp() {
             <div className="text-center mb-8">
                 <h1 className="text-4xl font-extrabold text-foreground sm:text-5xl lg:text-6xl">Compress PNG/JPG</h1>
                 <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-                    Compress PNG/JPG files with the best quality and compression. Reduce the filesize of many PNG & JPEG images at once.
+                    Compress PNG & JPEG files with the best quality and compression. Reduce the file size of your images in a single click.
                 </p>
             </div>
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
