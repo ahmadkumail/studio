@@ -14,6 +14,9 @@ const Navbar = () => {
                 <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
                     Home
                </Link>
+               <Link href="/#faq" className="text-muted-foreground hover:text-foreground transition-colors">
+                    FAQs
+               </Link>
                <Link href="/blog" className="text-muted-foreground hover:text-foreground transition-colors">
                 Blogs
                </Link>

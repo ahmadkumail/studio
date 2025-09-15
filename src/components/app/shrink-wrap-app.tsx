@@ -33,6 +33,7 @@ import {
 } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { getAiSuggestion } from './actions';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion';
 
 const MAX_FILES = 10;
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
@@ -98,6 +99,44 @@ const WhyShrinkWrap = () => (
           <p className="text-sm text-muted-foreground">Your files are processed on your device and are never uploaded to a server, ensuring your data remains private.</p>
         </Card>
       </div>
+    </div>
+  );
+
+  const FAQs = () => (
+    <div id="faq" className="w-full max-w-4xl mx-auto text-center my-16">
+      <h2 className="text-2xl font-semibold text-foreground mb-4">Frequently Asked Questions</h2>
+      <Accordion type="single" collapsible className="w-full text-left">
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is ShrinkWrap free to use?</AccordionTrigger>
+          <AccordionContent>
+            Yes, ShrinkWrap is completely free to use. You can compress as many images as you want without any cost.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Are my files secure?</AccordionTrigger>
+          <AccordionContent>
+            Absolutely. Your privacy is our top priority. All file compression happens directly in your browser. This means your files are never uploaded to our or any third-party servers.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-3">
+          <AccordionTrigger>What file types are supported?</AccordionTrigger>
+          <AccordionContent>
+            ShrinkWrap currently supports PNG and JPG (JPEG) image formats. You can also convert images between these two formats.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-4">
+          <AccordionTrigger>What is the maximum file size I can upload?</AccordionTrigger>
+          <AccordionContent>
+            You can upload images up to 100MB each. You can process up to 10 files at a time.
+          </AccordionContent>
+        </AccordionItem>
+         <AccordionItem value="item-5">
+          <AccordionTrigger>How does the AI suggestion work?</AccordionTrigger>
+          <AccordionContent>
+            Our AI analyzes your selected compression level (Low, Medium, High) and the file type to recommend a quality setting that provides a great balance between file size reduction and visual quality, taking the guesswork out of optimization.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 
@@ -506,6 +545,7 @@ export default function ShrinkWrapApp() {
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
             <HowItWorks />
             <WhyShrinkWrap />
+            <FAQs />
           </>
         ) : (
           <div className="space-y-3">
