@@ -6,8 +6,8 @@ const Footer = () => {
   return (
     <footer className="bg-primary/5 border-t mt-12">
       <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+          <div className="space-y-4 md:col-span-1 flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2">
                 <PandaIcon className="w-8 h-8 text-primary" />
                 <h1 className="text-xl font-bold text-foreground">ShrinkWrap</h1>
@@ -16,7 +16,7 @@ const Footer = () => {
               AI-powered file compression for everyone. Fast, secure, and easy to use.
             </p>
           </div>
-          <div>
+          <div className="md:col-start-2">
             <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">About Us</h3>
             <ul className="mt-4 space-y-2">
               <li>
