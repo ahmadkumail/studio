@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+
 import { Badge } from '@/components/ui/badge';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -10,8 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPostPage() {
-  const image = PlaceHolderImages.find((img) => img.id === 'blog-8');
-
   return (
     <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <article className="prose prose-lg mx-auto text-foreground">
@@ -26,18 +23,6 @@ export default function BlogPostPage() {
                 <Badge variant="outline">Productivity</Badge>
             </div>
         </div>
-
-        {image && (
-          <div className="relative w-full h-96 rounded-lg overflow-hidden my-8">
-            <Image
-              src={image.imageUrl}
-              alt={image.description}
-              fill
-              className="object-cover"
-              data-ai-hint={image.imageHint}
-            />
-          </div>
-        )}
 
         <p className="lead">
           File sharing is a routine part of modern work and life. It's so common that we often do it on autopilot, clicking "share" without a second thought. However, this convenience can mask significant risks to our security, privacy, and even our professional reputation. Are you making these common mistakes? Let's find out how to avoid them.

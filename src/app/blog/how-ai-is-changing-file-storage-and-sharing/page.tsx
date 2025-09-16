@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -10,8 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPostPage() {
-  const image = PlaceHolderImages.find((img) => img.id === 'blog-10');
-
   return (
     <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <article className="prose prose-lg mx-auto text-foreground">
@@ -26,18 +23,6 @@ export default function BlogPostPage() {
                 <Badge variant="outline">Future Tech</Badge>
             </div>
         </div>
-
-        {image && (
-          <div className="relative w-full h-96 rounded-lg overflow-hidden my-8">
-            <Image
-              src={image.imageUrl}
-              alt={image.description}
-              fill
-              className="object-cover"
-              data-ai-hint={image.imageHint}
-            />
-          </div>
-        )}
 
         <p className="lead">
           For years, file storage and sharing have been relatively static industries. You upload a file, you get a link, you send the link. But a powerful new force is poised to transform this landscape entirely: Artificial Intelligence. AI is no longer a futuristic concept; it's being integrated into the core of storage platforms, moving them from passive digital lockers to intelligent, proactive data hubs. Here’s how AI is set to redefine our relationship with our files.

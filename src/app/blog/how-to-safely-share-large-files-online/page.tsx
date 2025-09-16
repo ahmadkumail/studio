@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -10,8 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPostPage() {
-  const image = PlaceHolderImages.find((img) => img.id === 'blog-2');
-
   return (
     <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <article className="prose prose-lg mx-auto text-foreground">
@@ -26,18 +23,6 @@ export default function BlogPostPage() {
                 <Badge variant="outline">Data Privacy</Badge>
             </div>
         </div>
-
-        {image && (
-          <div className="relative w-full h-96 rounded-lg overflow-hidden my-8">
-            <Image
-              src={image.imageUrl}
-              alt={image.description}
-              fill
-              className="object-cover"
-              data-ai-hint={image.imageHint}
-            />
-          </div>
-        )}
 
         <p className="lead">
           In an age of remote work and digital collaboration, sharing large files is a daily necessity. From project blueprints and video files to extensive photo albums, we're constantly moving massive amounts of data across the internet. But with this convenience comes risk. How can you ensure your sensitive files are shared safely and don't fall into the wrong hands? This guide will walk you through the essential practices and tools for secure large file sharing.

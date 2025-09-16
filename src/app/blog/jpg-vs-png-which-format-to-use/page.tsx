@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+
 import { Badge } from '@/components/ui/badge';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -11,8 +10,6 @@ export const metadata: Metadata = {
 
 
 export default function BlogPostPage() {
-  const image = PlaceHolderImages.find((img) => img.id === 'blog-5');
-
   return (
     <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <article className="prose prose-lg mx-auto text-foreground">
@@ -27,18 +24,6 @@ export default function BlogPostPage() {
                 <Badge variant="outline">Web Design</Badge>
             </div>
         </div>
-
-        {image && (
-          <div className="relative w-full h-96 rounded-lg overflow-hidden my-8">
-            <Image
-              src={image.imageUrl}
-              alt={image.description}
-              fill
-              className="object-cover"
-              data-ai-hint={image.imageHint}
-            />
-          </div>
-        )}
 
         <p className="lead">
           When working with images for the web, you'll inevitably face a fundamental choice: should you save your image as a JPG or a PNG? While they may seem interchangeable, these two file formats are fundamentally different, each with its own strengths and weaknesses. Choosing the right one is critical for balancing image quality with file size, which directly impacts your website's performance. This article will break down the differences to help you make an informed decision every time.

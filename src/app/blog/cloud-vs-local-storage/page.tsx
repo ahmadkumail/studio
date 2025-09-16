@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+
 import { Badge } from '@/components/ui/badge';
 import type { Metadata } from 'next';
 
@@ -10,8 +9,6 @@ export const metadata: Metadata = {
 
 
 export default function BlogPostPage() {
-  const image = PlaceHolderImages.find((img) => img.id === 'blog-6');
-
   return (
     <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <article className="prose prose-lg mx-auto text-foreground">
@@ -26,18 +23,6 @@ export default function BlogPostPage() {
                 <Badge variant="outline">Local Storage</Badge>
             </div>
         </div>
-
-        {image && (
-          <div className="relative w-full h-96 rounded-lg overflow-hidden my-8">
-            <Image
-              src={image.imageUrl}
-              alt={image.description}
-              fill
-              className="object-cover"
-              data-ai-hint={image.imageHint}
-            />
-          </div>
-        )}
 
         <p className="lead">
           The debate between cloud storage and local storage is one of the most significant decisions a modern computer user has to make. Where should you keep your precious digital life—your photos, documents, projects, and backups? Both options have distinct advantages and disadvantages. This guide will break down the key differences to help you decide which solution, or combination of solutions, is right for you.

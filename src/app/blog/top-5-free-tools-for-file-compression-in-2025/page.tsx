@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -10,8 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPostPage() {
-  const image = PlaceHolderImages.find((img) => img.id === 'blog-1');
-
   return (
     <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <article className="prose prose-lg mx-auto text-foreground">
@@ -26,18 +23,6 @@ export default function BlogPostPage() {
                 <Badge variant="outline">Productivity</Badge>
             </div>
         </div>
-
-        {image && (
-          <div className="relative w-full h-96 rounded-lg overflow-hidden my-8">
-            <Image
-              src={image.imageUrl}
-              alt={image.description}
-              fill
-              className="object-cover"
-              data-ai-hint={image.imageHint}
-            />
-          </div>
-        )}
 
         <p className="lead">
           In our digital world, file size matters more than ever. Whether you're a developer optimizing web assets, a photographer sending high-resolution images, or just trying to clear up space on your hard drive, efficient file compression is key. The good news is you don't need to spend a fortune on software. We've tested and reviewed the best free file compression tools for 2025 that deliver impressive results without costing a dime.
