@@ -1,30 +1,67 @@
+"use client";
+
 import { PandaIcon } from '@/components/icons/panda-icon';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+
+const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/#faq', label: 'FAQs' },
+    { href: '/blog', label: 'Blogs' },
+    { href: '/contact', label: 'Contact Us' },
+];
 
 const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname();
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    }
+
   return (
-    <header className="py-4 px-4 sm:px-6 lg:px-8 border-b">
+    <header className="py-4 px-4 sm:px-6 lg:px-8 border-b relative">
         <nav className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2" onClick={closeMenu}>
                 <PandaIcon className="w-8 h-8 sm:w-10 sm:h-10 text-primary" />
                 <h1 className="text-lg sm:text-xl font-bold text-foreground">ShrinkWrap</h1>
             </Link>
-            <div className="flex items-center gap-2 sm:gap-4 md:gap-6 text-xs sm:text-sm font-medium">
-                <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors px-1 sm:px-0">
-                    Home
-               </Link>
-               <Link href="/#faq" className="text-muted-foreground hover:text-foreground transition-colors px-1 sm:px-0">
-                    FAQs
-               </Link>
-               <Link href="/blog" className="text-muted-foreground hover:text-foreground transition-colors px-1 sm:px-0">
-                Blogs
-               </Link>
-               <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors px-1 sm:px-0">
-                Contact Us
-               </Link>
+            
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center gap-4 md:gap-6 text-sm font-medium">
+                {navLinks.map(({href, label}) => (
+                     <Link key={label} href={href} className="text-muted-foreground hover:text-foreground transition-colors">
+                        {label}
+                   </Link>
+                ))}
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+                <button onClick={toggleMenu} aria-label="Toggle menu">
+                    {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                </button>
             </div>
         </nav>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+            <div className="md:hidden mt-4 absolute top-full left-0 w-full bg-background border-b z-50">
+                <div className="flex flex-col items-center gap-4 py-4">
+                    {navLinks.map(({href, label}) => (
+                        <Link key={label} href={href} onClick={closeMenu} className="text-lg text-muted-foreground hover:text-foreground transition-colors">
+                            {label}
+                       </Link>
+                    ))}
+                </div>
+            </div>
+        )}
     </header>
   );
 };
