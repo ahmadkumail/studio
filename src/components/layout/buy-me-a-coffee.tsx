@@ -54,9 +54,9 @@ const BuyMeACoffee = () => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <button className="fixed top-20 right-4 z-50 flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-foreground bg-background/80 border rounded-full shadow-lg backdrop-blur-sm hover:bg-accent transition-all duration-300 group">
-          <CoffeeIcon className="w-5 h-5 text-primary" />
-          <span className="hidden sm:group-hover:inline">Buy me a coffee</span>
+        <button className="fixed top-20 right-4 z-50 flex items-center gap-2 p-2 text-sm font-semibold text-foreground bg-background/80 border rounded-full shadow-lg backdrop-blur-sm hover:bg-accent transition-all duration-300 group hover:px-3">
+          <CoffeeIcon className="w-6 h-6 text-primary transition-transform group-hover:scale-110" />
+          <span className="hidden group-hover:inline">Buy me a coffee</span>
         </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
