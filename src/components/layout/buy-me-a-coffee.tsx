@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -21,6 +21,7 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { CoffeeIcon } from '../icons/coffee-icon';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
+import { cn } from '@/lib/utils';
 
 const donationSchema = z.object({
   amount: z.coerce.number().min(1, { message: 'Minimum donation is $1.' }),
@@ -30,7 +31,32 @@ type DonationFormValues = z.infer<typeof donationSchema>;
 
 const BuyMeACoffee = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (typeof window !== 'undefined') {
+        if (window.scrollY > lastScrollY && window.scrollY > 100) { // if scroll down hide the navbar
+          setIsVisible(false);
+        } else { // if scroll up show the navbar
+          setIsVisible(true);
+        }
+        // remember current page location to use in the next move
+        setLastScrollY(window.scrollY);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', controlNavbar);
+
+      // cleanup function
+      return () => {
+        window.removeEventListener('scroll', controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
 
   const form = useForm<DonationFormValues>({
     resolver: zodResolver(donationSchema),
@@ -56,7 +82,10 @@ const BuyMeACoffee = () => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <button className="fixed top-20 right-4 z-50 flex items-center gap-2 px-4 py-2 text-sm font-semibold text-foreground bg-background/80 border rounded-full shadow-lg backdrop-blur-sm hover:bg-accent transition-all duration-300 group">
+        <button className={cn("fixed top-20 right-4 z-50 flex items-center gap-2 px-4 py-2 text-sm font-semibold text-foreground bg-background/80 border rounded-full shadow-lg backdrop-blur-sm hover:bg-accent transition-all duration-300 group", {
+            'opacity-0 translate-y-[-20px] pointer-events-none': !isVisible,
+            'opacity-100 translate-y-0': isVisible
+        })}>
           <CoffeeIcon className="w-6 h-6 text-primary" />
           <span className="hidden sm:inline">Buy me a coffee</span>
         </button>
