@@ -56,7 +56,7 @@ const BuyMeACoffee = () => {
       <DialogTrigger asChild>
         <button className="fixed top-20 right-4 z-50 flex items-center gap-2 px-3 py-1.5 text-sm font-semibold text-foreground bg-background/80 border rounded-full shadow-lg backdrop-blur-sm hover:bg-accent transition-all duration-300 group">
           <CoffeeIcon className="w-5 h-5 text-primary" />
-          <span className="hidden sm:inline">Buy me a coffee</span>
+          <span className="hidden sm:group-hover:inline">Buy me a coffee</span>
         </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
