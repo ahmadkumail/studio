@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import type { Metadata } from 'next';
 import { Badge } from '@/components/ui/badge';
+import { CoffeeIcon } from '@/components/icons/coffee-icon';
 
 export const metadata: Metadata = {
   title: 'Blog | File Compression Tips and Insights',
@@ -95,9 +96,15 @@ export default function BlogIndexPage() {
   return (
     <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-extrabold text-foreground sm:text-5xl">
-          The ShrinkWrap Blog
-        </h1>
+        <div className="flex justify-center items-center gap-4">
+          <div className="flex items-end">
+            <CoffeeIcon className="w-8 h-8 text-primary" />
+            <CoffeeIcon className="w-12 h-12 text-primary" />
+          </div>
+          <h1 className="text-4xl font-extrabold text-foreground sm:text-5xl">
+            The ShrinkWrap Blog
+          </h1>
+        </div>
         <p className="mt-4 text-xl text-muted-foreground">
           Tips, tricks, and insights on file compression and digital efficiency.
         </p>
