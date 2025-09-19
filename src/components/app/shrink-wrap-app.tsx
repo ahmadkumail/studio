@@ -367,13 +367,13 @@ export default function ShrinkWrapApp() {
   const getCompressionOptions = (level: CompressionLevel) => {
     switch (level) {
         case 'Low':
-            return { maxSizeMB: 2, initialQuality: 0.85, alwaysKeepResolution: true };
+            return { initialQuality: 0.8, alwaysKeepResolution: true };
         case 'Medium':
-            return { maxSizeMB: 1, initialQuality: 0.75 };
+            return { initialQuality: 0.6 };
         case 'High':
-            return { maxSizeMB: 0.5, initialQuality: 0.6 };
+            return { initialQuality: 0.4 };
         default:
-            return { maxSizeMB: 1, initialQuality: 0.75 };
+            return { initialQuality: 0.6 };
     }
   };
 
