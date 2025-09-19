@@ -1,12 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail } from 'lucide-react';
+import { Mail, MessageSquare, Send } from 'lucide-react';
+import type { Metadata } from 'next';
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -23,58 +24,77 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="container mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-extrabold text-foreground sm:text-5xl">
-          Contact Us
-        </h1>
-        <p className="mt-4 text-xl text-muted-foreground">
-          Have a question or want to work with us? Drop us a line.
-        </p>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-12">
-        <div className="space-y-8">
-            <Card>
-                <CardHeader>
-                    <CardTitle>Contact Information</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6 text-sm">
-                    <div className="flex items-start gap-4">
-                        <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                        <div>
-                            <h3 className="font-semibold">Email</h3>
-                            <a href="mailto:shrinkwrap13@gmail.com" className="text-muted-foreground hover:text-primary">shrinkwrap13@gmail.com</a>
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
+    <div className="bg-background">
+      <div className="container mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-extrabold text-foreground sm:text-5xl lg:text-6xl tracking-tight">
+            Get in Touch
+          </h1>
+          <p className="mt-4 max-w-2xl mx-auto text-xl text-muted-foreground">
+            We’d love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out.
+          </p>
         </div>
-        <div>
-          <Card>
-            <CardHeader>
-                <CardTitle>Send us a message</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input id="name" type="text" placeholder="Your Name" required />
-                </div>
-                <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="you@example.com" required />
-                </div>
-                <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea id="message" placeholder="Your message..." required rows={6} />
-                </div>
-                <Button type="submit" className="w-full">
-                    Send Message
-                </Button>
-                </form>
-            </CardContent>
-          </Card>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="space-y-8">
+            <div className="flex items-start gap-6 p-6 border rounded-lg bg-card/50">
+              <div className="flex-shrink-0 bg-primary/10 text-primary p-4 rounded-full">
+                <Mail className="h-8 w-8" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-foreground">Email Us</h3>
+                <p className="mt-2 text-muted-foreground">
+                  For general inquiries, support, or feedback, please send us an email. We aim to respond within 24 hours.
+                </p>
+                <a href="mailto:shrinkwrap13@gmail.com" className="mt-4 inline-block font-semibold text-primary hover:underline">
+                  shrinkwrap13@gmail.com
+                </a>
+              </div>
+            </div>
+            <div className="flex items-start gap-6 p-6 border rounded-lg bg-card/50">
+              <div className="flex-shrink-0 bg-primary/10 text-primary p-4 rounded-full">
+                <MessageSquare className="h-8 w-8" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-foreground">Feedback</h3>
+                <p className="mt-2 text-muted-foreground">
+                  Have a suggestion or an idea to improve ShrinkWrap? We are all ears! Your feedback is valuable to us.
+                </p>
+                <a href="mailto:shrinkwrap13@gmail.com?subject=Feedback%20for%20ShrinkWrap" className="mt-4 inline-block font-semibold text-primary hover:underline">
+                  Share your thoughts
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <Card className="shadow-2xl shadow-primary/10">
+              <CardHeader>
+                  <CardTitle className="text-3xl font-bold">Send a Direct Message</CardTitle>
+                  <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                      <Label htmlFor="name" className="font-semibold">Name</Label>
+                      <Input id="name" type="text" placeholder="Your Name" required className="py-6"/>
+                  </div>
+                  <div className="space-y-2">
+                      <Label htmlFor="email" className="font-semibold">Email</Label>
+                      <Input id="email" type="email" placeholder="you@example.com" required className="py-6"/>
+                  </div>
+                  <div className="space-y-2">
+                      <Label htmlFor="message" className="font-semibold">Message</Label>
+                      <Textarea id="message" placeholder="Type your message here..." required rows={6} />
+                  </div>
+                  <Button type="submit" className="w-full text-lg py-6 font-bold">
+                      <Send className="mr-2 h-5 w-5" />
+                      Send Message
+                  </Button>
+                  </form>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </div>
