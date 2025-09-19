@@ -7,7 +7,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, MessageSquare, Send } from 'lucide-react';
-import type { Metadata } from 'next';
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -37,34 +36,38 @@ export default function ContactPage() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-8">
-            <div className="flex items-start gap-6 p-6 border rounded-lg bg-card/50">
-              <div className="flex-shrink-0 bg-primary/10 text-primary p-4 rounded-full">
-                <Mail className="h-8 w-8" />
+            <a href="mailto:shrinkwrap13@gmail.com" className="block w-full text-left group">
+              <div className="flex items-start gap-6 p-6 border rounded-lg bg-card/50 group-hover:border-primary transition-all duration-300">
+                <div className="flex-shrink-0 bg-primary/10 text-primary p-4 rounded-full group-hover:scale-110 transition-transform">
+                  <Mail className="h-8 w-8" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">Email Us</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    For general inquiries, support, or feedback, please send us an email. We aim to respond within 24 hours.
+                  </p>
+                  <p className="mt-4 inline-block font-semibold text-primary underline">
+                    shrinkwrap13@gmail.com
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-2xl font-bold text-foreground">Email Us</h3>
-                <p className="mt-2 text-muted-foreground">
-                  For general inquiries, support, or feedback, please send us an email. We aim to respond within 24 hours.
-                </p>
-                <a href="mailto:shrinkwrap13@gmail.com" className="mt-4 inline-block font-semibold text-primary hover:underline">
-                  shrinkwrap13@gmail.com
-                </a>
+            </a>
+            <a href="mailto:shrinkwrap13@gmail.com?subject=Feedback%20for%20ShrinkWrap" className="block w-full text-left group">
+              <div className="flex items-start gap-6 p-6 border rounded-lg bg-card/50 group-hover:border-primary transition-all duration-300">
+                <div className="flex-shrink-0 bg-primary/10 text-primary p-4 rounded-full group-hover:scale-110 transition-transform">
+                  <MessageSquare className="h-8 w-8" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">Feedback</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Have a suggestion or an idea to improve ShrinkWrap? We are all ears! Your feedback is valuable to us.
+                  </p>
+                  <p className="mt-4 inline-block font-semibold text-primary underline">
+                    Share your thoughts
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="flex items-start gap-6 p-6 border rounded-lg bg-card/50">
-              <div className="flex-shrink-0 bg-primary/10 text-primary p-4 rounded-full">
-                <MessageSquare className="h-8 w-8" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-foreground">Feedback</h3>
-                <p className="mt-2 text-muted-foreground">
-                  Have a suggestion or an idea to improve ShrinkWrap? We are all ears! Your feedback is valuable to us.
-                </p>
-                <a href="mailto:shrinkwrap13@gmail.com?subject=Feedback%20for%20ShrinkWrap" className="mt-4 inline-block font-semibold text-primary hover:underline">
-                  Share your thoughts
-                </a>
-              </div>
-            </div>
+            </a>
           </div>
 
           <div>
