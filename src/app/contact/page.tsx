@@ -15,33 +15,15 @@ export default function ContactPage() {
   const { toast } = useToast();
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 
-  const handleDirectMessageSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, message: string) => {
     e.preventDefault();
     toast({
       title: "Message Sent!",
-      description: "Thanks for reaching out. We'll get back to you soon.",
+      description: message,
     });
     (e.target as HTMLFormElement).reset();
-  };
-
-  const handleFeedbackSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const feedback = formData.get('feedback-message') as string;
-    
-    const mailtoLink = `mailto:shrinkwrap13@gmail.com?subject=ShrinkWrap App Feedback&body=${encodeURIComponent(feedback)}`;
-    
-    window.location.href = mailtoLink;
-    
     setIsFeedbackOpen(false);
-    (e.target as HTMLFormElement).reset();
-
-    toast({
-      title: "Opening Email Client...",
-      description: "Please send the pre-filled email to complete your feedback submission.",
-    });
   };
-
 
   return (
     <div className="bg-background">
@@ -100,7 +82,7 @@ export default function ContactPage() {
                     We appreciate you taking the time to help us improve ShrinkWrap.
                   </DialogDescription>
                 </DialogHeader>
-                <form onSubmit={handleFeedbackSubmit} className="space-y-4">
+                <form onSubmit={(e) => handleSubmit(e, "Thank you for your feedback!")} className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="feedback-message" className="sr-only">Feedback</Label>
                     <Textarea id="feedback-message" name="feedback-message" placeholder="Your feedback here..." required rows={5} />
@@ -121,7 +103,7 @@ export default function ContactPage() {
                   <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
               </CardHeader>
               <CardContent>
-                  <form onSubmit={handleDirectMessageSubmit} className="space-y-6">
+                  <form onSubmit={(e) => handleSubmit(e, "Thanks for reaching out. We'll get back to you soon.")} className="space-y-6">
                   <div className="space-y-2">
                       <Label htmlFor="name" className="font-semibold">Name</Label>
                       <Input id="name" type="text" placeholder="Your Name" required className="py-6"/>
