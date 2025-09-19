@@ -42,7 +42,7 @@ export default function ContactPage() {
                   <Mail className="h-8 w-8" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">Email Us</h3>
+                  <h3 className="text-2xl font-bold text-foreground">Email Us</h3>
                   <p className="mt-2 text-muted-foreground">
                     For general inquiries, support, or feedback, please send us an email. We aim to respond within 24 hours.
                   </p>
@@ -58,7 +58,7 @@ export default function ContactPage() {
                   <MessageSquare className="h-8 w-8" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">Feedback</h3>
+                  <h3 className="text-2xl font-bold text-foreground">Feedback</h3>
                   <p className="mt-2 text-muted-foreground">
                     Have a suggestion or an idea to improve ShrinkWrap? We are all ears! Your feedback is valuable to us.
                   </p>
