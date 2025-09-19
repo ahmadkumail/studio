@@ -26,9 +26,16 @@ export default function ContactPage() {
 
   const handleFeedbackSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const feedback = formData.get('feedback-message') as string;
+    
+    const mailtoLink = `mailto:shrinkwrap13@gmail.com?subject=ShrinkWrap App Feedback&body=${encodeURIComponent(feedback)}`;
+    
+    window.location.href = mailtoLink;
+    
     toast({
       title: "Feedback Submitted!",
-      description: "Thank you for sharing your thoughts with us.",
+      description: "Thank you for sharing your thoughts with us. Your email client should now be open.",
     });
     setIsFeedbackOpen(false);
     (e.target as HTMLFormElement).reset();
@@ -95,7 +102,7 @@ export default function ContactPage() {
                 <form onSubmit={handleFeedbackSubmit} className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="feedback-message" className="sr-only">Feedback</Label>
-                    <Textarea id="feedback-message" placeholder="Your feedback here..." required rows={5} />
+                    <Textarea id="feedback-message" name="feedback-message" placeholder="Your feedback here..." required rows={5} />
                   </div>
                   <DialogFooter>
                     <Button type="submit">Submit Feedback</Button>
