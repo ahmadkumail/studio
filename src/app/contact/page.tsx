@@ -44,14 +44,14 @@ export default function ContactPage() {
                         <Mail className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                         <div>
                             <h3 className="font-semibold">Email</h3>
-                            <a href="mailto:hello@shrinkwrap.app" className="text-muted-foreground hover:text-primary">hello@shrinkwrap.app</a>
+                            <a href="mailto:shrinkwrap13@gmail.com" className="text-muted-foreground hover:text-primary">shrinkwrap13@gmail.com</a>
                         </div>
                     </div>
                     <div className="flex items-start gap-4">
                         <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
                         <div>
                             <h3 className="font-semibold">Phone</h3>
-                            <span className="text-muted-foreground">+1 (555) 123-4567</span>
+                            <span className="text-muted-foreground">+923376088907</span>
                         </div>
                     </div>
                     <div className="flex items-start gap-4">
