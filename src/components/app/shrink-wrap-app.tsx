@@ -367,13 +367,13 @@ export default function ShrinkWrapApp() {
   const getCompressionOptions = (level: CompressionLevel) => {
     switch (level) {
         case 'Low':
-            return { maxSizeMB: 2, initialQuality: 0.9, alwaysKeepResolution: true };
+            return { maxSizeMB: 2, initialQuality: 0.85, alwaysKeepResolution: true };
         case 'Medium':
-            return { maxSizeMB: 1, initialQuality: 0.7 };
+            return { maxSizeMB: 1, initialQuality: 0.75 };
         case 'High':
-            return { maxSizeMB: 0.5, initialQuality: 0.5 };
+            return { maxSizeMB: 0.5, initialQuality: 0.6 };
         default:
-            return { maxSizeMB: 1, initialQuality: 0.7 };
+            return { maxSizeMB: 1, initialQuality: 0.75 };
     }
   };
 
@@ -381,38 +381,27 @@ export default function ShrinkWrapApp() {
   const handleCompressFile = async (fileToCompress: AppFile) => {
     setFiles(prev => prev.map(f => f.id === fileToCompress.id ? { ...f, status: 'compressing', progress: 0 } : f));
     try {
-        let finalFile: Blob;
-        let finalSize: number;
+        let finalFile: Blob = fileToCompress.file;
+        let finalSize: number = fileToCompress.originalSize;
 
-        if (fileToCompress.targetFormat === 'JPG' || fileToCompress.targetFormat === 'PNG') {
-            const options = getCompressionOptions(fileToCompress.compressionLevel);
+        const options = getCompressionOptions(fileToCompress.compressionLevel);
 
-            const compressedFile = await imageCompression(fileToCompress.file, {
-                ...options,
-                onProgress: (p: number) => {
-                    setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {...f, progress: p} : f));
-                },
-                fileType: fileToCompress.targetFormat.toLowerCase(),
-            });
-
-            if (compressedFile.size > fileToCompress.originalSize) {
-                finalFile = fileToCompress.file;
-                finalSize = fileToCompress.originalSize;
-                toast({
-                  title: "Already Optimized",
-                  description: `${fileToCompress.file.name} could not be compressed further.`,
-                })
-            } else {
-                finalFile = compressedFile;
-                finalSize = compressedFile.size;
-            }
+        const compressedFile = await imageCompression(fileToCompress.file, {
+            ...options,
+            onProgress: (p: number) => {
+                setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {...f, progress: p} : f));
+            },
+            fileType: fileToCompress.targetFormat.toLowerCase(),
+        });
+        
+        if (compressedFile.size < fileToCompress.originalSize) {
+            finalFile = compressedFile;
+            finalSize = compressedFile.size;
         } else {
             toast({
-                variant: "destructive",
-                title: "Unsupported File Type",
-                description: `Cannot process this file type.`,
+                title: "Already Optimized",
+                description: `${fileToCompress.file.name} could not be compressed further. Using original.`,
             });
-            throw new Error('Unsupported file type');
         }
         
         setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {
@@ -598,3 +587,5 @@ export default function ShrinkWrapApp() {
     </div>
   );
 }
+
+    
