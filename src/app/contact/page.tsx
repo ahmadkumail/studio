@@ -33,12 +33,13 @@ export default function ContactPage() {
     
     window.location.href = mailtoLink;
     
-    toast({
-      title: "Feedback Submitted!",
-      description: "Thank you for sharing your thoughts with us. Your email client should now be open.",
-    });
     setIsFeedbackOpen(false);
     (e.target as HTMLFormElement).reset();
+
+    toast({
+      title: "Opening Email Client...",
+      description: "Please send the pre-filled email to complete your feedback submission.",
+    });
   };
 
 
