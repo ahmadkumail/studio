@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -45,20 +45,6 @@ export default function ContactPage() {
                         <div>
                             <h3 className="font-semibold">Email</h3>
                             <a href="mailto:shrinkwrap13@gmail.com" className="text-muted-foreground hover:text-primary">shrinkwrap13@gmail.com</a>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                        <Phone className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                        <div>
-                            <h3 className="font-semibold">Phone</h3>
-                            <span className="text-muted-foreground">+923376088907</span>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                        <MapPin className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
-                        <div>
-                            <h3 className="font-semibold">Office</h3>
-                            <p className="text-muted-foreground">123 Innovation Drive<br/>Tech City, 94105</p>
                         </div>
                     </div>
                 </CardContent>
