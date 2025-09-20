@@ -367,13 +367,13 @@ export default function ShrinkWrapApp() {
   const getCompressionOptions = (level: CompressionLevel) => {
     switch (level) {
         case 'Low':
-            return { initialQuality: 0.8, alwaysKeepResolution: true };
+            return { maxSizeMB: 1, useWebWorker: true };
         case 'Medium':
-            return { initialQuality: 0.6 };
+            return { maxSizeMB: 0.5, useWebWorker: true };
         case 'High':
-            return { initialQuality: 0.4 };
+            return { maxSizeMB: 0.1, useWebWorker: true };
         default:
-            return { initialQuality: 0.6 };
+            return { maxSizeMB: 0.5, useWebWorker: true };
     }
   };
 
@@ -381,9 +381,6 @@ export default function ShrinkWrapApp() {
   const handleCompressFile = async (fileToCompress: AppFile) => {
     setFiles(prev => prev.map(f => f.id === fileToCompress.id ? { ...f, status: 'compressing', progress: 0 } : f));
     try {
-        let finalFile: Blob = fileToCompress.file;
-        let finalSize: number = fileToCompress.originalSize;
-
         const options = getCompressionOptions(fileToCompress.compressionLevel);
 
         const compressedFile = await imageCompression(fileToCompress.file, {
@@ -394,24 +391,27 @@ export default function ShrinkWrapApp() {
             fileType: fileToCompress.targetFormat.toLowerCase(),
         });
         
-        if (compressedFile.size < fileToCompress.originalSize) {
-            finalFile = compressedFile;
-            finalSize = compressedFile.size;
-        } else {
-            toast({
+        if (compressedFile.size >= fileToCompress.originalSize) {
+             toast({
                 title: "Already Optimized",
-                description: `${fileToCompress.file.name} could not be compressed further. Using original.`,
+                description: `${fileToCompress.file.name} could not be compressed further.`,
             });
+             setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {
+                ...f, 
+                status: 'done', 
+                progress: 100,
+                compressedSize: fileToCompress.originalSize,
+                compressedFile: fileToCompress.file,
+            } : f));
+        } else {
+             setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {
+                ...f, 
+                status: 'done', 
+                progress: 100,
+                compressedSize: compressedFile.size,
+                compressedFile: compressedFile,
+            } : f));
         }
-        
-        setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {
-            ...f, 
-            status: 'done', 
-            progress: 100,
-            compressedSize: finalSize,
-            compressedFile: finalFile,
-        } : f));
-
     } catch (error) {
         console.error('Compression error:', error);
         setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {
@@ -587,5 +587,7 @@ export default function ShrinkWrapApp() {
     </div>
   );
 }
+
+    
 
     
