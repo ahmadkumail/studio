@@ -10,6 +10,46 @@ export const metadata: Metadata = {
 
 const blogPosts = [
     {
+    title: 'Beyond Compression: A Strategic Guide to Image SEO',
+    slug: 'guide-to-image-seo',
+    description: 'Unlock higher search rankings by mastering image SEO. Learn how to optimize alt text, file names, and dimensions to boost your online visibility.',
+    image_id: 'blog-15',
+    date: 'September 21, 2025',
+    keywords: ['Image SEO', 'Alt Text', 'Google Images', 'Web Performance'],
+  },
+  {
+    title: 'Core Web Vitals: How Image Size Directly Impacts Your Google Ranking',
+    slug: 'core-web-vitals-and-image-size',
+    description: 'A deep dive into Google\'s Core Web Vitals (LCP, FID, CLS) and how optimizing your images is critical for passing these metrics and improving your SEO.',
+    image_id: 'blog-14',
+    date: 'September 19, 2025',
+    keywords: ['Core Web Vitals', 'Google Ranking', 'SEO', 'Page Speed'],
+  },
+  {
+    title: 'How to Choose Your Compression Level: A Practical Guide',
+    slug: 'how-to-choose-compression-level',
+    description: 'Low, Medium, or High? This guide demystifies compression levels and helps you choose the perfect setting to balance quality and file size for any use case.',
+    image_id: 'blog-13',
+    date: 'September 17, 2025',
+    keywords: ['Compression Level', 'Image Quality', 'File Size', 'Optimization'],
+  },
+  {
+    title: 'WebP: The Future of Web Images is Here. Are You Using It?',
+    slug: 'what-is-webp-and-why-use-it',
+    description: 'Learn everything about the WebP image format. Discover its advantages in size, quality, and transparency over traditional formats like JPG and PNG.',
+    image_id: 'blog-12',
+    date: 'September 14, 2025',
+    keywords: ['WebP', 'Next-Gen Images', 'Image Formats', 'Web Performance'],
+  },
+  {
+    title: 'Why Every Millisecond Matters: The Psychology of Website Speed',
+    slug: 'psychology-of-website-speed',
+    description: 'Explore the surprising psychological impact of page load times on user patience, brand trust, and conversion rates. Learn why speed is more than a metric.',
+    image_id: 'blog-11',
+    date: 'September 12, 2025',
+    keywords: ['Website Speed', 'User Experience', 'Conversion Rate Optimization', 'Psychology'],
+  },
+    {
     title: 'How AI Is Changing File Storage and Sharing',
     slug: 'how-ai-is-changing-file-storage-and-sharing',
     description: 'Explore how artificial intelligence is revolutionizing the way we store, manage, and share our digital files, from smart organization to predictive transfers.',

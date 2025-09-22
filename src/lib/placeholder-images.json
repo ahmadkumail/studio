@@ -59,6 +59,36 @@
       "description": "An abstract representation of an AI brain processing data.",
       "imageUrl": "https://picsum.photos/seed/blog10/1200/630",
       "imageHint": "AI data"
+    },
+    {
+      "id": "blog-11",
+      "description": "A clock face merging with a website, symbolizing speed.",
+      "imageUrl": "https://picsum.photos/seed/blog11/1200/630",
+      "imageHint": "website speed"
+    },
+    {
+      "id": "blog-12",
+      "description": "The WebP logo surrounded by various image files.",
+      "imageUrl": "https://picsum.photos/seed/blog12/1200/630",
+      "imageHint": "WebP logo"
+    },
+    {
+      "id": "blog-13",
+      "description": "A slider control for adjusting image compression levels.",
+      "imageUrl": "https://picsum.photos/seed/blog13/1200/630",
+      "imageHint": "quality slider"
+    },
+    {
+      "id": "blog-14",
+      "description": "A dashboard showing Core Web Vitals metrics like LCP, FID, and CLS.",
+      "imageUrl": "https://picsum.photos/seed/blog14/1200/630",
+      "imageHint": "vitals dashboard"
+    },
+    {
+      "id": "blog-15",
+      "description": "A magnifying glass inspecting the SEO properties of an image.",
+      "imageUrl": "https://picsum.photos/seed/blog15/1200/630",
+      "imageHint": "image SEO"
     }
   ]
 }
