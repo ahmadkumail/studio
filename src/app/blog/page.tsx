@@ -9,62 +9,6 @@ export const metadata: Metadata = {
 };
 
 const blogPosts = [
-    {
-    title: 'Beyond Compression: A Guide to SEO for Images',
-    slug: 'guide-to-image-seo',
-    description: 'Learn how to boost your search rankings with image SEO. We cover alt text, file names, sitemaps, and how optimized images play a crucial role.',
-    image_id: 'blog-15',
-    date: 'September 21, 2025',
-    keywords: ['Image SEO', 'Alt Text', 'Search Engine Optimization'],
-  },
-  {
-    title: 'Core Web Vitals: How Image Size Impacts Your Google Ranking',
-    slug: 'core-web-vitals-and-images',
-    description: 'A deep dive into Google\'s Core Web Vitals (LCP, FID, CLS) and how properly sized and compressed images are critical for passing these performance metrics.',
-    image_id: 'blog-14',
-    date: 'September 19, 2025',
-    keywords: ['Core Web Vitals', 'Page Speed', 'Google Ranking'],
-  },
-  {
-    title: 'How to Choose Your Compression Level: A Practical Guide',
-    slug: 'choosing-compression-level',
-    description: 'Low, Medium, or High? This guide explains the trade-offs between image quality and file size, helping you choose the perfect compression level for any situation.',
-    image_id: 'blog-13',
-    date: 'September 17, 2025',
-    keywords: ['Image Compression', 'File Size', 'Image Quality'],
-  },
-  {
-    title: 'WebP: The Future of Web Images is Here. Are You Using It?',
-    slug: 'webp-future-of-web-images',
-    description: 'Learn everything about WebP, the next-generation image format from Google that offers superior compression and quality compared to JPG and PNG.',
-    image_id: 'blog-12',
-    date: 'September 14, 2025',
-    keywords: ['WebP', 'Next-Gen Formats', 'Image Optimization'],
-  },
-  {
-    title: 'Why Every Millisecond Matters: The Psychology of Website Speed',
-    slug: 'psychology-of-website-speed',
-    description: 'Explore the surprising psychological impact of website speed on user behavior, trust, and conversions. Learn why a fast site is non-negotiable.',
-    image_id: 'blog-11',
-    date: 'September 12, 2025',
-    keywords: ['Website Speed', 'User Experience', 'Conversion Rate Optimization'],
-  },
-  {
-    title: 'How AI Is Changing File Storage and Sharing',
-    slug: 'how-ai-is-changing-file-storage-and-sharing',
-    description: 'Explore how artificial intelligence is revolutionizing the way we store, manage, and share our digital files, from smart organization to predictive transfers.',
-    image_id: 'blog-10',
-    date: 'September 10, 2025',
-    keywords: ['AI', 'Cloud Storage', 'File Sharing'],
-  },
-  {
-    title: 'The Ultimate Guide to File Formats (ZIP, RAR, JPG, and More)',
-    slug: 'ultimate-guide-to-file-formats',
-    description: 'A comprehensive look at the most common file formats, what they are, and when to use them for maximum efficiency and quality.',
-    image_id: 'blog-9',
-    date: 'September 8, 2025',
-    keywords: ['File Formats', 'Tech Basics', 'Data Management'],
-  },
   {
     title: '5 Common Mistakes People Make When Sharing Files Online',
     slug: '5-common-mistakes-when-sharing-files',
@@ -128,6 +72,22 @@ const blogPosts = [
     image_id: 'blog-3',
     date: 'August 10, 2025',
     keywords: ['Cloud Computing', 'File Sharing', 'Tech Trends'],
+  },
+   {
+    title: 'How AI Is Changing File Storage and Sharing',
+    slug: 'how-ai-is-changing-file-storage-and-sharing',
+    description: 'Explore how artificial intelligence is revolutionizing the way we store, manage, and share our digital files, from smart organization to predictive transfers.',
+    image_id: 'blog-10',
+    date: 'September 10, 2025',
+    keywords: ['AI', 'Cloud Storage', 'File Sharing'],
+  },
+   {
+    title: 'The Ultimate Guide to File Formats (ZIP, RAR, JPG, and More)',
+    slug: 'ultimate-guide-to-file-formats',
+    description: 'A comprehensive look at the most common file formats, what they are, and when to use them for maximum efficiency and quality.',
+    image_id: 'blog-9',
+    date: 'September 8, 2025',
+    keywords: ['File Formats', 'Tech Basics', 'Data Management'],
   },
 ];
 
