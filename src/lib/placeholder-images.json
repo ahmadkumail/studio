@@ -59,66 +59,6 @@
       "description": "An abstract representation of an AI brain processing data.",
       "imageUrl": "https://images.unsplash.com/photo-1717501220725-83f151c447e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxBSSUyMGRhdGF8ZW58MHx8fHwxNzU4OTU0NTAzfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "AI data"
-    },
-    {
-      "id": "blog-11",
-      "description": "A clock face merging with a website, symbolizing speed.",
-      "imageUrl": "https://images.unsplash.com/photo-1708576180355-4915da6e9ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8d2Vic2l0ZSUyMHNwZWVkfGVufDB8fHx8MTc1OTA1Nzc0OHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "website speed"
-    },
-    {
-      "id": "blog-12",
-      "description": "The WebP logo surrounded by various image files.",
-      "imageUrl": "https://images.unsplash.com/photo-1670235727895-3dc64cbc2418?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxXZWJQJTIwbG9nb3xlbnwwfHx8fDE3NTkwNTc3NDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "WebP logo"
-    },
-    {
-      "id": "blog-13",
-      "description": "A slider control for adjusting image compression levels.",
-      "imageUrl": "https://images.unsplash.com/photo-1646322471875-753205bdea71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxxdWFsaXR5JTIwc2xpZGVyfGVufDB8fHx8MTc1OTA1Nzc0OHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "quality slider"
-    },
-    {
-      "id": "blog-14",
-      "description": "A dashboard showing Core Web Vitals metrics like LCP, FID, and CLS.",
-      "imageUrl": "https://images.unsplash.com/photo-1587392551267-a4f6e4be6c63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx2aXRhbHMlMjBkYXNoYm9hcmR8ZW58MHx8fHwxNzU5MDU3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "vitals dashboard"
-    },
-    {
-      "id": "blog-15",
-      "description": "A magnifying glass inspecting the SEO properties of an image.",
-      "imageUrl": "https://images.unsplash.com/photo-1557200134-d1ddc4e349e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbWFnZSUyMFNFT3xlbnwwfHx8fDE3NTkwNTc3NDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "image SEO"
-    },
-    {
-      "id": "blog-16",
-      "description": "A person holding a magnifying glass over a photograph, showing pixel details.",
-      "imageUrl": "https://images.unsplash.com/photo-1685633224688-6a77675eb119?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb21wcmVzc2lvbiUyMG15dGhzfGVufDB8fHx8MTc1OTA1Nzc0OHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "compression myths"
-    },
-    {
-      "id": "blog-17",
-      "description": "A digital image file with tags and metadata labels attached to it.",
-      "imageUrl": "https://images.unsplash.com/photo-1752079683283-fcf7b06ef0bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxpbWFnZSUyMG1ldGFkYXRhfGVufDB8fHx8MTc1OTA1Nzc0OHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "image metadata"
-    },
-    {
-      "id": "blog-18",
-      "description": "A website loading piece by piece, with images appearing as the user scrolls.",
-      "imageUrl": "https://images.unsplash.com/photo-1591097356871-b5b118bd3b34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bGF6eSUyMGxvYWRpbmd8ZW58MHx8fHwxNzU5MDU3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "lazy loading"
-    },
-    {
-      "id": "blog-19",
-      "description": "An online shopping cart filled with high-quality product images.",
-      "imageUrl": "https://images.unsplash.com/photo-1677530410699-f692c94cf806?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlY29tbWVyY2UlMjBpbWFnZXN8ZW58MHx8fHwxNzU5MDU3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "ecommerce images"
-    },
-    {
-      "id": "blog-20",
-      "description": "An abstract, technical-looking diagram showing advanced compression algorithms.",
-      "imageUrl": "https://images.unsplash.com/photo-1750816204148-5d02aff367cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhZHZhbmNlZCUyMGFsZ29yaXRobXN8ZW58MHx8fHwxNzU5MDU3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "advanced algorithms"
     }
   ]
 }

@@ -10,46 +10,6 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
-    title: 'Common Image Compression Myths Debunked',
-    slug: 'common-image-compression-myths',
-    description: 'We bust the most common myths about image compression, from "lossless is always better" to "you need expensive software for quality results."',
-    image_id: 'blog-16',
-    date: 'September 25, 2025',
-    keywords: ['Compression Myths', 'Image Optimization', 'Tech Tips'],
-  },
-  {
-    title: 'A Deep Dive into Image Metadata: What It Is and Why It Matters',
-    slug: 'understanding-image-metadata',
-    description: 'Learn about EXIF, IPTC, and XMP data. Understand what metadata is, why it\'s useful, and how it impacts privacy and file size.',
-    image_id: 'blog-17',
-    date: 'September 23, 2025',
-    keywords: ['Image Metadata', 'EXIF', 'Data Privacy'],
-  },
-  {
-    title: 'The Practical Guide to Lazy Loading for Faster Websites',
-    slug: 'lazy-loading-images-guide',
-    description: 'Boost your page speed by implementing lazy loading. This guide explains what it is, how it works, and how to apply it to your images.',
-    image_id: 'blog-18',
-    date: 'September 22, 2025',
-    keywords: ['Lazy Loading', 'Web Performance', 'Core Web Vitals'],
-  },
-  {
-    title: 'Essential Image Optimization for E-commerce Success',
-    slug: 'image-optimization-for-ecommerce',
-    description: 'For e-commerce, product images are everything. Learn how to optimize them for fast loading times without sacrificing the quality that drives sales.',
-    image_id: 'blog-19',
-    date: 'September 20, 2025',
-    keywords: ['E-commerce', 'Image Optimization', 'Conversion Rate'],
-  },
-  {
-    title: 'Beyond the Basics: Advanced Image Compression Techniques',
-    slug: 'advanced-compression-techniques',
-    description: 'Move beyond standard compression with techniques like chroma subsampling, color depth reduction, and dithering for ultimate file size savings.',
-    image_id: 'blog-20',
-    date: 'September 18, 2025',
-    keywords: ['Advanced Compression', 'WebP', 'File Formats'],
-  },
-  {
     title: '5 Common Mistakes People Make When Sharing Files Online',
     slug: '5-common-mistakes-when-sharing-files',
     description: 'Avoid these common pitfalls to ensure your file sharing is secure, efficient, and professional. Learn what not to do when sending your important data.',
