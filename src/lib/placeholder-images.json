@@ -3,92 +3,122 @@
     {
       "id": "blog-1",
       "description": "A collage of different file compression tool logos.",
-      "imageUrl": "https://picsum.photos/seed/blog1/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1733234976595-7d87826f6922?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0ZWNoJTIwY29sbGFnZXxlbnwwfHx8fDE3NTkwNTc3NDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "tech collage"
     },
     {
       "id": "blog-2",
       "description": "A secure digital lock over a file folder.",
-      "imageUrl": "https://picsum.photos/seed/blog2/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZGlnaXRhbCUyMHNlY3VyaXR5fGVufDB8fHx8MTc1ODk5NzU1MHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "digital security"
     },
     {
       "id": "blog-3",
       "description": "Abstract network of cloud servers and connected devices.",
-      "imageUrl": "https://picsum.photos/seed/blog3/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1700072356638-1bbf03138a15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjbG91ZCUyMG5ldHdvcmt8ZW58MHx8fHwxNzU4OTgyMzAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cloud network"
     },
     {
       "id": "blog-4",
       "description": "A website loading quickly on a laptop screen.",
-      "imageUrl": "https://picsum.photos/seed/blog4/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWJzaXRlJTIwcGVyZm9ybWFuY2V8ZW58MHx8fHwxNzU5MDU3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "website performance"
     },
     {
       "id": "blog-5",
       "description": "A side-by-side comparison of a high-quality PNG and a compressed JPG.",
-      "imageUrl": "https://picsum.photos/seed/blog5/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1619350917911-3895d7875d98?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxpbWFnZSUyMGNvbXBhcmlzb258ZW58MHx8fHwxNzU5MDU3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "image comparison"
     },
     {
       "id": "blog-6",
       "description": "A person choosing between a physical hard drive and a cloud icon.",
-      "imageUrl": "https://picsum.photos/seed/blog6/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1673861147343-1516cafb90b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjbG91ZCUyMHN0b3JhZ2V8ZW58MHx8fHwxNzU5MDAzODE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cloud storage"
     },
     {
       "id": "blog-7",
       "description": "A futuristic interface showing file sharing trends.",
-      "imageUrl": "https://picsum.photos/seed/blog7/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1720962158919-6c5f5f99630d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmdXR1cmlzdGljJTIwaW50ZXJmYWNlfGVufDB8fHx8MTc1OTAyODI5Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "futuristic interface"
     },
     {
       "id": "blog-8",
       "description": "A warning sign over a broken file link.",
-      "imageUrl": "https://picsum.photos/seed/blog8/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1606331068321-77ce461591c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx3YXJuaW5nJTIwc2lnbnxlbnwwfHx8fDE3NTkwMjYyOTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "warning sign"
     },
     {
       "id": "blog-9",
       "description": "Various file format icons like ZIP, RAR, JPG, and PDF.",
-      "imageUrl": "https://picsum.photos/seed/blog9/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1586187543706-b43086b30978?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmaWxlJTIwZm9ybWF0c3xlbnwwfHx8fDE3NTkwNTc3NDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "file formats"
     },
     {
       "id": "blog-10",
       "description": "An abstract representation of an AI brain processing data.",
-      "imageUrl": "https://picsum.photos/seed/blog10/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1717501220725-83f151c447e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxBSSUyMGRhdGF8ZW58MHx8fHwxNzU4OTU0NTAzfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "AI data"
     },
     {
       "id": "blog-11",
       "description": "A clock face merging with a website, symbolizing speed.",
-      "imageUrl": "https://picsum.photos/seed/blog11/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1708576180355-4915da6e9ec2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8d2Vic2l0ZSUyMHNwZWVkfGVufDB8fHx8MTc1OTA1Nzc0OHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "website speed"
     },
     {
       "id": "blog-12",
       "description": "The WebP logo surrounded by various image files.",
-      "imageUrl": "https://picsum.photos/seed/blog12/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1670235727895-3dc64cbc2418?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxXZWJQJTIwbG9nb3xlbnwwfHx8fDE3NTkwNTc3NDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "WebP logo"
     },
     {
       "id": "blog-13",
       "description": "A slider control for adjusting image compression levels.",
-      "imageUrl": "https://picsum.photos/seed/blog13/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1646322471875-753205bdea71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxxdWFsaXR5JTIwc2xpZGVyfGVufDB8fHx8MTc1OTA1Nzc0OHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "quality slider"
     },
     {
       "id": "blog-14",
       "description": "A dashboard showing Core Web Vitals metrics like LCP, FID, and CLS.",
-      "imageUrl": "https://picsum.photos/seed/blog14/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1587392551267-a4f6e4be6c63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx2aXRhbHMlMjBkYXNoYm9hcmR8ZW58MHx8fHwxNzU5MDU3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "vitals dashboard"
     },
     {
       "id": "blog-15",
       "description": "A magnifying glass inspecting the SEO properties of an image.",
-      "imageUrl": "https://picsum.photos/seed/blog15/1200/630",
+      "imageUrl": "https://images.unsplash.com/photo-1557200134-d1ddc4e349e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbWFnZSUyMFNFT3xlbnwwfHx8fDE3NTkwNTc3NDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "image SEO"
+    },
+    {
+      "id": "blog-16",
+      "description": "A person holding a magnifying glass over a photograph, showing pixel details.",
+      "imageUrl": "https://images.unsplash.com/photo-1685633224688-6a77675eb119?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb21wcmVzc2lvbiUyMG15dGhzfGVufDB8fHx8MTc1OTA1Nzc0OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "compression myths"
+    },
+    {
+      "id": "blog-17",
+      "description": "A digital image file with tags and metadata labels attached to it.",
+      "imageUrl": "https://images.unsplash.com/photo-1752079683283-fcf7b06ef0bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxpbWFnZSUyMG1ldGFkYXRhfGVufDB8fHx8MTc1OTA1Nzc0OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "image metadata"
+    },
+    {
+      "id": "blog-18",
+      "description": "A website loading piece by piece, with images appearing as the user scrolls.",
+      "imageUrl": "https://images.unsplash.com/photo-1591097356871-b5b118bd3b34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bGF6eSUyMGxvYWRpbmd8ZW58MHx8fHwxNzU5MDU3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lazy loading"
+    },
+    {
+      "id": "blog-19",
+      "description": "An online shopping cart filled with high-quality product images.",
+      "imageUrl": "https://images.unsplash.com/photo-1677530410699-f692c94cf806?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlY29tbWVyY2UlMjBpbWFnZXN8ZW58MHx8fHwxNzU5MDU3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ecommerce images"
+    },
+    {
+      "id": "blog-20",
+      "description": "An abstract, technical-looking diagram showing advanced compression algorithms.",
+      "imageUrl": "https://images.unsplash.com/photo-1750816204148-5d02aff367cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhZHZhbmNlZCUyMGFsZ29yaXRobXN8ZW58MHx8fHwxNzU5MDU3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "advanced algorithms"
     }
   ]
 }
