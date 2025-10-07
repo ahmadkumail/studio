@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     default: 'ShrinkWrap | Free Online PNG & JPG Image Compressor',
     template: '%s | ShrinkWrap',
   },
-  description: 'ShrinkWrap is a free online PNG & JPG image compressor. Reduce image size up to 80% without losing quality. Fast, secure, and no signup required.',
+  description: 'ShrinkWrap is a free, AI-powered online image compressor for PNG & JPG files. Reduce image sizes by up to 80% without losing quality. Our tool is fast, secure, and processes all files directly in your browser—no signup required.',
   keywords: ['ShrinkWrap', 'PNG compressor', 'JPG compressor', 'image compressor online', 'reduce image size', 'compress png free', 'compress jpg free', 'online image optimizer', 'photo size reducer', 'webp converter', 'shrink images', 'optimize images for web'],
 };
 
