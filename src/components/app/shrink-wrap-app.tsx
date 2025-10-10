@@ -480,8 +480,8 @@ export default function ShrinkWrapApp() {
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
             
             <div className="max-w-4xl mx-auto my-12 space-y-16">
-                <div className="space-y-8">
-                    <h2 className="text-2xl font-semibold text-foreground text-center">How It Works</h2>
+                <section className="space-y-8">
+                    <h2 className="text-2xl font-semibold text-foreground text-center">How to Compress an Image in 3 Easy Steps</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="flex flex-col items-center text-center p-4">
                             <div className="p-4 bg-primary/10 rounded-full mb-4">
@@ -501,13 +501,13 @@ export default function ShrinkWrapApp() {
                             <div className="p-4 bg-primary/10 rounded-full mb-4">
                                 <Download className="w-10 h-10 text-primary" />
                             </div>
-                            <h3 className="font-semibold mb-2">3. Download a shrunk file</h3>
+                            <h3 className="font-semibold mb-2">3. Download Your File</h3>
                             <p className="text-muted-foreground text-sm">Download your newly compressed, lightweight image.</p>
                         </div>
                     </div>
-                </div>
-                <div className="space-y-8">
-                    <h2 className="text-2xl font-semibold text-foreground text-center">Why ShrinkWrap?</h2>
+                </section>
+                <section className="space-y-8">
+                    <h2 className="text-2xl font-semibold text-foreground text-center">Why Use Our Image Compressor?</h2>
                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         <Card className="text-center p-6">
                             <BadgePercent className="w-10 h-10 text-primary mx-auto mb-4" />
@@ -530,10 +530,10 @@ export default function ShrinkWrapApp() {
                             <p className="text-muted-foreground text-sm">Compress multiple PNG or JPG images at once.</p>
                         </Card>
                     </div>
-                </div>
+                </section>
 
-                <div className="space-y-8">
-                    <h2 className="text-2xl font-semibold text-foreground text-center">Benefits</h2>
+                <section className="space-y-8">
+                    <h2 className="text-2xl font-semibold text-foreground text-center">Benefits of Image Optimization</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <Card className="text-center p-6">
                             <Rocket className="w-10 h-10 text-primary mx-auto mb-4" />
@@ -551,7 +551,7 @@ export default function ShrinkWrapApp() {
                             <p className="text-muted-foreground text-sm">Smaller image files save valuable storage space and reduce bandwidth consumption for you and your users.</p>
                         </Card>
                     </div>
-                </div>
+                </section>
             </div>
 
             <FAQs />
