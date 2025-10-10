@@ -4,7 +4,6 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
-import BuyMeACoffee from '@/components/layout/buy-me-a-coffee';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://shrinkwrap.app'),
@@ -41,7 +40,6 @@ export default function RootLayout({
       <body className="font-body antialiased h-full">
         <div className="flex flex-col h-full">
           <Navbar />
-          <BuyMeACoffee />
           <main className="flex-grow">
             {children}
           </main>
