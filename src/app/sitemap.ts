@@ -11,6 +11,7 @@ const blogPosts = [
   { slug: 'why-cloud-hosting-is-the-future-of-file-sharing' },
   { slug: 'how-ai-is-changing-file-storage-and-sharing' },
   { slug: 'ultimate-guide-to-file-formats' },
+  { slug: 'lazy-loading-images-guide' },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
