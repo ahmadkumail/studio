@@ -1,83 +1,37 @@
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
-<url>
-<loc>https://shrinkwrap.website/</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>1.00</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/blog</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/contact</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/about</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/privacy</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/terms</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/blog/5-common-mistakes-when-sharing-files</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/blog/future-of-file-sharing-trends-2025</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/blog/cloud-vs-local-storage</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/blog/ultimate-guide-to-image-optimization</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/blog/jpg-vs-png-which-format-to-use</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/blog/top-5-free-tools-for-file-compression-in-2025</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/blog/how-to-safely-share-large-files-online</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/blog/why-cloud-hosting-is-the-future-of-file-sharing</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/blog/how-ai-is-changing-file-storage-and-sharing</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.64</priority>
-</url>
-<url>
-<loc>https://shrinkwrap.website/blog/ultimate-guide-to-file-formats</loc>
-<lastmod>2025-10-09T22:57:57+00:00</lastmod>
-<priority>0.64</priority>
-</url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <url>
+    <loc>https://shrinkwrap.website/</loc>
+    <lastmod>2025-10-09T22:57:57+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://shrinkwrap.website/blog</loc>
+    <lastmod>2025-10-09T22:57:57+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://shrinkwrap.website/contact</loc>
+    <lastmod>2025-10-09T22:57:57+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://shrinkwrap.website/about</loc>
+    <lastmod>2025-10-09T22:57:57+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://shrinkwrap.website/privacy</loc>
+    <lastmod>2025-10-09T22:57:57+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://shrinkwrap.website/terms</loc>
+    <lastmod>2025-10-09T22:57:57+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
 </urlset>
