@@ -10,13 +10,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, MessageSquare, Send } from 'lucide-react';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Contact Us | ShrinkWrap',
-  description: 'Get in touch with the ShrinkWrap team. We welcome your questions, feedback, and suggestions about our online image compression tool.',
-};
-
 
 export default function ContactPage() {
   const { toast } = useToast();
