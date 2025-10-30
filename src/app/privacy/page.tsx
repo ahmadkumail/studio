@@ -2,19 +2,14 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import type { Metadata } from 'next';
-
-// export const metadata: Metadata = { // This is commented out to avoid another build error. Metadata should be defined in a parent layout or page.
-//   title: 'Privacy Policy',
-//   description: 'Read the ShrinkWrap Privacy Policy. Learn how we handle your data and our commitment to privacy with on-device file processing.',
-// };
 
 export default function PrivacyPolicyPage() {
   const [lastUpdated, setLastUpdated] = useState('');
 
   useEffect(() => {
+    // This code runs only on the client, after the component mounts.
     setLastUpdated(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
-  }, []);
+  }, []); // The empty dependency array ensures this runs only once.
 
 
   return (
@@ -22,6 +17,8 @@ export default function PrivacyPolicyPage() {
       <div className="prose prose-lg mx-auto text-foreground">
         <h1 className="text-4xl font-extrabold text-center mb-8">Privacy Policy</h1>
         
+        {/* This conditional rendering is key: The <p> tag is not rendered at all on the server.
+            It only renders on the client after `lastUpdated` state is set. */}
         {lastUpdated && <p className="text-muted-foreground text-center mb-12">Last updated: {lastUpdated}</p>}
 
         <h2 className="text-2xl font-bold mt-8">1. Introduction</h2>
