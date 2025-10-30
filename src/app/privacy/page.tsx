@@ -1,25 +1,11 @@
 
-"use client";
-
-import { useState, useEffect } from 'react';
-
 export default function PrivacyPolicyPage() {
-  const [lastUpdated, setLastUpdated] = useState('');
-
-  useEffect(() => {
-    // This code runs only on the client, after the component mounts.
-    setLastUpdated(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
-  }, []); // The empty dependency array ensures this runs only once.
-
-
   return (
     <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <div className="prose prose-lg mx-auto text-foreground">
         <h1 className="text-4xl font-extrabold text-center mb-8">Privacy Policy</h1>
         
-        {/* This conditional rendering is key: The <p> tag is not rendered at all on the server.
-            It only renders on the client after `lastUpdated` state is set. */}
-        {lastUpdated && <p className="text-muted-foreground text-center mb-12">Last updated: {lastUpdated}</p>}
+        <p className="text-muted-foreground text-center mb-12">Last updated: September 22, 2025</p>
 
         <h2 className="text-2xl font-bold mt-8">1. Introduction</h2>
         <p>
