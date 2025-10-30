@@ -22,7 +22,7 @@ export default function TermsAndConditionsPage() {
       <div className="prose prose-lg mx-auto text-foreground">
         <h1 className="text-4xl font-extrabold text-center mb-8">Terms & Conditions</h1>
         
-        <p className="text-muted-foreground text-center mb-12">Last updated: {lastUpdated}</p>
+        {lastUpdated && <p className="text-muted-foreground text-center mb-12">Last updated: {lastUpdated}</p>}
 
         <h2 className="text-2xl font-bold mt-8">1. Agreement to Terms</h2>
         <p>
