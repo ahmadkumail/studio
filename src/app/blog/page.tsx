@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import type { Metadata } from 'next';
@@ -10,15 +11,15 @@ export const metadata: Metadata = {
 
 const blogPosts = [
   {
-    title: '5 Common Mistakes People Make When Sharing Files Online',
+    title: '5 Critical Mistakes to Avoid When Sharing Files Online',
     slug: '5-common-mistakes-when-sharing-files',
-    description: 'Avoid these common pitfalls to ensure your file sharing is secure, efficient, and professional. Learn what not to do when sending your important data.',
+    description: 'Stop making these 5 common file sharing mistakes. Learn how to secure your data with passwords, out-of-band communication, and on-device compression to prevent costly data leaks.',
     image_id: 'blog-8',
     date: 'September 5, 2025',
     keywords: ['Cybersecurity', 'File Sharing', 'Productivity'],
   },
   {
-    title: 'The Future of File Sharing: Trends to Watch in 2025',
+    title: 'Beyond the Cloud: 4 File Sharing Trends Defining 2025',
     slug: 'future-of-file-sharing-trends-2025',
     description: 'From decentralized networks to AI-driven transfers, discover the exciting trends that will shape the future of how we share files.',
     image_id: 'blog-7',
@@ -26,7 +27,7 @@ const blogPosts = [
     keywords: ['Tech Trends', 'File Sharing', 'Future Tech'],
   },
   {
-    title: 'Cloud Storage vs. Local Storage: Which Is Better for You?',
+    title: 'Cloud vs. Local Storage: The 2025 Tug-of-War for Your Data',
     slug: 'cloud-vs-local-storage',
     description: 'An in-depth comparison of cloud and local storage solutions. Understand the pros and cons to decide the best way to keep your files safe and accessible.',
     image_id: 'blog-6',
@@ -42,23 +43,23 @@ const blogPosts = [
     keywords: ['Web Performance', 'Image Optimization', 'SEO'],
   },
   {
-    title: 'JPG vs. PNG: Which Format Should You Use?',
+    title: 'JPG vs. PNG: A Technical & Practical Guide',
     slug: 'jpg-vs-png-which-format-to-use',
     description: 'A deep dive into the differences between JPG and PNG. Understand the pros and cons of each to make the right choice for your images.',
     image_id: 'blog-5',
     date: 'August 22, 2025',
     keywords: ['File Formats', 'Image Compression', 'Web Design'],
   },
-  {
-    title: 'Top 5 Free Tools for File Compression in 2025',
-    slug: 'top-5-free-tools-for-file-compression-in-2025',
-    description: 'Discover the best free tools available for compressing your files without compromising on quality. We review the top contenders of 2025.',
+    {
+    title: 'Lazy Loading Images: A Practical Guide to Boosting Web Performance',
+    slug: 'lazy-loading-images-guide',
+    description: 'Learn how native lazy loading works and how to implement it correctly to improve your Core Web Vitals and user experience.',
     image_id: 'blog-1',
     date: 'August 19, 2025',
-    keywords: ['File Compression', 'Free Tools', 'Productivity'],
+    keywords: ['Web Performance', 'Lazy Loading', 'Core Web Vitals'],
   },
   {
-    title: 'How to Safely Share Large Files Online',
+    title: 'The Modern Playbook for Safely Sharing Large Files Online',
     slug: 'how-to-safely-share-large-files-online',
     description: 'Sharing large files can be risky. Learn the best practices and tools to share your files securely and protect your privacy.',
     image_id: 'blog-2',
@@ -74,7 +75,7 @@ const blogPosts = [
     keywords: ['Cloud Computing', 'File Sharing', 'Tech Trends'],
   },
    {
-    title: 'How AI Is Changing File Storage and Sharing',
+    title: 'How AI is Making File Storage Truly Intelligent',
     slug: 'how-ai-is-changing-file-storage-and-sharing',
     description: 'Explore how artificial intelligence is revolutionizing the way we store, manage, and share our digital files, from smart organization to predictive transfers.',
     image_id: 'blog-10',
