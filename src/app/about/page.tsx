@@ -4,8 +4,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About ShrinkWrap',
-  description: 'Discover the story behind ShrinkWrap. Learn about our mission to revolutionize file compression with a privacy-first, AI-powered approach that puts users in control.',
+  title: 'About Us',
+  description: 'Learn about the mission and values behind ShrinkWrap.',
 };
 
 export default function AboutPage() {

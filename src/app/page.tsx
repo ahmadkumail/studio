@@ -1,3 +1,4 @@
+
 import ShrinkWrapApp from '@/components/app/shrink-wrap-app';
 
 export default function Home() {

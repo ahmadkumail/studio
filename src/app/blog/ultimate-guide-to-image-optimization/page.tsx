@@ -39,7 +39,7 @@ export default function BlogPostPage() {
 
         <h2 className="text-2xl font-bold mt-8">1. Choose the Right Format for the Job</h2>
         <p>
-          The optimization journey begins with format selection. Using the wrong format can result in unnecessarily large files or poor quality. For a deep dive, see our <Link href="/blog/jpg-vs-png-which-format-to-use" className="text-primary hover:underline">JPG vs. PNG guide</Link>.
+          The optimization journey begins with format selection. Using the wrong format can result in unnecessarily large files or poor quality.
         </p>
         <ul className="list-disc list-inside space-y-2">
             <li><strong>JPG (JPEG):</strong> Use for photographs and complex, continuous-tone images. Its lossy compression is designed to handle millions of colors efficiently.</li>
@@ -81,7 +81,7 @@ export default function BlogPostPage() {
             Lazy loading defers the loading of below-the-fold images until the user scrolls near them. This is critical for fast initial load times. Modern browsers support this natively with the `loading="lazy"` attribute.
         </p>
         <p>
-            <strong>Critical Rule:</strong> NEVER lazy-load images that are visible "above the fold." This will delay your Largest Contentful Paint (LCP) and harm your Core Web Vitals score. For more, read our <Link href="/blog/lazy-loading-images-guide" className="text-primary hover:underline">guide to lazy loading</Link>.
+            <strong>Critical Rule:</strong> NEVER lazy-load images that are visible "above the fold." This will delay your Largest Contentful Paint (LCP) and harm your Core Web Vitals score.
         </p>
 
         <h2 className="text-2xl font-bold mt-8">5. Serve Images via a Content Delivery Network (CDN)</h2>

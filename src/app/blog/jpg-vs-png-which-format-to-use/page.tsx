@@ -108,7 +108,7 @@ export default function BlogPostPage() {
         
         <h2 className="text-2xl font-bold mt-8">Don't Forget WebP: The Modern Alternative</h2>
         <p>
-          It's also worth mentioning WebP, a modern format from Google. WebP can handle both lossy and lossless compression, often achieving smaller file sizes than both JPG and PNG at equivalent quality. It also supports transparency and animation. With near-universal browser support, converting your final JPGs and PNGs to WebP is a powerful optimization step. For a complete overview, check out our <Link href="/blog/ultimate-guide-to-image-optimization" className="text-primary hover:underline">definitive guide to image optimization</Link>.
+          It's also worth mentioning WebP, a modern format from Google. WebP can handle both lossy and lossless compression, often achieving smaller file sizes than both JPG and PNG at equivalent quality. It also supports transparency and animation. With near-universal browser support, converting your final JPGs and PNGs to WebP is a powerful optimization step.
         </p>
 
         <h2 className="text-2xl font-bold mt-8">Conclusion: It's About the Right Tool for the Job</h2>

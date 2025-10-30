@@ -7,15 +7,15 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
-  title: 'Blog | File Compression Tips and Insights',
-  description: 'Explore the ShrinkWrap blog for expert tips, technical guides, and insights on file compression, image optimization, data privacy, and digital efficiency.',
+  title: 'Blog',
+  description: 'Read our latest blog posts.',
 };
 
 const blogPosts = [
   {
     title: '5 Critical Mistakes to Avoid When Sharing Files Online',
     slug: '5-common-mistakes-when-sharing-files',
-    description: 'Stop making these common file sharing mistakes. Learn how to secure your data with passwords, out-of-band communication, and on-device compression to prevent costly data leaks.',
+    description: 'Stop making these 5 common file sharing mistakes. Learn how to secure your data with passwords, out-of-band communication, and on-device compression to prevent costly data leaks.',
     image_id: 'blog-8',
     date: 'September 5, 2025',
     keywords: ['Cybersecurity', 'File Sharing', 'Productivity'],
