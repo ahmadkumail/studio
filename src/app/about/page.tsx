@@ -1,5 +1,5 @@
 
-import { Building, Users, Target, Heart, Shield, Cpu } from 'lucide-react';
+import { Users, Shield, Cpu, Heart } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
