@@ -1,18 +1,28 @@
 
+"use client";
+
+import { useState, useEffect } from 'react';
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy',
-  description: 'Read the ShrinkWrap Privacy Policy. Learn how we handle your data and our commitment to privacy with on-device file processing.',
-};
+// export const metadata: Metadata = { // This is commented out to avoid another build error. Metadata should be defined in a parent layout or page.
+//   title: 'Privacy Policy',
+//   description: 'Read the ShrinkWrap Privacy Policy. Learn how we handle your data and our commitment to privacy with on-device file processing.',
+// };
 
 export default function PrivacyPolicyPage() {
+  const [lastUpdated, setLastUpdated] = useState('');
+
+  useEffect(() => {
+    setLastUpdated(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
+  }, []);
+
+
   return (
     <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <div className="prose prose-lg mx-auto text-foreground">
         <h1 className="text-4xl font-extrabold text-center mb-8">Privacy Policy</h1>
         
-        <p className="text-muted-foreground text-center mb-12">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        <p className="text-muted-foreground text-center mb-12">Last updated: {lastUpdated}</p>
 
         <h2 className="text-2xl font-bold mt-8">1. Introduction</h2>
         <p>
