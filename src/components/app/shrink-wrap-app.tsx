@@ -587,7 +587,3 @@ export default function ShrinkWrapApp() {
     </div>
   );
 }
-
-    
-
-    

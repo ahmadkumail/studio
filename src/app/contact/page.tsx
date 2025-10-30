@@ -10,10 +10,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, MessageSquare, Send, ThumbsUp } from 'lucide-react';
-import type { Metadata } from 'next';
-
-// Since this is a client component, we can't export metadata. 
-// It should be defined in a parent layout or via the `generateMetadata` function in a server component.
 
 export default function ContactPage() {
   const { toast } = useToast();
