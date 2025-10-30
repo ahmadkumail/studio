@@ -30,7 +30,7 @@ export default function BlogPostPage() {
 
         <h2 className="text-2xl font-bold mt-8">Image Formats: The Visual Language</h2>
         <p>
-          These formats store visual data. The key trade-off is between file size and quality, driven by their compression method.
+          These formats store visual data. The key trade-off is between file size and quality, driven by their compression method. For a detailed comparison, see our <Link href="/blog/jpg-vs-png-which-format-to-use" className="text-primary hover:underline">guide on JPG vs. PNG</Link>.
         </p>
         <ul className="list-disc list-inside space-y-2">
             <li><strong>JPG/JPEG: For Photographs.</strong> The universal standard for photos. Its "lossy" compression smartly discards invisible data to create small file sizes, perfect for complex images with millions of colors. <strong>Use for:</strong> Any real-world photograph.</li>

@@ -7,8 +7,8 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
-  title: 'Blog',
-  description: 'Read our latest blog posts.',
+  title: 'ShrinkWrap Blog | Image Compression Tips & Web Performance Guides',
+  description: 'Explore expert tips, technical guides, and insights on file compression, image optimization, and digital efficiency from the ShrinkWrap team.',
 };
 
 const blogPosts = [
@@ -85,6 +85,14 @@ const blogPosts = [
     keywords: ['AI', 'Cloud Storage', 'File Sharing'],
   },
    {
+    title: 'A Review of the 5 Best Free File Compression Tools in 2025',
+    slug: 'top-5-free-tools-for-file-compression-in-2025',
+    description: 'An expert review of the top 5 free image and file compression tools for 2025. See how ShrinkWrap compares to 7-Zip, Squoosh, and others.',
+    image_id: 'blog-11',
+    date: 'August 19, 2025',
+    keywords: ['Software Review', 'File Compression', 'Free Tools'],
+  },
+  {
     title: 'The Ultimate Guide to File Formats (ZIP, RAR, JPG, and More)',
     slug: 'ultimate-guide-to-file-formats',
     description: 'A comprehensive look at the most common file formats, what they are, and when to use them for maximum efficiency and quality.',

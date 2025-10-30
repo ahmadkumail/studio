@@ -39,7 +39,7 @@ export default function BlogPostPage() {
 
         <h2 className="text-2xl font-bold mt-8">1. Choose the Right Format for the Job</h2>
         <p>
-          The optimization journey begins with format selection. Using the wrong format can result in unnecessarily large files or poor quality.
+          The optimization journey begins with format selection. Using the wrong format can result in unnecessarily large files or poor quality. For a deeper dive, check out our <Link href="/blog/jpg-vs-png-which-format-to-use" className="text-primary hover:underline">JPG vs. PNG guide</Link>.
         </p>
         <ul className="list-disc list-inside space-y-2">
             <li><strong>JPG (JPEG):</strong> Use for photographs and complex, continuous-tone images. Its lossy compression is designed to handle millions of colors efficiently.</li>
@@ -59,7 +59,7 @@ export default function BlogPostPage() {
             "Good optimization is aggressive but imperceptible. You want to remove as much data as possible before the human eye can tell the difference."
         </blockquote>
         <p>
-            AI-powered tools like <Link href="/" className="text-primary hover:underline">ShrinkWrap</Link>are invaluable here. Instead of manual trial-and-error, they can analyze an image and suggest the optimal compression settings to achieve this balance automatically.
+            AI-powered tools like <Link href="/" className="text-primary hover:underline">ShrinkWrap</Link> are invaluable here. Instead of manual trial-and-error, they can analyze an image and suggest the optimal compression settings to achieve this balance automatically.
         </p>
 
         <h2 className="text-2xl font-bold mt-8">3. Resize Images to Rendered Dimensions</h2>
@@ -78,7 +78,7 @@ export default function BlogPostPage() {
 
         <h2 className="text-2xl font-bold mt-8">4. Implement Lazy Loading Correctly</h2>
         <p>
-            Lazy loading defers the loading of below-the-fold images until the user scrolls near them. This is critical for fast initial load times. Modern browsers support this natively with the `loading="lazy"` attribute.
+            Lazy loading defers the loading of below-the-fold images until the user scrolls near them. This is critical for fast initial load times. Modern browsers support this natively with the `loading="lazy"` attribute. To learn more, read our <Link href="/blog/lazy-loading-images-guide" className="text-primary hover:underline">practical guide to lazy loading</Link>.
         </p>
         <p>
             <strong>Critical Rule:</strong> NEVER lazy-load images that are visible "above the fold." This will delay your Largest Contentful Paint (LCP) and harm your Core Web Vitals score.

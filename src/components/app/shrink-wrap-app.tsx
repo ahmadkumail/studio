@@ -44,42 +44,42 @@ const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
 const FAQs = () => (
     <div id="faq" className="w-full max-w-4xl mx-auto my-12 md:my-16">
-      <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
+      <h2 className="text-3xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
       <Accordion type="single" collapsible className="w-full text-left">
         <AccordionItem value="item-1">
           <AccordionTrigger>1. How can I compress JPG images online for free?</AccordionTrigger>
           <AccordionContent>
-          You can use ShrinkWrap to compress JPG images online without losing quality. Simply upload your JPG file, and our tool will reduce the size instantly.
+          You can use ShrinkWrap to compress JPG images online for free without losing quality. Simply upload your JPG file by dragging it into the upload box or clicking to select it. Our tool will then intelligently reduce the file size, and you can download it instantly.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger>2. Can I reduce PNG file size without losing quality?</AccordionTrigger>
           <AccordionContent>
-          Yes! ShrinkWrap uses smart compression technology that reduces PNG file size while maintaining maximum image quality.
+          Yes! ShrinkWrap uses smart, lossless compression techniques for PNG files, which significantly reduces the file size while maintaining maximum image quality and transparency. It's perfect for web graphics and logos.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
           <AccordionTrigger>3. Is ShrinkWrap free to use?</AccordionTrigger>
           <AccordionContent>
-          Absolutely! ShrinkWrap is a free PNG and JPG image compressor. No hidden charges, no sign-up required.
+          Absolutely! ShrinkWrap is a completely free PNG and JPG image compressor. There are no hidden charges, no watermarks, and no sign-up required. You can compress as many images as you need.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-4">
-          <AccordionTrigger>4. Does ShrinkWrap work on mobile?</AccordionTrigger>
+          <AccordionTrigger>4. How does ShrinkWrap protect my privacy?</AccordionTrigger>
           <AccordionContent>
-          Yes, ShrinkWrap is a mobile-friendly image compressor. You can compress JPG and PNG images directly from your phone browser.
+          Your privacy is our top priority. All image processing is done directly in your browser on your own computer. Your files are never uploaded to our servers, ensuring your data remains 100% private and secure.
           </AccordionContent>
         </AccordionItem>
          <AccordionItem value="item-5">
-          <AccordionTrigger>5. How small can I shrink my images?</AccordionTrigger>
+          <AccordionTrigger>5. How much can I shrink my images?</AccordionTrigger>
           <AccordionContent>
-          Our compressor can reduce JPG and PNG images up to 80% of their original size, depending on the image quality and format.
+          Our compressor can often reduce JPG and PNG images by up to 80% of their original size. The exact compression amount depends on the original image's characteristics, but our AI-powered tool always aims for the best balance of size and quality.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-6">
-          <AccordionTrigger>6. Can I convert JPG to WebP using ShrinkWrap?</AccordionTrigger>
+          <AccordionTrigger>6. Can I use ShrinkWrap on my mobile device?</AccordionTrigger>
           <AccordionContent>
-          Yes, ShrinkWrap also provides image conversion features like JPG to WebP for faster website loading and better optimization.
+          Yes, ShrinkWrap is a fully responsive, mobile-friendly image compressor. You can easily compress JPG and PNG images directly from your phone's browser, whether you're on an iPhone, Android, or tablet.
           </AccordionContent>
         </AccordionItem>
       </Accordion>
@@ -471,83 +471,83 @@ export default function ShrinkWrapApp() {
       <main className="flex-grow w-full mt-4 md:mt-8">
         {files.length === 0 ? (
           <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground">Free Online PNG & JPG Image Compressor - ShrinkWrap</h1>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight">Free AI-Powered Image Compressor</h1>
             <div className="mt-8 text-foreground text-lg text-center">
-                <h2 className="text-2xl font-semibold">Compress PNG and JPG Images Online Without Losing Quality</h2>
-                <p className="max-w-prose mx-auto mt-2 text-muted-foreground">ShrinkWrap is a fast and secure image compressor that helps you reduce PNG and JPG file sizes instantly while keeping the best quality.</p>
+                <h2 className="text-2xl font-semibold">Compress PNG & JPG Files Without Losing Quality</h2>
+                <p className="max-w-prose mx-auto mt-2 text-muted-foreground">ShrinkWrap is a fast, private, and free online tool to reduce PNG and JPG file sizes. Our AI gives you expert results instantly.</p>
             </div>
             
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
             
             <div className="max-w-4xl mx-auto my-12 space-y-16">
                 <section className="space-y-8">
-                    <h2 className="text-2xl font-semibold text-foreground text-center">How to Compress an Image in 3 Easy Steps</h2>
+                    <h2 className="text-3xl font-bold text-foreground text-center">How to Compress an Image in 3 Easy Steps</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="flex flex-col items-center text-center p-4">
                             <div className="p-4 bg-primary/10 rounded-full mb-4">
                                 <UploadCloud className="w-10 h-10 text-primary" />
                             </div>
-                            <h3 className="font-semibold mb-2">1. Upload Your Image</h3>
-                            <p className="text-muted-foreground text-sm">Drag and drop or click to select your PNG or JPG files.</p>
+                            <h3 className="text-xl font-semibold mb-2">1. Upload Your Image</h3>
+                            <p className="text-muted-foreground text-sm">Drag and drop your PNG or JPG files, or click to select them.</p>
                         </div>
                         <div className="flex flex-col items-center text-center p-4">
                             <div className="p-4 bg-primary/10 rounded-full mb-4">
                                 <Zap className="w-10 h-10 text-primary" />
                             </div>
-                            <h3 className="font-semibold mb-2">2. Compress Instantly</h3>
-                            <p className="text-muted-foreground text-sm">Our AI optimizes your image for the best size and quality.</p>
+                            <h3 className="text-xl font-semibold mb-2">2. Choose Your Setting</h3>
+                            <p className="text-muted-foreground text-sm">Select a compression level or let our AI suggest the best settings.</p>
                         </div>
                         <div className="flex flex-col items-center text-center p-4">
                             <div className="p-4 bg-primary/10 rounded-full mb-4">
                                 <Download className="w-10 h-10 text-primary" />
                             </div>
-                            <h3 className="font-semibold mb-2">3. Download Your File</h3>
-                            <p className="text-muted-foreground text-sm">Download your newly compressed, lightweight image.</p>
+                            <h3 className="text-xl font-semibold mb-2">3. Download Your File</h3>
+                            <p className="text-muted-foreground text-sm">Download your newly compressed, lightweight image instantly.</p>
                         </div>
                     </div>
                 </section>
                 <section className="space-y-8">
-                    <h2 className="text-2xl font-semibold text-foreground text-center">Why Use Our Image Compressor?</h2>
+                    <h2 className="text-3xl font-bold text-foreground text-center">Why Use Our Image Compressor?</h2>
                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         <Card className="text-center p-6">
                             <BadgePercent className="w-10 h-10 text-primary mx-auto mb-4" />
-                            <h3 className="font-semibold mb-2">High Compression</h3>
-                            <p className="text-muted-foreground text-sm">Reduce file size up to 80% with minimal quality loss.</p>
+                            <h3 className="text-xl font-semibold mb-2">High Compression</h3>
+                            <p className="text-muted-foreground text-sm">Reduce file size by up to 80% with minimal quality loss.</p>
                         </Card>
                         <Card className="text-center p-6">
                             <ShieldCheck className="w-10 h-10 text-primary mx-auto mb-4" />
-                            <h3 className="font-semibold mb-2">Privacy First</h3>
+                            <h3 className="text-xl font-semibold mb-2">Privacy First</h3>
                             <p className="text-muted-foreground text-sm">All processing is done in your browser. Files never leave your device.</p>
                         </Card>
                          <Card className="text-center p-6">
                             <Smartphone className="w-10 h-10 text-primary mx-auto mb-4" />
-                            <h3 className="font-semibold mb-2">Mobile Friendly</h3>
+                            <h3 className="text-xl font-semibold mb-2">Mobile Friendly</h3>
                             <p className="text-muted-foreground text-sm">Works seamlessly on your desktop, tablet, and smartphone.</p>
                         </Card>
                         <Card className="text-center p-6">
                             <Package className="w-10 h-10 text-primary mx-auto mb-4" />
-                            <h3 className="font-semibold mb-2">Batch Processing</h3>
+                            <h3 className="text-xl font-semibold mb-2">Batch Processing</h3>
                             <p className="text-muted-foreground text-sm">Compress multiple PNG or JPG images at once.</p>
                         </Card>
                     </div>
                 </section>
 
                 <section className="space-y-8">
-                    <h2 className="text-2xl font-semibold text-foreground text-center">Benefits of Image Optimization</h2>
+                    <h2 className="text-3xl font-bold text-foreground text-center">Benefits of Image Optimization</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <Card className="text-center p-6">
                             <Rocket className="w-10 h-10 text-primary mx-auto mb-4" />
-                            <h3 className="font-semibold mb-2">Faster Websites</h3>
+                            <h3 className="text-xl font-semibold mb-2">Faster Websites</h3>
                             <p className="text-muted-foreground text-sm">Dramatically speed up your website's loading times, which directly improves user experience and keeps visitors engaged.</p>
                         </Card>
                         <Card className="text-center p-6">
                             <TrendingUp className="w-10 h-10 text-primary mx-auto mb-4" />
-                            <h3 className="font-semibold mb-2">Improved SEO</h3>
+                            <h3 className="text-xl font-semibold mb-2">Improved SEO</h3>
                             <p className="text-muted-foreground text-sm">Faster sites rank higher on search engines like Google, boosting your SEO and driving more organic traffic to your page.</p>
                         </Card>
                         <Card className="text-center p-6">
                             <Database className="w-10 h-10 text-primary mx-auto mb-4" />
-                            <h3 className="font-semibold mb-2">Save Storage</h3>
+                            <h3 className="text-xl font-semibold mb-2">Save Storage</h3>
                             <p className="text-muted-foreground text-sm">Smaller image files save valuable storage space and reduce bandwidth consumption for you and your users.</p>
                         </Card>
                     </div>

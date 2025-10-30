@@ -113,7 +113,7 @@ export default function BlogPostPage() {
 
         <h2 className="text-2xl font-bold mt-8">Conclusion: It's About the Right Tool for the Job</h2>
         <p>
-          The JPG vs. PNG debate has a clear winner: it depends on the job. There is no single "best" format, only the most appropriate one for the image content. 
+          The JPG vs. PNG debate has a clear winner: it depends on the job. There is no single "best" format, only the most appropriate one for the image content. For a complete strategy, see our <Link href="/blog/ultimate-guide-to-image-optimization" className="text-primary hover:underline">Ultimate Guide to Image Optimization</Link>.
         </p>
         <p>
             The simple rule is:

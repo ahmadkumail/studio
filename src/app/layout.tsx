@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: '%s | ShrinkWrap',
   },
   description: 'ShrinkWrap is a free, AI-powered online image compressor for PNG & JPG files. Reduce image sizes by up to 80% without losing quality. Our tool is fast, secure, and processes all files directly in your browser—no signup required.',
-  keywords: ['PNG compressor', 'JPG compressor', 'image compressor', 'online image optimizer'],
+  keywords: ['PNG compressor', 'JPG compressor', 'image compressor', 'online image optimizer', 'reduce image size', 'free image compressor', 'image optimizer', 'compress png', 'compress jpg'],
 };
 
 export default function RootLayout({
