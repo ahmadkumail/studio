@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'JPG vs. PNG: The Ultimate Technical and Practical Guide',
-  description: 'A definitive guide to JPG vs. PNG. We break down lossy vs. lossless compression, alpha transparency, and use cases to help you make the right technical choice.',
+  description: 'A definitive guide to JPG vs. PNG. We break down lossy vs. lossless compression, alpha transparency, and use cases to help you make the right technical choice for web performance.',
 };
 
 
@@ -21,7 +21,7 @@ export default function BlogPostPage() {
             <div className="mt-4 flex justify-center gap-2">
                 <Badge variant="outline">File Formats</Badge>
                 <Badge variant="outline">Web Performance</Badge>
-                <Badge variant="outline">Technical SEO</Badge>
+                <Badge variant="outline">Image Optimization</Badge>
             </div>
         </div>
 
@@ -108,7 +108,7 @@ export default function BlogPostPage() {
         
         <h2 className="text-2xl font-bold mt-8">Don't Forget WebP: The Modern Alternative</h2>
         <p>
-          It's also worth mentioning WebP, a modern format from Google. WebP can handle both lossy and lossless compression, often achieving smaller file sizes than both JPG and PNG at equivalent quality. It also supports transparency and animation. With near-universal browser support, converting your final JPGs and PNGs to WebP is a powerful optimization step.
+          It's also worth mentioning WebP, a modern format from Google. WebP can handle both lossy and lossless compression, often achieving smaller file sizes than both JPG and PNG at equivalent quality. It also supports transparency and animation. With near-universal browser support, converting your final JPGs and PNGs to WebP is a powerful optimization step. For a complete overview, check out our <Link href="/blog/ultimate-guide-to-image-optimization" className="text-primary hover:underline">definitive guide to image optimization</Link>.
         </p>
 
         <h2 className="text-2xl font-bold mt-8">Conclusion: It's About the Right Tool for the Job</h2>

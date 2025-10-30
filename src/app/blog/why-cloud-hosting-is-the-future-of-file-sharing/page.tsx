@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Is Cloud Storage Always the Future? A Balanced View',
+  title: 'Is Cloud Storage Always the Future? A Balanced View for 2025',
   description: 'A balanced look at cloud hosting for file sharing. We weigh the benefits of accessibility and collaboration against the critical importance of privacy and on-device processing.',
 };
 

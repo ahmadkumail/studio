@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Cloud vs. Local Storage: The 2025 Tug-of-War for Your Data',
-  description: 'A definitive guide to Cloud vs. Local Storage. We analyze speed, security, cost, and control to help you build a modern, hybrid data strategy that works for you.',
+  description: 'A definitive guide to Cloud vs. Local Storage for 2025. We analyze speed, security, cost, and control to help you build a modern, hybrid data strategy that works for you.',
 };
 
 export default function BlogPostPage() {

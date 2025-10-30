@@ -3,17 +3,19 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import type { Metadata } from 'next';
 import { Badge } from '@/components/ui/badge';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const metadata: Metadata = {
   title: 'Blog | File Compression Tips and Insights',
-  description: 'Explore the ShrinkWrap blog for tips, tricks, and insights on file compression, image optimization, data privacy, and digital efficiency.',
+  description: 'Explore the ShrinkWrap blog for expert tips, technical guides, and insights on file compression, image optimization, data privacy, and digital efficiency.',
 };
 
 const blogPosts = [
   {
     title: '5 Critical Mistakes to Avoid When Sharing Files Online',
     slug: '5-common-mistakes-when-sharing-files',
-    description: 'Stop making these 5 common file sharing mistakes. Learn how to secure your data with passwords, out-of-band communication, and on-device compression to prevent costly data leaks.',
+    description: 'Stop making these common file sharing mistakes. Learn how to secure your data with passwords, out-of-band communication, and on-device compression to prevent costly data leaks.',
     image_id: 'blog-8',
     date: 'September 5, 2025',
     keywords: ['Cybersecurity', 'File Sharing', 'Productivity'],
@@ -93,6 +95,10 @@ const blogPosts = [
 ];
 
 export default function BlogIndexPage() {
+  const getImageForPost = (imageId: string) => {
+    return PlaceHolderImages.find(img => img.id === imageId);
+  }
+
   return (
     <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
@@ -100,16 +106,29 @@ export default function BlogIndexPage() {
           The ShrinkWrap Blog
         </h1>
         <p className="mt-4 text-xl text-muted-foreground">
-          Tips, tricks, and insights on file compression and digital efficiency.
+          Expert tips, technical guides, and insights on file compression and digital efficiency.
         </p>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-2">
         {blogPosts.map((post) => {
+          const image = getImageForPost(post.image_id);
           return (
             <Link href={`/blog/${post.slug}`} key={post.slug} className="block group">
               <Card className="h-full flex flex-col justify-between overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:border-primary/50">
                 <div>
+                   {image && (
+                    <div className="overflow-hidden">
+                      <Image
+                        src={image.imageUrl}
+                        alt={image.description}
+                        width={600}
+                        height={400}
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                        data-ai-hint={image.imageHint}
+                      />
+                    </div>
+                  )}
                   <CardHeader>
                     <p className="text-sm text-muted-foreground">{post.date}</p>
                     <CardTitle className="text-2xl group-hover:text-primary transition-colors">

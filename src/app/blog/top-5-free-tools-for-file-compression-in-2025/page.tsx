@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'A Review of the 5 Best Free File Compression Tools in 2025',
-  description: 'A detailed review of the best free file compression tools. We compare ShrinkWrap, 7-Zip, Squoosh, and others on performance, privacy, and unique features.',
+  description: 'A detailed review of the best free file compression tools. We compare ShrinkWrap, 7-Zip, Squoosh, and others on performance, privacy, and unique features for 2025.',
 };
 
 export default function BlogPostPage() {

@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'A Practical Guide to File Formats (JPG, PDF, ZIP, and More)',
-  description: 'A comprehensive yet simple guide to the most common file formats. Understand the use cases for JPG, PNG, PDF, DOCX, ZIP, MP4, and more to manage your digital life.',
+  description: 'A comprehensive yet simple guide to the most common file formats. Understand the use cases for JPG, PNG, PDF, DOCX, ZIP, MP4, and more to manage your digital life effectively.',
 };
 
 export default function BlogPostPage() {
