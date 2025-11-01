@@ -47,39 +47,61 @@ const FAQs = () => (
     <h2 className="text-3xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
     <Accordion type="single" collapsible className="w-full text-left">
       <AccordionItem value="item-1">
-        <AccordionTrigger>What makes ShrinkWrap different from other image compressors?</AccordionTrigger>
+        <AccordionTrigger>What makes ShrinkWrap different?</AccordionTrigger>
         <AccordionContent>
-          ShrinkWrap is built on two core principles: absolute privacy and intelligent compression. Unlike many online tools, we process everything directly in your browser. Your files are never uploaded to a server. Additionally, our AI engine analyzes your compression choice to suggest optimal settings, giving you expert-level results without the guesswork.
+          ShrinkWrap is built on two core principles: absolute privacy and intelligent compression. Unlike most online tools that require you to upload your files, ShrinkWrap processes everything directly in your browser. Your files never leave your computer. Secondly, our AI engine removes the guesswork from compression by analyzing your needs and suggesting optimal settings to balance file size and quality.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
-        <AccordionTrigger>Is it truly safe to use? Where do my files go?</AccordionTrigger>
+        <AccordionTrigger>Is ShrinkWrap truly private and secure?</AccordionTrigger>
         <AccordionContent>
-          Yes, it is 100% safe. Your files never leave your computer. All the compression magic happens locally on your device. We cannot see, access, or store your images. This privacy-first approach is the foundation of ShrinkWrap and makes it as secure as any desktop software.
+          Yes, 100%. The security of your files is our top priority. Because all compression happens on-device (inside your web browser), your data is never sent to our servers or any third party. This makes ShrinkWrap as secure as any offline desktop application while giving you the convenience of a web-based tool.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-3">
-        <AccordionTrigger>How much can I actually reduce my file size?</AccordionTrigger>
+        <AccordionTrigger>How does the AI suggestion work?</AccordionTrigger>
         <AccordionContent>
-          The results can be dramatic, often reducing file sizes by up to 80%. The exact savings depend on the original image. For example, a large, unoptimized JPG photograph can be significantly reduced with minimal quality loss, while an already optimized PNG logo might see a smaller reduction. Our tool always aims for the best possible balance.
+          Our AI is trained to understand the trade-offs between file size and image quality. When you select a compression level ('Low', 'Medium', or 'High'), the AI suggests a precise quality setting and optimization strategy to achieve that goal. This gives you an expert-level result without needing to be an expert yourself. It’s the perfect way to get great results, fast.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-4">
-        <AccordionTrigger>Which file format should I choose, JPG or PNG?</AccordionTrigger>
+        <AccordionTrigger>What's the difference between Low, Medium, and High compression?</AccordionTrigger>
         <AccordionContent>
-          It depends on the image! Use JPG for photographs and complex images with gradients. Use PNG for graphics with sharp lines, text, or when you need a transparent background (like a logo). Our tool allows you to convert between them, so you can experiment to see which format gives you the best result for your specific image.
+          It's a simple way to tell the tool what's most important to you:
+          <ul className="list-disc list-inside mt-2 space-y-1">
+            <li><strong>Low:</strong> Prioritizes image quality. File size reduction will be smaller, but your image will retain maximum detail. Best for high-resolution portfolio pieces.</li>
+            <li><strong>Medium:</strong> The perfect balance. This is the recommended setting for most users, as it significantly reduces file size with almost no noticeable loss in quality.</li>
+            <li><strong>High:</strong> Prioritizes file size. This setting is aggressive and will make your file as small as possible, which may result in some visible quality loss. Best for when file size is the absolute top priority.</li>
+          </ul>
         </AccordionContent>
       </AccordionItem>
-      <AccordionItem value="item-5">
-        <AccordionTrigger>Why is compressing my images so important?</AccordionTrigger>
+       <AccordionItem value="item-5">
+        <AccordionTrigger>Can I compress multiple images at once?</AccordionTrigger>
         <AccordionContent>
-          Image compression is critical for web performance. Smaller images make your website load faster, which improves user experience and is a key factor for ranking higher on search engines like Google (SEO). It also saves storage space and reduces bandwidth costs for you and your visitors.
+          Yes! ShrinkWrap supports batch processing. You can drag and drop multiple PNG or JPG files at the same time (up to 10 per batch). You can then set compression levels for all files at once or individually, and compress them all with a single click.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-6">
-        <AccordionTrigger>Is there a limit to how many images I can compress?</AccordionTrigger>
+        <AccordionTrigger>Which file format should I choose: JPG or PNG?</AccordionTrigger>
         <AccordionContent>
-          No, there are no limits. ShrinkWrap is completely free to use, and you can compress as many images as you like, as often as you need. There are no subscriptions, no watermarks, and no sign-up required.
+          It depends entirely on the image! Here’s a simple rule:
+          <ul className="list-disc list-inside mt-2 space-y-1">
+            <li><strong>Use JPG for photos</strong> and other complex images with lots of colors and gradients.</li>
+            <li><strong>Use PNG for graphics</strong> with sharp lines, text, solid colors, or when you need a transparent background (like a logo).</li>
+          </ul>
+          Our tool also allows you to convert between formats, so feel free to experiment!
+        </AccordionContent>
+      </AccordionItem>
+       <AccordionItem value="item-7">
+        <AccordionTrigger>Why is image compression so important?</AccordionTrigger>
+        <AccordionContent>
+          Optimized images are the key to a fast and professional website. Smaller image files make your site load quicker, which improves user experience, keeps visitors engaged, and is a critical factor for ranking higher on search engines (SEO). It also saves you storage space and reduces bandwidth costs for both you and your visitors.
+        </AccordionContent>
+      </AccordionItem>
+       <AccordionItem value="item-8">
+        <AccordionTrigger>Is ShrinkWrap really free? What's the catch?</AccordionTrigger>
+        <AccordionContent>
+          ShrinkWrap is 100% free to use. There is no catch. We believe everyone deserves access to high-quality tools without worrying about subscriptions, hidden fees, or their privacy. We are passionate about making the web a faster, more private place, and ShrinkWrap is our contribution to that goal.
         </AccordionContent>
       </AccordionItem>
     </Accordion>
