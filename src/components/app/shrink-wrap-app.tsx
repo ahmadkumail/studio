@@ -43,48 +43,48 @@ const MAX_FILES = 10;
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
 
 const FAQs = () => (
-    <div id="faq" className="w-full max-w-4xl mx-auto my-12 md:my-16">
-      <h2 className="text-3xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
-      <Accordion type="single" collapsible className="w-full text-left">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>1. How can I compress JPG images online for free?</AccordionTrigger>
-          <AccordionContent>
-          You can use ShrinkWrap to compress JPG images online for free without losing quality. Simply upload your JPG file by dragging it into the upload box or clicking to select it. Our tool will then intelligently reduce the file size, and you can download it instantly.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2">
-          <AccordionTrigger>2. Can I reduce PNG file size without losing quality?</AccordionTrigger>
-          <AccordionContent>
-          Yes! ShrinkWrap uses smart, lossless compression techniques for PNG files, which significantly reduces the file size while maintaining maximum image quality and transparency. It's perfect for web graphics and logos.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-3">
-          <AccordionTrigger>3. Is ShrinkWrap free to use?</AccordionTrigger>
-          <AccordionContent>
-          Absolutely! ShrinkWrap is a completely free PNG and JPG image compressor. There are no hidden charges, no watermarks, and no sign-up required. You can compress as many images as you need.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-4">
-          <AccordionTrigger>4. How does ShrinkWrap protect my privacy?</AccordionTrigger>
-          <AccordionContent>
-          Your privacy is our top priority. All image processing is done directly in your browser on your own computer. Your files are never uploaded to our servers, ensuring your data remains 100% private and secure.
-          </AccordionContent>
-        </AccordionItem>
-         <AccordionItem value="item-5">
-          <AccordionTrigger>5. How much can I shrink my images?</AccordionTrigger>
-          <AccordionContent>
-          Our compressor can often reduce JPG and PNG images by up to 80% of their original size. The exact compression amount depends on the original image's characteristics, but our AI-powered tool always aims for the best balance of size and quality.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-6">
-          <AccordionTrigger>6. Can I use ShrinkWrap on my mobile device?</AccordionTrigger>
-          <AccordionContent>
-          Yes, ShrinkWrap is a fully responsive, mobile-friendly image compressor. You can easily compress JPG and PNG images directly from your phone's browser, whether you're on an iPhone, Android, or tablet.
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </div>
-  );
+  <div id="faq" className="w-full max-w-4xl mx-auto my-12 md:my-16">
+    <h2 className="text-3xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
+    <Accordion type="single" collapsible className="w-full text-left">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>What makes ShrinkWrap different from other image compressors?</AccordionTrigger>
+        <AccordionContent>
+          ShrinkWrap is built on two core principles: absolute privacy and intelligent compression. Unlike many online tools, we process everything directly in your browser. Your files are never uploaded to a server. Additionally, our AI engine analyzes your compression choice to suggest optimal settings, giving you expert-level results without the guesswork.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Is it truly safe to use? Where do my files go?</AccordionTrigger>
+        <AccordionContent>
+          Yes, it is 100% safe. Your files never leave your computer. All the compression magic happens locally on your device. We cannot see, access, or store your images. This privacy-first approach is the foundation of ShrinkWrap and makes it as secure as any desktop software.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger>How much can I actually reduce my file size?</AccordionTrigger>
+        <AccordionContent>
+          The results can be dramatic, often reducing file sizes by up to 80%. The exact savings depend on the original image. For example, a large, unoptimized JPG photograph can be significantly reduced with minimal quality loss, while an already optimized PNG logo might see a smaller reduction. Our tool always aims for the best possible balance.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-4">
+        <AccordionTrigger>Which file format should I choose, JPG or PNG?</AccordionTrigger>
+        <AccordionContent>
+          It depends on the image! Use JPG for photographs and complex images with gradients. Use PNG for graphics with sharp lines, text, or when you need a transparent background (like a logo). Our tool allows you to convert between them, so you can experiment to see which format gives you the best result for your specific image.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-5">
+        <AccordionTrigger>Why is compressing my images so important?</AccordionTrigger>
+        <AccordionContent>
+          Image compression is critical for web performance. Smaller images make your website load faster, which improves user experience and is a key factor for ranking higher on search engines like Google (SEO). It also saves storage space and reduces bandwidth costs for you and your visitors.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-6">
+        <AccordionTrigger>Is there a limit to how many images I can compress?</AccordionTrigger>
+        <AccordionContent>
+          No, there are no limits. ShrinkWrap is completely free to use, and you can compress as many images as you like, as often as you need. There are no subscriptions, no watermarks, and no sign-up required.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  </div>
+);
 
 const FileUploader = ({
   onDrop,
@@ -587,3 +587,5 @@ export default function ShrinkWrapApp() {
     </div>
   );
 }
+
+    
