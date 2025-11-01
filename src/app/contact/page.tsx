@@ -1,29 +1,24 @@
 
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, ThumbsUp, Send } from 'lucide-react';
-import type { Metadata } from 'next';
+import { Mail, Send } from 'lucide-react';
 
 export default function ContactPage() {
   const { toast } = useToast();
-  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, message: string) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     toast({
       title: "Message Sent!",
-      description: message,
+      description: "Thanks for reaching out! We'll be in touch soon.",
     });
     (e.target as HTMLFormElement).reset();
-    setIsFeedbackOpen(false); // Close dialog on successful submission
   };
 
   return (
@@ -56,44 +51,19 @@ export default function ContactPage() {
                 </div>
               </div>
             </a>
-            
-            <Dialog open={isFeedbackOpen} onOpenChange={setIsFeedbackOpen}>
-              <DialogTrigger asChild>
-                <div className="w-full text-left group cursor-pointer">
-                  <div className="flex items-start gap-6 p-6 border rounded-lg bg-card/50 hover:border-primary transition-all duration-300 transform hover:-translate-y-1">
+            <div className="w-full text-left group">
+                  <div className="flex items-start gap-6 p-6 border rounded-lg bg-card/50">
                     <div className="flex-shrink-0 bg-primary/10 text-primary p-4 rounded-full">
-                      <ThumbsUp className="h-8 w-8" />
+                      <Send className="h-8 w-8" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-foreground">Share an Idea</h3>
+                      <h3 className="text-2xl font-bold text-foreground">Have an idea?</h3>
                       <p className="mt-2 text-muted-foreground">
-                        Have a feature request or an idea for how to make ShrinkWrap even better? We are all ears. Your insights are incredibly valuable.
-                      </p>
-                      <p className="mt-4 inline-block font-semibold text-primary underline group-hover:text-primary/80 transition-colors">
-                        Give us your feedback
+                        Have a feature request or an idea for how to make ShrinkWrap even better? Please send it through the contact form. We are all ears.
                       </p>
                     </div>
                   </div>
                 </div>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Share Your Feedback or Idea</DialogTitle>
-                  <DialogDescription>
-                    Your perspective helps us shape the future of ShrinkWrap. What's on your mind?
-                  </DialogDescription>
-                </DialogHeader>
-                <form onSubmit={(e) => handleSubmit(e, "Thank you for your invaluable feedback!")} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="feedback-message" className="sr-only">Feedback</Label>
-                    <Textarea id="feedback-message" name="feedback-message" placeholder="e.g., I wish there was a feature to..." required rows={5} />
-                  </div>
-                  <DialogFooter>
-                    <Button type="submit">Submit Feedback</Button>
-                  </DialogFooter>
-                </form>
-              </DialogContent>
-            </Dialog>
 
           </div>
 
@@ -104,7 +74,7 @@ export default function ContactPage() {
                   <CardDescription>Use the form below for any inquiries. We'll get back to you as soon as possible.</CardDescription>
               </CardHeader>
               <CardContent>
-                  <form onSubmit={(e) => handleSubmit(e, "Thanks for reaching out! We'll be in touch soon.")} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                       <Label htmlFor="name" className="font-semibold">Full Name</Label>
                       <Input id="name" type="text" placeholder="Your Name" required className="py-6"/>

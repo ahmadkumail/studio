@@ -1,4 +1,11 @@
 
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description: 'Learn about our commitment to your privacy. ShrinkWrap processes all files locally in your browser, ensuring your data never leaves your computer.',
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -7,43 +14,47 @@ export default function PrivacyPolicyPage() {
         
         <p className="text-muted-foreground text-center mb-12">Last updated: September 22, 2025</p>
 
-        <h2 className="text-2xl font-bold mt-8">1. Introduction</h2>
+        <h2 className="text-2xl font-bold mt-8">1. The ShrinkWrap Privacy Promise</h2>
         <p>
-          Welcome to ShrinkWrap. We are committed to protecting your privacy. This Privacy Policy explains what information we collect, how we use it, and your rights in relation to it. The most important thing to know is that <strong>ShrinkWrap processes all files locally in your browser. Your files are never uploaded to our servers.</strong>
+          Your privacy is not just a policy for us; it is the core principle of ShrinkWrap. We designed this tool from the ground up to ensure that you are the sole controller of your data. The most important thing you need to know is: <strong>your files are never uploaded to our servers.</strong> All compression and processing happen exclusively in your browser on your own device.
         </p>
 
-        <h2 className="text-2xl font-bold mt-8">2. Information We Collect</h2>
+        <h2 className="text-2xl font-bold mt-8">2. What Information We Collect (and What We Don't)</h2>
         <p>
-          Since all file processing happens on your device, we do not collect, store, or have access to the files you compress. We only collect information that you voluntarily provide to us when you contact us directly.
-        </p>
-
-        <h3 className="text-xl font-semibold mt-4">2.1. Usage Data</h3>
-        <p>
-          We may collect anonymous usage data to help us improve our service. This data is aggregated and does not contain any personally identifiable information.
-        </p>
-
-        <h2 className="text-2xl font-bold mt-8">3. How We Use Your Information</h2>
-        <p>
-          We use the information we collect in various ways, including to:
+          Because all file processing happens on your computer, we do not—and cannot—collect, see, store, or access the files you are compressing. They remain your property at all times.
         </p>
         <ul className="list-disc list-inside space-y-2">
-          <li>Provide, operate, and maintain our website</li>
-          <li>Improve, personalize, and expand our website</li>
-          <li>Understand and analyze how you use our website</li>
-          <li>Communicate with you, either directly or through one of our partners, including for customer service</li>
+            <li><strong>Information You Provide:</strong> If you voluntarily contact us via email or our contact form, we will collect the information you provide, such as your name and email address, solely for the purpose of responding to your inquiry.</li>
+            <li><strong>Anonymous Usage Analytics:</strong> We may collect non-personally identifiable usage data, such as which features are most popular or what compression levels are selected. This anonymous, aggregated data helps us understand how our tool is used so we can improve it. It is never linked to you or your files.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold mt-8">3. How We Use Information</h2>
+        <p>
+          The limited information we collect is used strictly to:
+        </p>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Provide, operate, and maintain our website.</li>
+          <li>Improve and personalize your experience.</li>
+          <li>Understand and analyze usage patterns to enhance functionality.</li>
+          <li>Communicate with you for customer service or to respond to your questions.</li>
         </ul>
 
         <h2 className="text-2xl font-bold mt-8">4. Data Security</h2>
         <p>
-          The security of your data is important to us. As your files are processed locally, the primary security responsibility lies with your own device's security. We implement a variety of security measures to maintain the safety of any personal information we do collect (like from the contact form).
+          Since your files are processed locally, their security is tied to your own device's security measures. For the contact information we do collect, we implement industry-standard security measures to maintain its safety. However, no method of electronic storage is 100% secure, so we cannot guarantee absolute security.
         </p>
-
-        <h2 className="text-2xl font-bold mt-8">5. Changes to This Privacy Policy</h2>
+        
+        <h2 className="text-2xl font-bold mt-8">5. Third-Party Services</h2>
         <p>
-          We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.
+          We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties. This does not include trusted third parties who assist us in operating our website, so long as those parties agree to keep this information confidential.
         </p>
 
-        <h2 className="text-2xl font-bold mt-8">6. Contact Us</h2>
+        <h2 className="text-2xl font-bold mt-8">6. Changes to This Privacy Policy</h2>
+        <p>
+          We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. We encourage you to review this Privacy Policy periodically for any changes.
+        </p>
+
+        <h2 className="text-2xl font-bold mt-8">7. Contact Us</h2>
         <p>
           If you have any questions about this Privacy Policy, please contact us by visiting the <a href="/contact" className="text-primary hover:underline">contact page</a> on our website.
         </p>
