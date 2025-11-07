@@ -493,69 +493,69 @@ export default function ShrinkWrapApp() {
       <main className="flex-grow w-full mt-4 md:mt-8">
         {files.length === 0 ? (
           <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight">Free AI-Powered Image Compressor</h1>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight">The Smart Way to Compress Images</h1>
             <div className="mt-8 text-foreground text-lg text-center">
-                <h2 className="text-2xl font-semibold">Compress PNG & JPG Files Without Losing Quality</h2>
-                <p className="max-w-prose mx-auto mt-2 text-muted-foreground">ShrinkWrap is a fast, private, and free online tool to reduce PNG and JPG file sizes. Our AI gives you expert results instantly.</p>
+                <h2 className="text-2xl font-semibold">Shrink PNG & JPG files with AI-powered, privacy-first compression.</h2>
+                <p className="max-w-prose mx-auto mt-2 text-muted-foreground">ShrinkWrap is a free online tool that reduces image file sizes without compromising quality. Our AI gives you expert results instantly, and all processing happens in your browser for total privacy.</p>
             </div>
             
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
             
-            <div className="max-w-4xl mx-auto my-12 space-y-16">
+            <div className="max-w-5xl mx-auto my-12 space-y-16">
                 <section className="space-y-8">
-                    <h2 className="text-3xl font-bold text-foreground text-center">How to Compress an Image in 3 Easy Steps</h2>
+                    <h2 className="text-3xl font-bold text-foreground text-center">How It Works: 3 Simple Steps</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="flex flex-col items-center text-center p-4">
                             <div className="p-4 bg-primary/10 rounded-full mb-4">
                                 <UploadCloud className="w-10 h-10 text-primary" />
                             </div>
-                            <h3 className="text-xl font-semibold mb-2">1. Upload Your Image</h3>
-                            <p className="text-muted-foreground text-sm">Drag and drop your PNG or JPG files, or click to select them.</p>
+                            <h3 className="text-xl font-semibold mb-2">1. Upload Your Images</h3>
+                            <p className="text-muted-foreground text-sm">Drag and drop your PNG or JPG files, or click to select them from your device.</p>
                         </div>
                         <div className="flex flex-col items-center text-center p-4">
                             <div className="p-4 bg-primary/10 rounded-full mb-4">
                                 <Zap className="w-10 h-10 text-primary" />
                             </div>
                             <h3 className="text-xl font-semibold mb-2">2. Choose Your Setting</h3>
-                            <p className="text-muted-foreground text-sm">Select a compression level or let our AI suggest the best settings.</p>
+                            <p className="text-muted-foreground text-sm">Select a compression level or let our AI suggest the best settings for a perfect balance of size and quality.</p>
                         </div>
                         <div className="flex flex-col items-center text-center p-4">
                             <div className="p-4 bg-primary/10 rounded-full mb-4">
                                 <Download className="w-10 h-10 text-primary" />
                             </div>
-                            <h3 className="text-xl font-semibold mb-2">3. Download Your File</h3>
-                            <p className="text-muted-foreground text-sm">Download your newly compressed, lightweight image instantly.</p>
+                            <h3 className="text-xl font-semibold mb-2">3. Download Your Files</h3>
+                            <p className="text-muted-foreground text-sm">Download your newly compressed, lightweight images instantly and enjoy a faster website.</p>
                         </div>
                     </div>
                 </section>
                 <section className="space-y-8">
-                    <h2 className="text-3xl font-bold text-foreground text-center">Why Use Our Image Compressor?</h2>
+                    <h2 className="text-3xl font-bold text-foreground text-center">Key Features</h2>
                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <Card className="text-center p-6">
+                        <Card className="text-center p-6 bg-card/50">
                             <BadgePercent className="w-10 h-10 text-primary mx-auto mb-4" />
                             <h3 className="text-xl font-semibold mb-2">High Compression</h3>
-                            <p className="text-muted-foreground text-sm">Reduce file size by up to 80% with minimal quality loss.</p>
+                            <p className="text-muted-foreground text-sm">Reduce file sizes by up to 80% with our advanced compression algorithms that preserve quality.</p>
                         </Card>
-                        <Card className="text-center p-6">
+                        <Card className="text-center p-6 bg-card/50">
                             <ShieldCheck className="w-10 h-10 text-primary mx-auto mb-4" />
-                            <h3 className="text-xl font-semibold mb-2">Privacy First</h3>
-                            <p className="text-muted-foreground text-sm">All processing is done in your browser. Files never leave your device.</p>
+                            <h3 className="text-xl font-semibold mb-2">Absolute Privacy</h3>
+                            <p className="text-muted-foreground text-sm">All processing is done 100% in your browser. Your files never leave your computer.</p>
                         </Card>
-                         <Card className="text-center p-6">
-                            <Smartphone className="w-10 h-10 text-primary mx-auto mb-4" />
-                            <h3 className="text-xl font-semibold mb-2">Mobile Friendly</h3>
-                            <p className="text-muted-foreground text-sm">Works seamlessly on your desktop, tablet, and smartphone.</p>
+                        <Card className="text-center p-6 bg-card/50">
+                            <Sparkles className="w-10 h-10 text-primary mx-auto mb-4" />
+                            <h3 className="text-xl font-semibold mb-2">AI Suggestions</h3>
+                            <p className="text-muted-foreground text-sm">Our AI engine analyzes your file and recommends the optimal settings for you.</p>
                         </Card>
-                        <Card className="text-center p-6">
+                        <Card className="text-center p-6 bg-card/50">
                             <Package className="w-10 h-10 text-primary mx-auto mb-4" />
                             <h3 className="text-xl font-semibold mb-2">Batch Processing</h3>
-                            <p className="text-muted-foreground text-sm">Compress multiple PNG or JPG images at once.</p>
+                            <p className="text-muted-foreground text-sm">Save time by compressing multiple PNG or JPG images at once with a single click.</p>
                         </Card>
                     </div>
                 </section>
 
                 <section className="space-y-8">
-                    <h2 className="text-3xl font-bold text-foreground text-center">Benefits of Image Optimization</h2>
+                    <h2 className="text-3xl font-bold text-foreground text-center">Optimize Your Site, Boost Your Success</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <Card className="text-center p-6">
                             <Rocket className="w-10 h-10 text-primary mx-auto mb-4" />
@@ -569,7 +569,7 @@ export default function ShrinkWrapApp() {
                         </Card>
                         <Card className="text-center p-6">
                             <Database className="w-10 h-10 text-primary mx-auto mb-4" />
-                            <h3 className="text-xl font-semibold mb-2">Save Storage</h3>
+                            <h3 className="text-xl font-semibold mb-2">Save Bandwidth</h3>
                             <p className="text-muted-foreground text-sm">Smaller image files save valuable storage space and reduce bandwidth consumption for you and your users.</p>
                         </Card>
                     </div>
