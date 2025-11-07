@@ -338,7 +338,7 @@ export default function ShrinkWrapApp() {
         }
         
         return {
-            id: `${file.name}-${file.lastModified}-${Math.random()}`,
+            id: `${file.name}-${file.lastModified}`,
             file,
             compressionLevel: 'Medium',
             targetFormat: fileType,
