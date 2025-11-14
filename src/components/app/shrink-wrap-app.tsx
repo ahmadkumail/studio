@@ -48,59 +48,59 @@ const FAQs = () => (
       <AccordionItem value="item-1">
         <AccordionTrigger>What makes ShrinkWrap different from other tools?</AccordionTrigger>
         <AccordionContent>
-          Two things: absolute privacy and smart suggestions. Unlike most online tools, ShrinkWrap processes everything directly in your browser. Your files never leave your computer, period. Secondly, our AI engine removes the guesswork by suggesting optimal settings to perfectly balance file size and quality, giving you an expert result without needing to be one.
+          It comes down to two big things: total privacy and smart suggestions. Unlike most online tools that upload your files to their servers, ShrinkWrap does all the work right in your browser. This means your files never leave your computer. Plus, our AI engine takes the guesswork out of compression. It suggests the best settings to give you a perfect balance between file size and quality, so you get a professional result without being a tech expert.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
-        <AccordionTrigger>Is it really private and secure?</AccordionTrigger>
+        <AccordionTrigger>Is it actually private and secure?</AccordionTrigger>
         <AccordionContent>
-          Yes, 100%. The security of your files is our #1 priority. Because all the compression work happens on your own device (inside your web browser), your data is never sent to our servers or any third party. This makes ShrinkWrap as secure as any offline desktop app, but with the convenience of a website.
+          Yes, 100%. We built ShrinkWrap with a "privacy-first" promise. Since all the compression happens locally on your own device, we never see, touch, or store your files. This makes ShrinkWrap as secure as any offline desktop software, but with the convenience of a tool you can access from anywhere. Your business is your business, and we intend to keep it that way.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-3">
         <AccordionTrigger>How does the AI suggestion feature work?</AccordionTrigger>
         <AccordionContent>
-          Our AI has been trained to understand the complex trade-offs between file size and image quality. When you choose a general compression level you want ('Low', 'Medium', or 'High'), the AI suggests a precise quality setting and optimization strategy to achieve that goal. It’s the perfect way to get a great result, fast, without fiddling with confusing sliders.
+          Think of it like having a compression expert whispering in your ear. Our AI has been trained to understand the delicate balance between image quality and file size. When you pick a general goal (like 'Low', 'Medium', or 'High' compression), the AI instantly analyzes the image and recommends a precise quality setting and strategy to hit that goal. It’s the fastest way to get a fantastic result without fiddling with confusing sliders.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-4">
         <AccordionTrigger>What's the difference between Low, Medium, and High compression?</AccordionTrigger>
         <AccordionContent>
-          It's a simple way to tell the tool what's most important to you:
+          It’s a simple way for you to tell us what matters most for each image:
           <ul className="list-disc list-inside mt-2 space-y-1">
-            <li><strong>Low:</strong> Prioritizes image quality above all. The file size reduction will be smaller, but your image will retain maximum detail. This is best for high-resolution portfolio pieces or professional photography.</li>
-            <li><strong>Medium:</strong> The perfect balance for everyday use. This is the recommended setting for most people, as it dramatically reduces file size with almost no noticeable loss in quality. Great for websites, emails, and social media.</li>
-            <li><strong>High:</strong> Prioritizes the smallest possible file size. This setting is aggressive and will make your file tiny, which may result in some visible quality loss. This is best for when file size is the absolute top priority over image fidelity.</li>
+            <li><strong>Low:</strong> This setting prioritizes image quality above all else. The file size reduction will be smaller, but your image will keep its maximum detail. It's the best choice for high-resolution portfolio pieces or professional photography where every pixel counts.</li>
+            <li><strong>Medium:</strong> This is the sweet spot and our recommended setting for most everyday use. It gives you a huge reduction in file size with almost no noticeable loss in quality. It's perfect for speeding up your website, attaching to emails, or posting on social media.</li>
+            <li><strong>High:</strong> This setting is all about getting the smallest possible file size. It's an aggressive option that will make your file tiny, which might lead to some visible quality loss. It's the right choice when file size is the absolute top priority.</li>
           </ul>
         </AccordionContent>
       </AccordionItem>
        <AccordionItem value="item-5">
         <AccordionTrigger>Can I compress more than one image at a time?</AccordionTrigger>
         <AccordionContent>
-          Absolutely! ShrinkWrap fully supports batch processing. You can drag and drop multiple PNG or JPG files at once (up to 10 per batch). You can then apply compression settings to all files at once or adjust them individually, and then compress them all with a single click.
+          Absolutely. We designed ShrinkWrap for real-world workflows, and that means batch processing is a core feature. You can drag and drop a whole folder of PNG or JPG files (up to 10 at a time), apply compression settings to all of them at once, and then compress the entire batch with a single click. It's a huge time-saver.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-6">
         <AccordionTrigger>Which file format should I choose: JPG or PNG?</AccordionTrigger>
         <AccordionContent>
-          This is a great question! The answer depends entirely on the image content. Here’s a simple rule of thumb:
+          This is a fantastic and important question. The right format depends entirely on the image itself. Here's a simple rule of thumb we live by:
           <ul className="list-disc list-inside mt-2 space-y-1">
-            <li><strong>Use JPG for photos</strong> and other complex images with millions of colors, gradients, and textures.</li>
-            <li><strong>Use PNG for graphics</strong> with sharp lines, text, solid colors, or when you need a transparent background (like a logo).</li>
+            <li><strong>Use JPG for photos</strong> and other complex images with millions of colors, gradients, and textures. Its compression is specifically designed for this.</li>
+            <li><strong>Use PNG for graphics</strong> that have sharp lines, text, solid colors, or when you need a transparent background (like a logo). PNG will keep these details perfectly crisp.</li>
           </ul>
-          Our tool also lets you convert between formats, so feel free to experiment to see what works best for your specific image!
+          Our tool also lets you convert between formats, so feel free to experiment and see what works best for your specific image!
         </AccordionContent>
       </AccordionItem>
        <AccordionItem value="item-7">
         <AccordionTrigger>Why is image compression so important anyway?</AccordionTrigger>
         <AccordionContent>
-          Optimized images are the secret to a fast and professional website. Smaller image files make your site load quicker, which creates a better user experience, keeps visitors engaged, and is a critical factor for ranking higher on search engines like Google (SEO). It also saves you storage space and reduces bandwidth costs for both you and your visitors.
+          Optimized images are one of the most critical elements of a fast, modern website. Smaller images make your site load dramatically faster, which creates a better user experience, keeps visitors from leaving, and is a major factor in ranking higher on search engines like Google. Beyond SEO, it saves you storage space and reduces bandwidth costs for both you and your visitors. It’s a win-win-win.
         </AccordionContent>
       </AccordionItem>
        <AccordionItem value="item-8">
         <AccordionTrigger>Is ShrinkWrap really free? What's the catch?</AccordionTrigger>
         <AccordionContent>
-          Yes, ShrinkWrap is 100% free to use, and there's no catch. We believe everyone deserves access to high-quality tools without having to worry about subscriptions, hidden fees, or their data being sold. We're passionate about making the web a faster, more private place, and ShrinkWrap is our contribution to that goal.
+          Yes, ShrinkWrap is 100% free, and there's no catch. We're a small team of developers who are passionate about building great tools for the community. We believe everyone deserves access to high-quality software without dealing with subscriptions, hidden fees, or worrying about their data being sold. ShrinkWrap is our contribution to making the web a little bit faster and more private for everyone.
         </AccordionContent>
       </AccordionItem>
     </Accordion>
@@ -167,10 +167,6 @@ const FileItem = ({
 }) => {
   const { file, status, progress, originalSize, compressedSize } = appFile;
 
-  const FileIcon = useMemo(() => {
-    return FileImage;
-  }, []);
-
   const savings = useMemo(() => {
     if (typeof originalSize === 'number' && typeof compressedSize === 'number' && compressedSize > 0) {
       if (compressedSize >= originalSize) {
@@ -198,7 +194,7 @@ const FileItem = ({
     <Card className="bg-card p-4 relative overflow-hidden animate-in fade-in-0 slide-in-from-bottom-5 duration-300 shadow-sm">
       <div className="flex flex-col md:flex-row gap-4 items-center">
         <div className="flex-shrink-0 flex items-center gap-4 w-full md:w-1/3">
-          <FileIcon className="w-10 h-10 text-primary shrink-0" aria-label="Image file icon" />
+          <FileImage className="w-10 h-10 text-primary shrink-0" aria-label="Image file icon" />
           <div className="flex-grow min-w-0">
             <p className="font-medium text-foreground truncate" title={file.name}>{file.name}</p>
             <p className="text-sm text-muted-foreground">{formatBytes(originalSize)}</p>
