@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Send } from 'lucide-react';
+import { Mail, Send, MessageSquareHeart } from 'lucide-react';
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -16,7 +16,7 @@ export default function ContactPage() {
     e.preventDefault();
     toast({
       title: "Message Sent!",
-      description: "Thanks for reaching out! We'll be in touch soon.",
+      description: "Thanks for reaching out! We've received your message and will get back to you soon.",
     });
     (e.target as HTMLFormElement).reset();
   };
@@ -29,7 +29,7 @@ export default function ContactPage() {
             Let's Talk
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-muted-foreground">
-            We are passionate about building the best tools and would love to hear from you. Your questions and feedback are what help us improve.
+            We're passionate about building great tools and we'd love to hear from you. Your questions and feedback help us make ShrinkWrap even better.
           </p>
         </div>
 
@@ -41,9 +41,9 @@ export default function ContactPage() {
                   <Mail className="h-8 w-8" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground">Email Directly</h3>
+                  <h3 className="text-2xl font-bold text-foreground">Email Us Directly</h3>
                   <p className="mt-2 text-muted-foreground">
-                    For support questions, partnership inquiries, or general questions, please send us an email. We're quick to respond.
+                    For support, partnership inquiries, or general questions, feel free to send us an email. We're pretty quick to respond.
                   </p>
                   <p className="mt-4 inline-block font-semibold text-primary underline group-hover:text-primary/80 transition-colors">
                     shrinkwrap13@gmail.com
@@ -54,12 +54,12 @@ export default function ContactPage() {
             <div className="w-full text-left group">
                   <div className="flex items-start gap-6 p-6 border rounded-lg bg-card/50">
                     <div className="flex-shrink-0 bg-primary/10 text-primary p-4 rounded-full">
-                      <Send className="h-8 w-8" />
+                      <MessageSquareHeart className="h-8 w-8" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-foreground">Have an idea?</h3>
+                      <h3 className="text-2xl font-bold text-foreground">Have an Idea?</h3>
                       <p className="mt-2 text-muted-foreground">
-                        Have a feature request or an idea for how to make ShrinkWrap even better? Please send it through the contact form. We are all ears.
+                        Got a feature request or an idea for how to make ShrinkWrap even better? Please send it through the contact form. We read every single submission.
                       </p>
                     </div>
                   </div>
@@ -71,7 +71,7 @@ export default function ContactPage() {
             <Card className="shadow-2xl shadow-primary/10">
               <CardHeader>
                   <CardTitle className="text-3xl font-bold">Send a Message</CardTitle>
-                  <CardDescription>Use the form below for any inquiries. We'll get back to you as soon as possible.</CardDescription>
+                  <CardDescription>Use the form below for any inquiries. We'll get back to you as soon as we can.</CardDescription>
               </CardHeader>
               <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">

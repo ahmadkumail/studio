@@ -1,3 +1,4 @@
+
 "use client";
 
 import { PandaIcon } from '@/components/icons/panda-icon';
@@ -5,12 +6,13 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/#faq', label: 'FAQs' },
-    { href: '/blog', label: 'Blogs' },
-    { href: '/contact', label: 'Contact Us' },
+    { href: '/blog', label: 'Blog' },
+    { href: '/contact', label: 'Contact' },
 ];
 
 const Navbar = () => {
@@ -37,7 +39,10 @@ const Navbar = () => {
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-4 md:gap-6 text-sm font-medium">
                     {navLinks.map(({href, label}) => (
-                         <Link key={label} href={href} className="text-muted-foreground hover:text-foreground transition-colors">
+                         <Link key={label} href={href} className={cn(
+                            "text-muted-foreground hover:text-foreground transition-colors",
+                            (pathname === href || (href === '/blog' && pathname.startsWith('/blog'))) && 'text-foreground'
+                         )}>
                             {label}
                        </Link>
                     ))}

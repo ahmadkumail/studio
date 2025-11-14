@@ -20,7 +20,6 @@ import {
   Zap,
   BadgePercent,
   ShieldCheck,
-  Smartphone,
   Package,
   Rocket,
   TrendingUp,
@@ -47,21 +46,21 @@ const FAQs = () => (
     <h2 className="text-3xl font-bold text-foreground mb-6 text-center">Frequently Asked Questions</h2>
     <Accordion type="single" collapsible className="w-full text-left">
       <AccordionItem value="item-1">
-        <AccordionTrigger>What makes ShrinkWrap different?</AccordionTrigger>
+        <AccordionTrigger>What makes ShrinkWrap different from other tools?</AccordionTrigger>
         <AccordionContent>
-          ShrinkWrap is built on two core principles: absolute privacy and intelligent compression. Unlike most online tools that require you to upload your files, ShrinkWrap processes everything directly in your browser. Your files never leave your computer. Secondly, our AI engine removes the guesswork from compression by analyzing your needs and suggesting optimal settings to balance file size and quality.
+          Two things: absolute privacy and smart suggestions. Unlike most online tools, ShrinkWrap processes everything directly in your browser. Your files never leave your computer, period. Secondly, our AI engine removes the guesswork by suggesting optimal settings to perfectly balance file size and quality, giving you an expert result without needing to be one.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
-        <AccordionTrigger>Is ShrinkWrap truly private and secure?</AccordionTrigger>
+        <AccordionTrigger>Is it really private and secure?</AccordionTrigger>
         <AccordionContent>
-          Yes, 100%. The security of your files is our top priority. Because all compression happens on-device (inside your web browser), your data is never sent to our servers or any third party. This makes ShrinkWrap as secure as any offline desktop application while giving you the convenience of a web-based tool.
+          Yes, 100%. The security of your files is our #1 priority. Because all the compression work happens on your own device (inside your web browser), your data is never sent to our servers or any third party. This makes ShrinkWrap as secure as any offline desktop app, but with the convenience of a website.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-3">
-        <AccordionTrigger>How does the AI suggestion work?</AccordionTrigger>
+        <AccordionTrigger>How does the AI suggestion feature work?</AccordionTrigger>
         <AccordionContent>
-          Our AI is trained to understand the trade-offs between file size and image quality. When you select a compression level ('Low', 'Medium', or 'High'), the AI suggests a precise quality setting and optimization strategy to achieve that goal. This gives you an expert-level result without needing to be an expert yourself. It’s the perfect way to get great results, fast.
+          Our AI has been trained to understand the complex trade-offs between file size and image quality. When you choose a general compression level you want ('Low', 'Medium', or 'High'), the AI suggests a precise quality setting and optimization strategy to achieve that goal. It’s the perfect way to get a great result, fast, without fiddling with confusing sliders.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-4">
@@ -69,39 +68,39 @@ const FAQs = () => (
         <AccordionContent>
           It's a simple way to tell the tool what's most important to you:
           <ul className="list-disc list-inside mt-2 space-y-1">
-            <li><strong>Low:</strong> Prioritizes image quality. File size reduction will be smaller, but your image will retain maximum detail. Best for high-resolution portfolio pieces.</li>
-            <li><strong>Medium:</strong> The perfect balance. This is the recommended setting for most users, as it significantly reduces file size with almost no noticeable loss in quality.</li>
-            <li><strong>High:</strong> Prioritizes file size. This setting is aggressive and will make your file as small as possible, which may result in some visible quality loss. Best for when file size is the absolute top priority.</li>
+            <li><strong>Low:</strong> Prioritizes image quality above all. The file size reduction will be smaller, but your image will retain maximum detail. This is best for high-resolution portfolio pieces or professional photography.</li>
+            <li><strong>Medium:</strong> The perfect balance for everyday use. This is the recommended setting for most people, as it dramatically reduces file size with almost no noticeable loss in quality. Great for websites, emails, and social media.</li>
+            <li><strong>High:</strong> Prioritizes the smallest possible file size. This setting is aggressive and will make your file tiny, which may result in some visible quality loss. This is best for when file size is the absolute top priority over image fidelity.</li>
           </ul>
         </AccordionContent>
       </AccordionItem>
        <AccordionItem value="item-5">
-        <AccordionTrigger>Can I compress multiple images at once?</AccordionTrigger>
+        <AccordionTrigger>Can I compress more than one image at a time?</AccordionTrigger>
         <AccordionContent>
-          Yes! ShrinkWrap supports batch processing. You can drag and drop multiple PNG or JPG files at the same time (up to 10 per batch). You can then set compression levels for all files at once or individually, and compress them all with a single click.
+          Absolutely! ShrinkWrap fully supports batch processing. You can drag and drop multiple PNG or JPG files at once (up to 10 per batch). You can then apply compression settings to all files at once or adjust them individually, and then compress them all with a single click.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-6">
         <AccordionTrigger>Which file format should I choose: JPG or PNG?</AccordionTrigger>
         <AccordionContent>
-          It depends entirely on the image! Here’s a simple rule:
+          This is a great question! The answer depends entirely on the image content. Here’s a simple rule of thumb:
           <ul className="list-disc list-inside mt-2 space-y-1">
-            <li><strong>Use JPG for photos</strong> and other complex images with lots of colors and gradients.</li>
+            <li><strong>Use JPG for photos</strong> and other complex images with millions of colors, gradients, and textures.</li>
             <li><strong>Use PNG for graphics</strong> with sharp lines, text, solid colors, or when you need a transparent background (like a logo).</li>
           </ul>
-          Our tool also allows you to convert between formats, so feel free to experiment!
+          Our tool also lets you convert between formats, so feel free to experiment to see what works best for your specific image!
         </AccordionContent>
       </AccordionItem>
        <AccordionItem value="item-7">
-        <AccordionTrigger>Why is image compression so important?</AccordionTrigger>
+        <AccordionTrigger>Why is image compression so important anyway?</AccordionTrigger>
         <AccordionContent>
-          Optimized images are the key to a fast and professional website. Smaller image files make your site load quicker, which improves user experience, keeps visitors engaged, and is a critical factor for ranking higher on search engines (SEO). It also saves you storage space and reduces bandwidth costs for both you and your visitors.
+          Optimized images are the secret to a fast and professional website. Smaller image files make your site load quicker, which creates a better user experience, keeps visitors engaged, and is a critical factor for ranking higher on search engines like Google (SEO). It also saves you storage space and reduces bandwidth costs for both you and your visitors.
         </AccordionContent>
       </AccordionItem>
        <AccordionItem value="item-8">
         <AccordionTrigger>Is ShrinkWrap really free? What's the catch?</AccordionTrigger>
         <AccordionContent>
-          ShrinkWrap is 100% free to use. There is no catch. We believe everyone deserves access to high-quality tools without worrying about subscriptions, hidden fees, or their privacy. We are passionate about making the web a faster, more private place, and ShrinkWrap is our contribution to that goal.
+          Yes, ShrinkWrap is 100% free to use, and there's no catch. We believe everyone deserves access to high-quality tools without having to worry about subscriptions, hidden fees, or their data being sold. We're passionate about making the web a faster, more private place, and ShrinkWrap is our contribution to that goal.
         </AccordionContent>
       </AccordionItem>
     </Accordion>
@@ -142,10 +141,10 @@ const FileUploader = ({
             <UploadCloud className="w-16 h-16 transition-transform duration-300 group-hover:scale-110 text-primary" aria-label="File upload" />
             <p className="text-lg font-medium text-foreground">
               {isDragActive
-                ? 'Drop files to start compressing!'
-                : "Drag & drop, or click to select"}
+                ? 'Drop your files to start compressing!'
+                : "Drag & drop images, or click to select"}
             </p>
-            <p className="text-sm text-muted-foreground">Supports PNG and JPG files up to 100MB</p>
+            <p className="text-sm text-muted-foreground">Supports PNG & JPG files up to 100MB each</p>
           </div>
         </div>
       </CardContent>
@@ -210,7 +209,7 @@ const FileItem = ({
             {status === 'compressing' ? (
                 <div className="flex items-center justify-center w-full gap-3">
                     <Loader2 className="w-5 h-5 text-primary animate-spin" aria-label="Loading" />
-                    <span className="text-sm font-medium text-muted-foreground">Processing... {progress.toFixed(0)}%</span>
+                    <span className="text-sm font-medium text-muted-foreground">Compressing... {progress.toFixed(0)}%</span>
                 </div>
             ) : !isDone ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start w-full">
@@ -238,7 +237,7 @@ const FileItem = ({
                         {appFile.aiSuggestion && (
                             <div className="mt-2 text-xs text-muted-foreground flex items-center gap-1.5">
                                 <Sparkles className="w-3.5 h-3.5 text-primary" aria-label="AI suggestion icon" />
-                                <p><strong>AI Suggestion:</strong> Quality {appFile.aiSuggestion.quality}, {appFile.aiSuggestion.optimizationStrategy}</p>
+                                <p><strong>AI Suggests:</strong> Quality {appFile.aiSuggestion.quality}, {appFile.aiSuggestion.optimizationStrategy}</p>
                             </div>
                         )}
                     </div>
@@ -416,7 +415,7 @@ export default function ShrinkWrapApp() {
         if (compressedFile.size >= fileToCompress.originalSize) {
              toast({
                 title: "Already Optimized",
-                description: `${fileToCompress.file.name} could not be compressed further.`,
+                description: `${fileToCompress.file.name} is already as small as it can get.`,
             });
              setFiles(prev => prev.map(f => f.id === fileToCompress.id ? {
                 ...f, 
@@ -446,7 +445,7 @@ export default function ShrinkWrapApp() {
             toast({
                 variant: "destructive",
                 title: "Compression Failed",
-                description: `Could not compress ${fileToCompress.file.name}.`,
+                description: `We couldn't compress ${fileToCompress.file.name}. Please try again.`,
             });
         }
     }
@@ -459,8 +458,8 @@ export default function ShrinkWrapApp() {
     if (pendingFiles.length === 0) return;
 
     toast({
-        title: "Compression Started",
-        description: `Optimizing ${pendingFiles.length} file(s).`,
+        title: "Starting Compression...",
+        description: `Optimizing ${pendingFiles.length} file(s). This might take a moment.`,
     });
     
     // Process files one by one to avoid overwhelming the browser
@@ -469,8 +468,8 @@ export default function ShrinkWrapApp() {
     }
 
     toast({
-        title: "Compression Complete",
-        description: "All files have been processed.",
+        title: "Compression Complete!",
+        description: "All your files have been optimized.",
     });
   };
 
@@ -495,8 +494,8 @@ export default function ShrinkWrapApp() {
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tight">The Smart Way to Compress Images</h1>
             <div className="mt-8 text-foreground text-lg text-center">
-                <h2 className="text-2xl font-semibold">Shrink PNG & JPG files with AI-powered, privacy-first compression.</h2>
-                <p className="max-w-prose mx-auto mt-2 text-muted-foreground">ShrinkWrap is a free online tool that reduces image file sizes without compromising quality. Our AI gives you expert results instantly, and all processing happens in your browser for total privacy.</p>
+                <h2 className="text-2xl font-semibold">Shrink your PNG & JPG files with our privacy-first, AI-powered tool.</h2>
+                <p className="max-w-prose mx-auto mt-2 text-muted-foreground">ShrinkWrap is a free online compressor that dramatically reduces image file sizes without sacrificing quality. Our AI gives you expert results instantly, and everything happens in your browser so your files stay 100% private.</p>
             </div>
             
             <FileUploader onDrop={onDrop} isDragActive={isDragActive} />
@@ -510,31 +509,31 @@ export default function ShrinkWrapApp() {
                                 <UploadCloud className="w-10 h-10 text-primary" />
                             </div>
                             <h3 className="text-xl font-semibold mb-2">1. Upload Your Images</h3>
-                            <p className="text-muted-foreground text-sm">Drag and drop your PNG or JPG files, or click to select them from your device.</p>
+                            <p className="text-muted-foreground text-sm">Drag and drop your PNG or JPG files, or click to select them from your computer.</p>
                         </div>
                         <div className="flex flex-col items-center text-center p-4">
                             <div className="p-4 bg-primary/10 rounded-full mb-4">
                                 <Zap className="w-10 h-10 text-primary" />
                             </div>
                             <h3 className="text-xl font-semibold mb-2">2. Choose Your Setting</h3>
-                            <p className="text-muted-foreground text-sm">Select a compression level or let our AI suggest the best settings for a perfect balance of size and quality.</p>
+                            <p className="text-muted-foreground text-sm">Select a compression level, or let our AI suggest the perfect settings for you.</p>
                         </div>
                         <div className="flex flex-col items-center text-center p-4">
                             <div className="p-4 bg-primary/10 rounded-full mb-4">
                                 <Download className="w-10 h-10 text-primary" />
                             </div>
-                            <h3 className="text-xl font-semibold mb-2">3. Download Your Files</h3>
-                            <p className="text-muted-foreground text-sm">Download your newly compressed, lightweight images instantly and enjoy a faster website.</p>
+                            <h3 className="text-xl font-semibold mb-2">3. Download & Enjoy</h3>
+                            <p className="text-muted-foreground text-sm">Download your newly lightweight images and enjoy a faster, more efficient website.</p>
                         </div>
                     </div>
                 </section>
                 <section className="space-y-8">
-                    <h2 className="text-3xl font-bold text-foreground text-center">Key Features</h2>
+                    <h2 className="text-3xl font-bold text-foreground text-center">Why You'll Love ShrinkWrap</h2>
                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         <Card className="text-center p-6 bg-card/50">
                             <BadgePercent className="w-10 h-10 text-primary mx-auto mb-4" />
-                            <h3 className="text-xl font-semibold mb-2">High Compression</h3>
-                            <p className="text-muted-foreground text-sm">Reduce file sizes by up to 80% with our advanced compression algorithms that preserve quality.</p>
+                            <h3 className="text-xl font-semibold mb-2">Powerful Compression</h3>
+                            <p className="text-muted-foreground text-sm">Cut file sizes by up to 80% with advanced algorithms that intelligently preserve quality.</p>
                         </Card>
                         <Card className="text-center p-6 bg-card/50">
                             <ShieldCheck className="w-10 h-10 text-primary mx-auto mb-4" />
@@ -543,13 +542,13 @@ export default function ShrinkWrapApp() {
                         </Card>
                         <Card className="text-center p-6 bg-card/50">
                             <Sparkles className="w-10 h-10 text-primary mx-auto mb-4" />
-                            <h3 className="text-xl font-semibold mb-2">AI Suggestions</h3>
-                            <p className="text-muted-foreground text-sm">Our AI engine analyzes your file and recommends the optimal settings for you.</p>
+                            <h3 className="text-xl font-semibold mb-2">AI-Powered Suggestions</h3>
+                            <p className="text-muted-foreground text-sm">Our AI engine analyzes your file and recommends optimal settings for the best results.</p>
                         </Card>
                         <Card className="text-center p-6 bg-card/50">
                             <Package className="w-10 h-10 text-primary mx-auto mb-4" />
                             <h3 className="text-xl font-semibold mb-2">Batch Processing</h3>
-                            <p className="text-muted-foreground text-sm">Save time by compressing multiple PNG or JPG images at once with a single click.</p>
+                            <p className="text-muted-foreground text-sm">Save time by compressing multiple PNG and JPG images at once with a single click.</p>
                         </Card>
                     </div>
                 </section>
@@ -560,17 +559,17 @@ export default function ShrinkWrapApp() {
                         <Card className="text-center p-6">
                             <Rocket className="w-10 h-10 text-primary mx-auto mb-4" />
                             <h3 className="text-xl font-semibold mb-2">Faster Websites</h3>
-                            <p className="text-muted-foreground text-sm">Dramatically speed up your website's loading times, which directly improves user experience and keeps visitors engaged.</p>
+                            <p className="text-muted-foreground text-sm">Dramatically speed up your site's loading times, improve user experience, and keep visitors engaged.</p>
                         </Card>
                         <Card className="text-center p-6">
                             <TrendingUp className="w-10 h-10 text-primary mx-auto mb-4" />
                             <h3 className="text-xl font-semibold mb-2">Improved SEO</h3>
-                            <p className="text-muted-foreground text-sm">Faster sites rank higher on search engines like Google, boosting your SEO and driving more organic traffic to your page.</p>
+                            <p className="text-muted-foreground text-sm">Faster sites rank higher on search engines like Google, which means more organic traffic for you.</p>
                         </Card>
                         <Card className="text-center p-6">
                             <Database className="w-10 h-10 text-primary mx-auto mb-4" />
-                            <h3 className="text-xl font-semibold mb-2">Save Bandwidth</h3>
-                            <p className="text-muted-foreground text-sm">Smaller image files save valuable storage space and reduce bandwidth consumption for you and your users.</p>
+                            <h3 className="text-xl font-semibold mb-2">Save Bandwidth & Space</h3>
+                            <p className="text-muted-foreground text-sm">Smaller images save you storage space and reduce bandwidth costs for you and your visitors.</p>
                         </Card>
                     </div>
                 </section>
@@ -592,7 +591,7 @@ export default function ShrinkWrapApp() {
       </main>
       {files.length > 0 && (
         <footer className="mt-6 w-full max-w-4xl flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-card/80 backdrop-blur-sm rounded-lg shadow-lg sticky bottom-4 border">
-          <p className="text-sm text-muted-foreground">{files.length} file(s) selected.</p>
+          <p className="text-sm text-muted-foreground">{files.length} file(s) in the queue.</p>
           <div className="flex items-center gap-2">
             <Button variant="outline" onClick={allDone ? handleClearAll : handleReset}>
                 {allDone ? <><Trash2 className="mr-2 h-4 w-4" /> Clear All</> : <><RotateCcw className="mr-2 h-4 w-4" /> Reset</>}
@@ -609,5 +608,3 @@ export default function ShrinkWrapApp() {
     </div>
   );
 }
-
-    
