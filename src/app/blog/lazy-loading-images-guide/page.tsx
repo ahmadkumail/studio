@@ -15,7 +15,7 @@ export default function BlogPostPage() {
         <div className="text-center mb-8">
             <p className="text-sm text-muted-foreground">September 22, 2025</p>
             <h1 className="text-4xl font-extrabold mt-2">
-              Lazy Loading Images: A Practical Guide
+              A Practical Guide to Lazy Loading Images
             </h1>
             <div className="mt-4 flex justify-center gap-2">
                 <Badge variant="outline">Web Performance</Badge>
@@ -61,9 +61,7 @@ export default function BlogPostPage() {
             <li>`loading="lazy"`: This tells the browser to wait until the user scrolls near the image before loading it.</li>
         </ul>
         <p>Here’s what it looks like in your code:</p>
-        <pre className="bg-muted p-4 rounded-md text-sm"><code>
-{`<img src="my-awesome-image.jpg" alt="A really descriptive alt text" width="800" height="600" loading="lazy">`}
-        </code></pre>
+        <pre className="bg-muted p-4 rounded-md text-sm"><code>{`<img src="my-awesome-image.jpg" alt="A really descriptive alt text" width="800" height="600" loading="lazy">`}</code></pre>
 
         <h2 className="text-2xl font-bold mt-8">The Most Important Rule: Don't Lazy Load Above-the-Fold Images</h2>
         <p>
